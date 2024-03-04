@@ -1,0 +1,688 @@
+<body>
+  <div class="az-header" style="margin-left: -20px; margin-right: -20px">
+    <!-- < class="az-header" style="background-color: #f4f4f4"> -->
+      <div class="container-fluid">
+        <div class="az-header-left">
+          <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+            ><span></span
+          ></a>
+        </div>
+        <div class="az-header-center">
+          <div
+            class="row row-sm"
+            style="justify-content: space-between; align-items: center"
+          >
+          <div class="col-8 ">
+            <b style="font-size: medium;padding-right: 2rem; ">Consignment Dashboard</b>
+
+            <div class="btn-group" role="group" aria-label="Basic example" style="
+            margin-top: .3rem;">
+              <select
+                class="form-control select2"
+                style="border-radius: 10px; height: 30px; font-size: x-small; padding-right: 1rem; margin-right: 1.5rem;"
+              >
+                <option label="Select Hub"></option>
+                <option value="Binola">Binola</option>
+                <option value="Delhi">Delhi</option>
+              </select>
+              <div>
+                <p for="" style="text-wrap: nowrap;margin-top: .3rem; margin-right: .2rem;">Date range</p>
+              </div>
+              <div >
+                <input type="date" style="border-radius: 10px; height: 30px; font-size: x-small;" class="form-control form-control-sm"/>
+    
+              </div>
+              <div >
+                <input type="date" style="border-radius: 10px; height: 30px; font-size: x-small;" class="form-control form-control-sm"/>
+    
+              </div>
+  
+            </div>
+          </div>
+
+          <div class="col-2">
+          </div>
+          <div class="col-md-2">
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Search CN"
+              style="border-radius: 10px; height: 30px; font-size: x-small;"
+              />
+            <button class="btn"></i></button>
+          </div>
+          </div>
+        </div>
+
+        <div id="modaldemo1" class="modal">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-content-demo">
+              <div class="modal-header">
+                <h6 class="modal-title">Single Order</h6>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="form-validation.html" data-parsley-validate>
+                  <div class="wd-sm-450">
+                    <div class="d-md-flex mg-b-20">
+                      <div class="form-group mg-b-0">
+                        <label class="form-label"
+                          >Firstname: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <!-- form-group -->
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Lastname: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <!-- form-group -->
+                    </div>
+                    <!-- d-flex -->
+                  </div>
+                  <div class="wd-sm-450">
+                    <h6>Item Details</h6>
+                    <div style="display: flex; justify-content: space-around">
+                      <div id="cbWrapper" class="parsley-checkbox">
+                        <label class="ckbox mg-b-5">
+                          <input
+                            type="checkbox"
+                            id="show"
+                            name="browser[]"
+                            value="1"
+                            data-parsley-mincheck="2"
+                            data-parsley-class-handler="#cbWrapper"
+                            data-parsley-errors-container="#cbErrorContainer"
+                            required
+                          /><span>Document</span>
+                        </label>
+                      </div>
+                      <div id="cbWrapper" class="parsley-checkbox">
+                        <label class="ckbox mg-b-5">
+                          <input
+                            type="checkbox"
+                            id="show2"
+                            name="browser[]"
+                            value="2"
+                          /><span>Non-Document</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="d-md-flex mg-b-20">
+                      <div
+                        class="form-group mg-b-0"
+                        style="display: none"
+                        id="box"
+                      >
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >Total Items:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Weight: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-md-flex mg-b-20">
+                      <div
+                        class="form-group mg-b-0"
+                        id="box2"
+                        style="display: none"
+                      >
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >Content Type:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Total Items:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >Weight (in kg):
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >LBH (in cm):
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label class="form-label"
+                            >Declared value:
+                            <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="firstname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <!-- form-group -->
+                      <!-- form-group -->
+                    </div>
+                    <!-- d-flex -->
+                  </div>
+
+                  <div class="wd-sm-450">
+                    <h6>Add Pickup Address</h6>
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >First Name: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Last Name: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Address line 1:
+                          <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Address line 2:
+                          <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Pin code <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >City: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div style="display: flex">
+                    <div>
+                      <label class="form-label"
+                        >State: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                      <label class="form-label"
+                        >Country: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="lastname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="form-label"
+                      >Mobile No: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="firstname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+                </form>
+              </div>
+              <!-- modal-body -->
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-az-primary pd-x-20">
+                  Save
+                </button>
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-outline-light"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- modal-dialog -->
+        </div>
+      </div>
+  </div>
+
+
+  <div class="row row-sm mg-b-20 mt-2">
+    <div class="az-dashboard-nav">
+      <nav class="nav">
+        <a
+          class="nav-link"
+          href="javascript:loadMenu('../Hub-ops/consignment-dashboard.html');"
+          >All</a
+        >
+        <a
+          class="nav-link"
+          href="javascript:loadMenu('../Hub-ops/consignment-sub-buckets/unplanned.html');"
+          >Unplanned</a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#">Planned</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#">In Transit</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#">Success</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#">Failed</a>
+        <a
+          class="nav-link"
+          href="javascript:loadMenu('../Hub-ops/consignment-sub-buckets/inscan.html');"
+          >Inscan at Hub</a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#">Loaded</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#">Expected</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#">RTO</a>
+        <a
+          class="nav-link active"
+          href="javascript:loadMenu('../Hub-ops/consignment-sub-buckets/exception.html');"
+          ><b>Exception</b></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#">RTO</a>
+      </nav>
+    </div>
+    <div class="">
+      <div class="row row-sm">
+        <div class="col-lg-4">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="dropdown">
+              <p
+                class="mx-3 dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Service Type
+              </p>
+              <div class="dropdown-menu tx-13">
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <p
+                class="mx-3 dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Status
+              </p>
+              <div class="dropdown-menu tx-13">
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+              </div>
+            </div>
+            <div class="dropdown">
+              <p
+                class="mx-3 dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Customer Code
+              </p>
+              <div class="dropdown-menu tx-13">
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+              </div>
+            </div>
+            <!-- <div class="dropdown">
+              <p
+                class="mx-3 dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                MovementType
+              </p>
+              <div class="dropdown-menu tx-13">
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+              </div>
+            </div> -->
+            <div class="dropdown">
+              <p
+                class="mx-3 dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Destination Hub
+              </p>
+              <div class="dropdown-menu tx-13">
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+              </div>
+            </div>
+            <div class="dropdown">
+              <p
+                class="mx-3 dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                More Filter
+              </p>
+              <div class="dropdown-menu tx-13">
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modaldemo3"
+                  ></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- col-4 -->
+      </div>
+    </div>
+    <div class="btn-icon-list">
+      <button class="btn btn-outline-light">Release Exception</button>
+      <button class="btn btn-outline-light">Cancel</button>
+      <button class="btn btn-outline-light">Download</button>
+    </div>
+  </div>
+  <script>
+    // Additional code for adding placeholder in search box of select2
+    (function ($) {
+      var Defaults = $.fn.select2.amd.require("select2/defaults");
+
+      $.extend(Defaults.defaults, {
+        searchInputPlaceholder: "",
+      });
+
+      var SearchDropdown = $.fn.select2.amd.require("select2/dropdown/search");
+
+      var _renderSearchDropdown = SearchDropdown.prototype.render;
+
+      SearchDropdown.prototype.render = function (decorated) {
+        // invoke parent method
+        var $rendered = _renderSearchDropdown.apply(
+          this,
+          Array.prototype.slice.apply(arguments)
+        );
+
+        this.$search.attr(
+          "placeholder",
+          this.options.get("searchInputPlaceholder")
+        );
+
+        return $rendered;
+      };
+    })(window.jQuery);
+  </script>
+  <!-- <script>
+    $(function () {
+      "use strict";
+
+      // Toggle Switches
+      $(".az-toggle").on("click", function () {
+        $(this).toggleClass("on");
+      });
+
+      $(document).ready(function () {
+        $(".select2").select2({
+          placeholder: "Select Hub",
+          searchInputPlaceholder: "Search",
+        });
+      });
+    });
+  </script> -->
+  <script>
+    $(function () {
+      "use strict";
+
+      $(".az-sidebar .with-sub").on("click", function (e) {
+        e.preventDefault();
+        $(this).parent().toggleClass("show");
+        $(this).parent().siblings().removeClass("show");
+      });
+
+      $(document).on("click touchstart", function (e) {
+        e.stopPropagation();
+
+        // closing of sidebar menu when clicking outside of it
+        if (!$(e.target).closest(".az-header-menu-icon").length) {
+          var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+          if (!sidebarTarg) {
+            $("body").removeClass("az-sidebar-show");
+          }
+        }
+      });
+
+      $("#azSidebarToggle").on("click", function (e) {
+        e.preventDefault();
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+          $("body").toggleClass("az-sidebar-hide");
+        } else {
+          $("body").toggleClass("az-sidebar-show");
+        }
+      });
+    });
+  </script>
+</body>

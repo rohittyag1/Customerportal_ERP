@@ -1,0 +1,2409 @@
+<head>
+  <style>
+    .test{
+      text-align: center;
+      cursor: pointer;
+    }
+    .test:after {
+      content: "\2807";
+      font-size: 15px;
+    }
+
+    div#divBody {
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="az-header">
+    <div class="container-fluid">
+      <div class="az-header-left">
+        <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+          ><span></span
+        ></a>
+      </div>
+      <div class="az-header-center">
+        <div
+          class="row row-sm"
+          style="justify-content: space-between; align-items: center"
+        >
+          <div class="col-7">
+            <b style="font-size: medium; padding-right: 2rem"
+              >Delivery Management</b
+            >
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <div
+                class="input-group-text"
+                style="font-size: small; height: 30px"
+              >
+                Select Hub
+              </div>
+
+              <select
+                id="select"
+                class="form-control select2"
+                style="
+                  height: 30px;
+                  font-size: small;
+                  padding-right: 1rem;
+                  width: 100px;
+                  margin-right: 1.5rem;
+                "
+              >
+                <option label="Mumbai"></option>
+                <option value="Binola">Binola</option>
+                <option value="Delhi">Delhi</option>
+              </select>
+
+              <div class="input-group">
+                <div class="">
+                  <div
+                    class="input-group-text"
+                    style="font-size: small; height: 30px"
+                  >
+                    Date Range:
+                  </div>
+                </div>
+                <input
+                  id="dateMask"
+                  class="form-control"
+                  type="text"
+                  name="daterange"
+                  placeholder="01/01/2018 - 01/15/2018"
+                  style="font-size: small; height: 30px"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search for DRS NO"
+                style="height: 30px; font-size: small"
+              />
+              <span class="input-group-btn">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="padding: 0px 13px 7px 2px"
+                >
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Bucket-->
+  <div class="card bd-0">
+    <div class="card-header bg-gray-400 bd-b-0-f pd-b-0">
+      <nav class="nav nav-tabs">
+        <a class="nav-link active" data-bs-toggle="tab" href="#tabCont1"
+          >All
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 100%;
+              background-color: #5b47fb3b;
+              color: #5b47fb;
+            "
+            >20</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont2"
+          >Created
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+        <!-- <a class="nav-link" data-bs-toggle="tab" href="#tabCont3"
+          >Assigned
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        > -->
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont4"
+          >Started
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont5"
+          >Completed
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+      </nav>
+    </div>
+
+    <!-- card-header -->
+    <div class="card-body bd bd-t-0 tab-content" style="border: none">
+      <div id="tabCont1" class="tab-pane active show">
+        <div class="">
+          <div class="row row-sm">
+            <div class="col">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="dropdown">
+                  <div class="row">
+                    <div
+                      class="col"
+                      style="height: 20px; margin-right: 1rem; padding-right: 0"
+                    >
+                      <p class="" type="button">DRS No :</p>
+                    </div>
+                    <div class="col" style="padding-left: 0">
+                      <div class="">
+                        <input
+                          type="text"
+                          style="
+                            height: 20px;
+                            margin-right: 1rem;
+                            border-color: currentColor;
+                            width: 100px;
+                          "
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    DRS Status
+                  </p>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                      >status1</a
+                    >
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                      >status2</a
+                    >
+                  </div>
+                </div>
+
+                <div class="dropdown">
+                  <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style="color: #5b47fb"
+                  >
+                    <i class="fa fa-filter"></i>
+                    More Filter
+                  </p>
+                  <!-- <div class="dropdown-menu tx-13">
+                      <a
+                        href=""
+                        class="dropdown-item"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modaldemo3"
+                        ></a
+                      >
+                      <a
+                        href=""
+                        class="dropdown-item"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modaldemo3"
+                        ></a
+                      >
+                    </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-icon-list">
+          <button
+            href=""
+            data-bs-toggle="modal"
+            data-bs-target="#modaldemo-create-DRS"
+            class="btn btn-outline-secondary btn-block"
+          >
+            Create DRS
+          </button>
+
+          <button class="btn btn-outline-secondary btn-block">Download</button>
+          <div class="dropdown" style="align-items: center">
+            <p
+              class="mx-2 dropdown-toggle"
+              style="margin: 0; color: #5b47fb"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              More Actions
+            </p>
+          </div>
+        </div>
+
+        <!--Table-->
+        <div class="mt-2">
+          <div class="table-responsive">
+            <table
+              class="table table-bordered mg-b-0"
+              style="text-wrap: nowrap"
+            >
+              <thead>
+                <tr>
+                  <th class=""><input type="checkbox" /></th>
+                  <th class="">DRS NO</th>
+                  <th class="">Created Date & Time</th>
+                  <th class="">Vehicle Type</th>
+                  <th class="">Driver Name</th>
+                  <th class="">No. of Task</th>
+                  <th class="">PLanning Hub</th>
+                  <th class="">DRS Status</th>
+                  <th class="">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>
+                    <a
+                      href=""
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo-hyper1"
+                      >HR2426</a
+                    >
+                  </td>
+                  <td>21-11-2023 11:25:25 AM</td>
+                  <td>Truck</td>
+                  <td>Rajesh</td>
+                  <td>23</td>
+                  <td>Delhi</td>
+                  <td>In transit</td>
+                  <td class="sticky-col first-col">
+                    <div class="dropdown">
+                      <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                      <div class="dropdown-menu tx-13">
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-add-charges"
+                          >Add charges</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-edit-single"
+                          >Edit</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-delete-single"
+                          >Delete</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target=""
+                          >Download</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>
+                    <a
+                      href=""
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo-hyper1"
+                      >HR2426</a
+                    >
+                  </td>
+                  <td>21-11-2023 11:25:25 AM</td>
+                  <td>Truck</td>
+                  <td>Rajesh</td>
+                  <td>23</td>
+                  <td>Delhi</td>
+                  <td>In transit</td>
+                  <td class="sticky-col first-col">
+                    <div class="dropdown">
+                      <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                      <div class="dropdown-menu tx-13">
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-add-charges"
+                          >Add charges</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-edit-single"
+                          >Edit</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-delete-single"
+                          >Delete</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target=""
+                          >Download</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>
+                    <a
+                      href=""
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo-hyper1"
+                      >HR2426</a
+                    >
+                  </td>
+                  <td>21-11-2023 11:25:25 AM</td>
+                  <td>Truck</td>
+                  <td>Rajesh</td>
+                  <td>23</td>
+                  <td>Delhi</td>
+                  <td>In transit</td>
+                  <td class="sticky-col first-col">
+                    <div class="dropdown">
+                      <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="">
+                      </div>
+
+                      <div class="dropdown-menu tx-13">
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-add-charges"
+                          >Add charges</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-edit-single"
+                          >Edit</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-delete-single"
+                          >Delete</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target=""
+                          >Download</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>
+                    <a
+                      href=""
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo-hyper1"
+                      >HR2426</a
+                    >
+                  </td>
+                  <td>21-11-2023 11:25:25 AM</td>
+                  <td>Truck</td>
+                  <td>Rajesh</td>
+                  <td>23</td>
+                  <td>Delhi</td>
+                  <td>In transit</td>
+                  <td class="sticky-col first-col">
+                    <div class="dropdown">
+                      <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                      <div class="dropdown-menu tx-13">
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-add-charges"
+                          >Add charges</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-edit-single"
+                          >Edit</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-delete-single"
+                          >Delete</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target=""
+                          >Download</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>
+                    <a
+                      href=""
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo-hyper1"
+                      >HR2426</a
+                    >
+                  </td>
+                  <td>21-11-2023 11:25:25 AM</td>
+                  <td>Truck</td>
+                  <td>Rajesh</td>
+                  <td>23</td>
+                  <td>Delhi</td>
+                  <td>In transit</td>
+                  <td class="sticky-col first-col">
+                    <div class="dropdown">
+                      <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                      <div class="dropdown-menu tx-13">
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-add-charges"
+                          >Add charges</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-edit-single"
+                          >Edit</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo-delete-single"
+                          >Delete</a
+                        >
+                        <a
+                          href=""
+                          class="dropdown-item"
+                          data-bs-toggle="modal"
+                          data-bs-target=""
+                          >Download</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- <div id="modaldemo-hyper1" class="modal">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content modal-content-demo p-4">
+              <div>
+                <h5>Detail view</h5>
+              </div>
+              <div
+                class="card p-4 m-2"
+                style="
+                  border-radius: 0.5rem;
+                  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                "
+              >
+                <div class="row">
+                  <div class="col">
+                    <h6>CN #</h6>
+                    <h5>NOR0073001</h5>
+                  </div>
+                  <div class="col">
+                    <h6>Status</h6>
+                    <h5><span class="dot"></span> Reached At Hub</h5>
+                  </div>
+                  <div class="col">
+                    <h6>Created At</h6>
+                    <h5>20 Dec 2022, 02:07 PM</h5>
+                  </div>
+                  <div class="col">
+                    <h6>Last Updated</h6>
+                    <h5>26 Jul 2023, 04:37 PM</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="card m-2">
+                <div class="card-header bg-gray-200 bd-b-0-f pd-b-0">
+                  <nav class="nav nav-tabs">
+                    <a
+                      class="nav-link active"
+                      data-bs-toggle="tab"
+                      href="#tabCont12"
+                      >Box Detail</a
+                    >
+                    <a class="nav-link" data-bs-toggle="tab" href="#tabCont13"
+                      >CN Tracking</a
+                    >
+                  </nav>
+                </div>
+                <div class="card-body bd bd-t-0 tab-content">
+                  <div id="tabCont12" class="tab-pane active show">
+                    <div style="overflow-y: scroll; height: 450px">
+                      <table
+                        class="table table-hover table-bordered table-responsive"
+                        style="margin-bottom: 0"
+                      >
+                        <thead>
+                          <tr>
+                            <th>CN Number</th>
+                            <th>Detail</th>
+                            <th>Weight(Kg)</th>
+                            <th>Volume(m3)</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th style="color: #5b47fb">2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div id="tabCont13" class="tab-pane">
+                    <div style="overflow-y: scroll; height: 450px">
+                      <table
+                        class="table table-hover table-bordered table-responsive"
+                        style="margin-bottom: 0"
+                      >
+                        <thead>
+                          <tr>
+                            <th>Status</th>
+                            <th>Time</th>
+                            <th>Hub Code</th>
+                            <th>Employee</th>
+                            <th>Career</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th>Remove from bag</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th>In transit to hub</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th>Outscan at hub</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th>2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th>2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                          <tr>
+                            <th>2000451</th>
+                            <td>DEL</td>
+                            <td>20</td>
+                            <td>10.000541</td>
+                            <td>Delivered</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div id="tabCont14" class="tab-pane">
+                    This is tab content 3...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div id="modaldemo4" class="modal">
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content modal-content-demo">
+              <div class="modal-header">
+                <h6 class="modal-title">Please provide you action</h6>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row text-center">
+                  <div class="col">
+                    <button type="button" class="btn btn-indigo">
+                      Reschedule
+                    </button>
+                  </div>
+                  <div class="col">
+                    <button
+                      type="button"
+                      data-bs-dismiss="modal"
+                      class="btn btn-outline-light"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- tab-pane 2 -->
+      <div id="tabCont2" class="tab-pane">
+        <div class="">
+          <div class="row row-sm">
+            <div class="col">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="dropdown">
+                  <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-filter"></i>
+                    Filters
+                  </p>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                  </div>
+                </div>
+                <div class="row row-sm mg-b-20">
+                  <div class="col-lg-4">
+                    <select class="formControl select2-no-search">
+                      <option label="Trip Type"></option>
+                      <option value="Firefox"></option>
+                      <option value="Chrome"></option>
+                    </select>
+                  </div>
+                  <!-- col-4 -->
+                </div>
+              </div>
+            </div>
+
+            <div class="col text-end">
+              <button
+                href=""
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                class="btn btn-outline-secondary btn-block"
+              >
+                Delete Trip
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--Table-->
+        <div class="mt-2">
+          <div class="">
+            <table
+              class="table table-bordered mg-b-0"
+              style="text-wrap: nowrap"
+            >
+              <thead>
+                <tr>
+                  <th class="wd-20p"></th>
+                  <th class="wd-20p">Trip #</th>
+                  <th class="wd-25p">Created Date & Time</th>
+                  <th class="wd-20p">Vehicle Type</th>
+                  <th class="wd-15p">Driver Name</th>
+                  <th class="wd-20p">No. of Task</th>
+                  <th class="wd-20p">Trip Status</th>
+                  <th class="wd-20p">PLanning Hub</th>
+                  <th class="wd-20p">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td><a href="#">1002</a></td>
+                  <td>12/5/23</td>
+                  <td>
+                    <button
+                      style="border: none; background-color: white; color: blue"
+                    >
+                      <u>Assign</u>
+                    </button>
+                  </td>
+                  <td>63</td>
+                  <td>$170,750</td>
+                  <td>data</td>
+
+                  <td>data</td>
+                  <td>
+                    <div class="dropdown">
+                      <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                      <div class="dropdown-menu tx-13">
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Track</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Add Penalty</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Comments</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="modaldemo3" class="modal">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-content-demo">
+              <div class="modal-header">
+                <h6 class="modal-title">Custom Trip Creation</h6>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Consignment</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="CN"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Pickup</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Pickup"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Driver</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <select class="form-control select2">
+                      <option label="Choose one"></option>
+                      <option value="Firefox">Driver1</option>
+                      <option value="Chrome">Driver2</option>
+                      <option value="Safari">Driver3</option>
+                      <option value="Opera">Driver4</option>
+                      <option value="Internet Explorer">Driver5</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="p-2">
+                  <div class="table-responsive">
+                    <table class="table table-bordered mg-b-0">
+                      <thead>
+                        <tr>
+                          <th>Consignment No.</th>
+                          <th>Pickup No.</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Garrett Winters</td>
+                          <td>Accountant</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-outline-light"
+                >
+                  Cancel
+                </button>
+                <button type="button" class="btn btn-indigo">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tabCont3" class="tab-pane">
+        <div class="">
+          <div class="row row-sm">
+            <div class="col">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="dropdown">
+                  <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-filter"></i>
+                    Filters
+                  </p>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                  </div>
+                </div>
+                <div class="row row-sm mg-b-20">
+                  <div class="col-lg-4">
+                    <select class="formControl select2-no-search">
+                      <option label="Trip Type"></option>
+                      <option value="Firefox"></option>
+                      <option value="Chrome"></option>
+                    </select>
+                  </div>
+                  <!-- col-4 -->
+                </div>
+              </div>
+            </div>
+
+            <div class="col text-end">
+              <button
+                href=""
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo-delete2"
+                class="btn btn-outline-secondary btn-block"
+              >
+                Delete Trip
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--Table-->
+        <div class="mt-2">
+          <div class="">
+            <table
+              class="table table-bordered mg-b-0"
+              style="text-wrap: nowrap"
+            >
+              <thead>
+                <tr>
+                  <th class="wd-20p"></th>
+                  <th class="wd-20p">Trip #</th>
+                  <th class="wd-25p">Created Date & Time</th>
+                  <th class="wd-20p">Vehicle Type</th>
+                  <th class="wd-15p">Driver Name</th>
+                  <th class="wd-20p">No. of Task</th>
+                  <th class="wd-20p">Trip Status</th>
+                  <th class="wd-20p">PLanning Hub</th>
+                  <th class="wd-20p">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td><a href="#">1002</a></td>
+                  <td>12/5/23</td>
+                  <td>Dedicated</td>
+                  <td>Assigned</td>
+                  <td>$170,750</td>
+                  <td>data</td>
+
+                  <td>data</td>
+                  <td>
+                    <div class="dropdown">
+                      <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                      <div class="dropdown-menu tx-13">
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Track</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Add Penalty</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Comments</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="modaldemo-delete2" class="modal">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-content-demo">
+              <div class="modal-header">
+                <h6 class="modal-title">Custom Trip Creation</h6>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Consignment</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="CN"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Pickup</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Pickup"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Driver</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <select class="form-control select2">
+                      <option label="Choose one"></option>
+                      <option value="Firefox">Driver1</option>
+                      <option value="Chrome">Driver2</option>
+                      <option value="Safari">Driver3</option>
+                      <option value="Opera">Driver4</option>
+                      <option value="Internet Explorer">Driver5</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="p-2">
+                  <div class="table-responsive">
+                    <table class="table table-bordered mg-b-0">
+                      <thead>
+                        <tr>
+                          <th>Consignment No.</th>
+                          <th>Pickup No.</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Garrett Winters</td>
+                          <td>Accountant</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-outline-light"
+                >
+                  Cancel
+                </button>
+                <button type="button" class="btn btn-indigo">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tabCont4" class="tab-pane">
+        <div class="">
+          <div class="row row-sm">
+            <div class="col">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="dropdown">
+                  <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-filter"></i>
+                    Filters
+                  </p>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                  </div>
+                </div>
+                <div class="row row-sm mg-b-20">
+                  <div class="col-lg-4">
+                    <select class="formControl select2-no-search">
+                      <option label="Trip Type"></option>
+                      <option value="Firefox"></option>
+                      <option value="Chrome"></option>
+                    </select>
+                  </div>
+                  <!-- col-4 -->
+                </div>
+              </div>
+            </div>
+
+            <div class="col text-end">
+              <button
+                href=""
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo-action"
+                class="btn btn-outline-secondary btn-block"
+              >
+                Action
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--Table-->
+        <div class="mt-2">
+          <div class="">
+            <table
+              class="table table-bordered mg-b-0"
+              style="text-wrap: nowrap"
+            >
+              <thead>
+                <tr>
+                  <th class="wd-20p"></th>
+                  <th class="wd-20p">Trip #</th>
+                  <th class="wd-25p">Vehicle Request Refernce No.</th>
+                  <th class="wd-20p">Vehicle Type</th>
+                  <th class="wd-15p">Driver Name</th>
+                  <th class="wd-20p">No. of Task</th>
+                  <th class="wd-20p">Route</th>
+                  <th class="wd-20p">PLanning Hub</th>
+                  <th class="wd-20p">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td><a href="#">1002</a></td>
+                  <td>12/5/23</td>
+                  <td>Dedicated</td>
+                  <td>63</td>
+                  <td>
+                    2 <i class="fa fa-info-circle" style="font-size: 15px"></i>
+                  </td>
+                  <td>data</td>
+
+                  <td>data</td>
+                  <td>
+                    <div class="dropdown">
+                      <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                      <div class="dropdown-menu tx-13">
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Track</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Add Penalty</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Comments</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="modaldemo-action" class="modal">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-content-demo">
+              <div class="modal-header">
+                <h6 class="modal-title">Custom Trip Creation</h6>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Consignment</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="CN"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Pickup</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Pickup"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Driver</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <select class="form-control select2">
+                      <option label="Choose one"></option>
+                      <option value="Firefox">Driver1</option>
+                      <option value="Chrome">Driver2</option>
+                      <option value="Safari">Driver3</option>
+                      <option value="Opera">Driver4</option>
+                      <option value="Internet Explorer">Driver5</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="p-2">
+                  <div class="table-responsive">
+                    <table class="table table-bordered mg-b-0">
+                      <thead>
+                        <tr>
+                          <th>Consignment No.</th>
+                          <th>Pickup No.</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Garrett Winters</td>
+                          <td>Accountant</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-outline-light"
+                >
+                  Cancel
+                </button>
+                <button type="button" class="btn btn-indigo">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tabCont5" class="tab-pane">
+        <div class="">
+          <div class="row row-sm">
+            <div class="col">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="dropdown">
+                  <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-filter"></i>
+                    Filters
+                  </p>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                  </div>
+                </div>
+                <div class="row row-sm mg-b-20">
+                  <div class="col-lg-4">
+                    <select class="formControl select2-no-search">
+                      <option label="Trip Type"></option>
+                      <option value="Firefox"></option>
+                      <option value="Chrome"></option>
+                    </select>
+                  </div>
+                  <!-- col-4 -->
+                </div>
+              </div>
+            </div>
+
+            <div class="col text-end">
+              <button
+                href=""
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo-action2"
+                class="btn btn-outline-secondary btn-block"
+              >
+                Action
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--Table-->
+        <div class="mt-2">
+          <div class="">
+            <table
+              class="table table-bordered mg-b-0"
+              style="text-wrap: nowrap"
+            >
+              <thead>
+                <tr>
+                  <th class="wd-20p"></th>
+                  <th class="wd-20p">Trip #</th>
+                  <th class="wd-25p">Created Date & Time</th>
+                  <th class="wd-20p">Vehicle Type</th>
+                  <th class="wd-15p">Driver Name</th>
+                  <th class="wd-20p">No. of Task</th>
+                  <th class="wd-20p">Trip Status</th>
+                  <th class="wd-20p">PLanning Hub</th>
+                  <th class="wd-20p">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td><a href="#">1002</a></td>
+                  <td>12/5/23</td>
+                  <td>Dedicated</td>
+                  <td>63</td>
+                  <td>$170,750</td>
+                  <td>data</td>
+
+                  <td>data</td>
+                  <td>
+                    <div class="dropdown">
+                      <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                      <div class="dropdown-menu tx-13">
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Track</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Add Penalty</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Print Trip Closure Sheet</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Capture Trip Bill</a
+                        >
+                        <a href="" class="dropdown-item" data-bs-toggle="modal"
+                          >Comments</a
+                        >
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="modaldemo-action2" class="modal">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-content-demo">
+              <div class="modal-header">
+                <h6 class="modal-title">Custom Trip Creation</h6>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Consignment</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="CN"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Pickup</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Pickup"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Driver</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <select class="form-control select2">
+                      <option label="Choose one"></option>
+                      <option value="Firefox">Driver1</option>
+                      <option value="Chrome">Driver2</option>
+                      <option value="Safari">Driver3</option>
+                      <option value="Opera">Driver4</option>
+                      <option value="Internet Explorer">Driver5</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="p-2">
+                  <div class="table-responsive">
+                    <table class="table table-bordered mg-b-0">
+                      <thead>
+                        <tr>
+                          <th>Consignment No.</th>
+                          <th>Pickup No.</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Garrett Winters</td>
+                          <td>Accountant</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-outline-light"
+                >
+                  Cancel
+                </button>
+                <button type="button" class="btn btn-indigo">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tabCont6" class="tab-pane">This is tab content 3...</div>
+      <div id="tabCont7" class="tab-pane"></div>
+      <div id="tabCont8" class="tab-pane">This is tab content 3...</div>
+      <div id="tabCont9" class="tab-pane">This is tab content 3...</div>
+      <div id="tabCont10" class="tab-pane">This is tab content 3...</div>
+      <div id="tabCont11" class="tab-pane"></div>
+    </div>
+  </div>
+
+  <!-- <div class="az-dashboard-nav mt-2">
+      <nav class="nav">
+        <a
+          class="nav-link active"
+          href="javascript:loadMenu('../Hub-ops/First-mile/Trip-manager.html');"
+          >All</a
+        >
+        <a
+        class="nav-link"
+        href="javascript:loadMenu('../Hub-ops/First-mile/first-mile-subBuckets/Trip-manager-created.html');"
+        >Created</a
+      >
+      <a class="nav-link" data-bs-toggle="tab" href="javascript:loadMenu('../Hub-ops/First-mile/first-mile-subBuckets/Trip-manager-assign.html');">Assigned</a>
+      <a class="nav-link"  href="javascript:loadMenu('../Hub-ops/First-mile/first-mile-subBuckets/Trip-manager-started.html');">Started</a>
+      <a class="nav-link" href="javascript:loadMenu('../Hub-ops/First-mile/first-mile-subBuckets/Trip-manager-completed.html');">Completed</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#">Started</a>
+      </nav>
+    </div> -->
+
+  <div id="modaldemo-add-charges" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Add Charges</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- <div class="row row-sm">
+              <div class="col-lg-4">
+                <label for="">Trip No.: </label>
+              </div>
+              <div class="col-lg-8">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                   
+                  </div>
+                  <input
+                    type="text"
+                    id="name-input"
+                    class="form-control"
+                    placeholder="Trip No. "
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+              </div>
+            </div> -->
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Charges: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend"></div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Charge Type"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Amount"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for=""> </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend"></div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Charge Type"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Amount"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8" id="marketVehicleContainer">
+              <h6 id="addMarketVehicle">+ Add More</h6>
+            </div>
+          </div>
+        </div>
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-create-DRS" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Create DRS</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Add Consignment</label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><img src="../img/barcode-scanner.png" alt="" width="20px"
+                  /></span>
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Consignment"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                /><button
+                  type="button"
+                  id="add-row-button"
+                  class="btn btn-primary btn-sm"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Select DRS</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">DRS1</option>
+                <option value="Chrome">DRS2</option>
+                <option value="Safari">DRS3</option>
+                <option value="Opera">DRS4</option>
+                <option value="Internet Explorer">DRS5</option>
+              </select>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Select Vehicle</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">Vehicle1</option>
+                <option value="Chrome">Vehicle2</option>
+                <option value="Safari">Vehicle3</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8">
+              <div id="cbWrapper" class="col parsley-checkbox">
+                <label class="ckbox mg-b-5">
+                  <input
+                    type="checkbox"
+                    id="show"
+                    name="browser[]"
+                    value="1"
+                    data-parsley-mincheck="2"
+                    data-parsley-class-handler="#cbWrapper"
+                    data-parsley-errors-container="#cbErrorContainer"
+                    required
+                  /><span>Request new vehicle</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8">
+              <div class="d-md-flex mg-b-20">
+                <div class="form-group mg-b-0" style="display: none" id="box">
+                  <div style="display: flex">
+                    <div>
+                      <label class="form-label"
+                        >Add Size: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-150"
+                        required
+                      />
+                    </div>
+                    <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                      <label class="form-label"
+                        >Availability time:
+                        <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="date"
+                        name="lastname"
+                        class="form-control wd-150"
+                        required
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      id="add-row-button"
+                      class="btn btn-primary btn-sm"
+                      style="margin-top: 1.5rem; margin-left: 1rem"
+                    >
+                      Request
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="table-responsive">
+              <table class="table table-bordered mg-b-0" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Consignment No.</th>
+                    <th>DRS</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1001</th>
+                    <td>11</td>
+                    <td>In hub</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1002</th>
+                    <td>12</td>
+                    <td>In transit</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">Create DRS</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const checkbox1 = document.getElementById("show");
+      const box = document.getElementById("box");
+
+      const checkbox4 = document.getElementById("show4");
+      const box4 = document.getElementById("box4");
+      const checkbox3 = document.getElementById("show3");
+      const box3 = document.getElementById("box3");
+      const checkbox2 = document.getElementById("show2");
+      const box2 = document.getElementById("box2");
+
+      const checkbox9 = document.getElementById("show9");
+      const box9 = document.getElementById("box9");
+      const checkbox10 = document.getElementById("show10");
+      const box10 = document.getElementById("box10");
+      const checkbox11 = document.getElementById("show11");
+      const box11 = document.getElementById("box11");
+      const checkbox12 = document.getElementById("show12");
+      const box12 = document.getElementById("box12");
+      const checkbox13 = document.getElementById("show13");
+      const box13 = document.getElementById("box13");
+      const checkbox14 = document.getElementById("show14");
+      const box14 = document.getElementById("box14");
+
+      const checkbox5 = document.getElementById("show5");
+      const box5 = document.getElementById("box5");
+      const checkbox6 = document.getElementById("show6");
+      const box6 = document.getElementById("box6");
+      const checkbox7 = document.getElementById("show7");
+      const box7 = document.getElementById("box7");
+      const checkbox8 = document.getElementById("show8");
+      const box8 = document.getElementById("box8");
+
+      checkbox1.addEventListener("click", function handleClick() {
+        if (checkbox1.checked) {
+          box.style.display = "block";
+        } else {
+          box.style.display = "none";
+        }
+      });
+
+      checkbox4.addEventListener("click", function handleClick() {
+        if (checkbox4.checked) {
+          box4.style.display = "block";
+        } else {
+          box4.style.display = "none";
+        }
+      });
+      checkbox3.addEventListener("click", function handleClick() {
+        if (checkbox3.checked) {
+          box3.style.display = "block";
+        } else {
+          box3.style.display = "none";
+        }
+      });
+
+      checkbox2.addEventListener("click", function handleClick() {
+        if (checkbox2.checked) {
+          box2.style.display = "block";
+        } else {
+          box2.style.display = "none";
+        }
+      });
+      checkbox9.addEventListener("click", function handleClick() {
+        if (checkbox9.checked) {
+          box9.style.display = "block";
+        } else {
+          box9.style.display = "none";
+        }
+      });
+
+      checkbox10.addEventListener("click", function handleClick() {
+        if (checkbox10.checked) {
+          box10.style.display = "block";
+        } else {
+          box10.style.display = "none";
+        }
+      });
+      checkbox11.addEventListener("click", function handleClick() {
+        if (checkbox11.checked) {
+          box11.style.display = "block";
+        } else {
+          box11.style.display = "none";
+        }
+      });
+      checkbox12.addEventListener("click", function handleClick() {
+        if (checkbox12.checked) {
+          box12.style.display = "block";
+        } else {
+          box12.style.display = "none";
+        }
+      });
+
+      checkbox13.addEventListener("click", function handleClick() {
+        if (checkbox13.checked) {
+          box13.style.display = "block";
+        } else {
+          box13.style.display = "none";
+        }
+      });
+      checkbox14.addEventListener("click", function handleClick() {
+        if (checkbox14.checked) {
+          box14.style.display = "block";
+        } else {
+          box14.style.display = "none";
+        }
+      });
+
+      checkbox5.addEventListener("click", function handleClick() {
+        if (checkbox5.checked) {
+          box5.style.display = "block";
+        } else {
+          box5.style.display = "none";
+        }
+      });
+      checkbox6.addEventListener("click", function handleClick() {
+        if (checkbox6.checked) {
+          box6.style.display = "block";
+        } else {
+          box6.style.display = "none";
+        }
+      });
+      checkbox7.addEventListener("click", function handleClick() {
+        if (checkbox7.checked) {
+          box7.style.display = "block";
+        } else {
+          box7.style.display = "none";
+        }
+      });
+      checkbox8.addEventListener("click", function handleClick() {
+        if (checkbox8.checked) {
+          box8.style.display = "block";
+        } else {
+          box8.style.display = "none";
+        }
+      });
+    })();
+  </script>
+  <script>
+    $(function () {
+      $('input[name="daterange"]').daterangepicker(
+        {
+          opens: "center",
+        },
+        function (start, end, label) {
+          console.log(
+            "A new date selection was made: " +
+              start.format("YYYY-MM-DD") +
+              " to " +
+              end.format("YYYY-MM-DD")
+          );
+        }
+      );
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+      // showing modal with effect
+      $(".modal-effect").on("click", function (e) {
+        e.preventDefault();
+        var effect = $(this).attr("data-effect");
+        $("#modaldemo8").addClass(effect);
+      });
+
+      // hide modal with effect
+      $("#modaldemo8").on("hidden.bs.modal", function (e) {
+        $(this).removeClass(function (index, className) {
+          return (className.match(/(^|\s)effect-\S+/g) || []).join(" ");
+        });
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+
+      $(".az-sidebar .with-sub").on("click", function (e) {
+        e.preventDefault();
+        $(this).parent().toggleClass("show");
+        $(this).parent().siblings().removeClass("show");
+      });
+
+      $(document).on("click touchstart", function (e) {
+        e.stopPropagation();
+
+        // closing of sidebar menu when clicking outside of it
+        if (!$(e.target).closest(".az-header-menu-icon").length) {
+          var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+          if (!sidebarTarg) {
+            $("body").removeClass("az-sidebar-show");
+          }
+        }
+      });
+
+      $("#azSidebarToggle").on("click", function (e) {
+        e.preventDefault();
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+          $("body").toggleClass("az-sidebar-hide");
+        } else {
+          $("body").toggleClass("az-sidebar-show");
+        }
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      // Counter for dynamic vehicle input IDs
+      let vehicleCount = 1;
+
+      // Handle click on + Add Market Vehicle
+      $("#addMarketVehicle").on("click", function () {
+        // Create a new input box with unique ID
+        let newVehicleInput = $(
+          '<div class="input-group mb-3 align-items-center">' +
+            '<input type="text" class="form-control dynamic-input" id="vehicleInput' +
+            vehicleCount +
+            '" placeholder="Charge Type"><input type="text" class="form-control dynamic-input" id="vehicleInput' +
+            vehicleCount +
+            '" placeholder="Amount">' +
+            '<div class="input-group-append">' +
+            '<button class="input-group-text close-icon btn btn-danger btn-sm" type= "button" data-vehicle-id="' +
+            vehicleCount +
+            '">X</button>' +
+            "</div>" +
+            "</div>"
+        );
+
+        // Append the new input box to the container
+        $("#marketVehicleContainer").append(newVehicleInput);
+
+        // Increment the counter for the next input
+        vehicleCount++;
+
+        // Handle click on the close icon
+        $(".close-icon").on("click", function () {
+          // Get the ID of the clicked close icon
+          let vehicleId = $(this).data("vehicle-id");
+
+          // Remove the corresponding input box
+          $("#vehicleInput" + vehicleId)
+            .parent()
+            .remove();
+        });
+      });
+    });
+  </script>
+</body>

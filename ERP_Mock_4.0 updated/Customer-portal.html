@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Om Logistics ltd" />
+    <meta name="author" content="BootstrapDash" />
+
+    <title>om logistics ltd</title>
+
+    <!-- vendor css -->
+    <link href="../lib/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="../lib/typicons.font/typicons.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+    <link href="../lib/select2/css/select2.min.css" rel="stylesheet" />
+
+    <!-- azia CSS -->
+    <link rel="stylesheet" href="../css/azia.css" />
+  </head>
+  <body class="az-body az-body-sidebar">
+    <div class="az-sidebar">
+      <div class="az-sidebar-header" style="justify-content: center">
+        <a href="./Customer-portal.html" class="" style="margin-top: 1.5rem">
+          <img src="./img/demo_company.png" width="120" />
+        </a>
+      </div>
+
+      <div class="az-sidebar-body">
+        <ul class="nav">
+          <li class="nav-item active show">
+            <a href="" class="nav-link with-sub"
+              ><i class="fa fa-user"></i>Customer Portal</a
+            >
+            <ul class="nav-sub">
+              <li class="nav-sub-item active">
+                <a
+                  href="javascript:loadMenu('../Customer-portal/pickup.html');"
+                  class="nav-sub-link"
+                  >Pickup</a
+                >
+              </li>
+              <li class="nav-sub-item">
+                <a
+                  href="javascript:loadMenu('../Customer-portal/consignment.html');"
+                  class="nav-sub-link"
+                  >Consignment</a
+                >
+              </li>
+              <li class="nav-sub-item">
+                <a
+                  href="javascript:loadMenu('../Customer-portal/address-booked.html');"
+                  class="nav-sub-link"
+                  >Address Book</a
+                >
+              </li>
+              <!-- <li class="nav-sub-item">
+                <a
+                  href="javascript:loadMenu('../Customer-portal/inventory.html');"
+                  class="nav-sub-link"
+                  >Inventory</a
+                >
+              </li> -->
+              <li class="nav-sub-item">
+                <a
+                  href="javascript:loadMenu('../Customer-portal/billing.html');"
+                  class="nav-sub-link"
+                  >Billing</a
+                >
+              </li>
+              <li class="nav-sub-item">
+                <a
+                  href="javascript:loadMenu('../Customer-portal/feedback.html');"
+                  class="nav-sub-link"
+                  >Feedback</a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <!-- <li class="nav-item">
+            <a href="" class="nav-link with-sub"
+              ><i class="fa fa-tasks"></i>Hub Operations</a
+            >
+            <ul class="nav-sub">
+              <li class="nav-sub-item">
+                <a
+                  href="javascript:loadMenu('../Hub-ops/consignment-dashboard.html');"
+                  class="nav-link"
+                  >Consignment Dashboard</a
+                >
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">First Mile</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/First-mile/Pickups.html');"
+                      class="nav-sub-link"
+                      >Pickups</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/First-mile/Trip-manager.html');"
+                      class="nav-sub-link"
+                      >PRS Management</a
+                    >
+                  </li>
+
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/First-mile/Driver-tracking.html');"
+                      class="nav-sub-link"
+                      >Driver Tracking</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">Middle Mile</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle.html');"
+                      class="nav-sub-link"
+                      >Vehicle</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle-tracking.html');"
+                      class="nav-sub-link"
+                      >Vehicle Tracking</a
+                    >
+                  </li>
+
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Trips.html');"
+                      class="nav-sub-link"
+                      >Middle Mile Trips
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">Last Mile</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Deliveries.html');"
+                      class="nav-sub-link"
+                      >Deliveries</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Trips-manager.html');"
+                      class="nav-sub-link"
+                    >
+                      DRS Management</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Rider-tracking.html');"
+                      class="nav-sub-link"
+                      >Driver Tracking</a
+                    >
+                  </li>
+
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Pod-tracking.html');"
+                      class="nav-sub-link"
+                      >POD Tracking</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="" class="nav-link with-sub"
+              ><i class="fas fa-landmark"></i>Finance</a
+            >
+            <ul class="nav-sub">
+              <li class="nav-sub-item">
+                <a
+                  href="javascript:loadMenu('../Hub-ops/consignment-dashboard.html');"
+                  class="nav-link"
+                  >Driver Reconcilliation</a
+                >
+              </li>
+              <li class="nav-sub-item">
+                <a
+                  href="javascript:loadMenu('../Hub-ops/consignment-dashboard.html');"
+                  class="nav-link"
+                  >Bank Deposit</a
+                >
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">Invoice</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/First-mile/Trip-manager.html');"
+                      class="nav-sub-link"
+                      >Generate Vendor Payout</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">Vendors Payout</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle.html');"
+                      class="nav-sub-link"
+                      >Generate Vendor Payout</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="" class="nav-link with-sub"
+              ><i class="fas fa-screwdriver"></i>Query Builder</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a href="" class="nav-link with-sub"
+              ><i class="fas fa-box"></i>Setup</a
+            >
+            <ul class="nav-sub">
+              <li class="nav-sub-item">
+                <a
+                  href="javascript:loadMenu('../Hub-ops/consignment-dashboard.html');"
+                  class="nav-link"
+                  >Hub</a
+                >
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">Employee</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/First-mile/Trip-manager.html');"
+                      class="nav-sub-link"
+                      >Employee</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/First-mile/Pickups.html');"
+                      class="nav-sub-link"
+                      >Roles and Permission</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">Customer</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle.html');"
+                      class="nav-sub-link"
+                      >Customer Management</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle-tracking.html');"
+                      class="nav-sub-link"
+                      >Customer Allocation</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">App User</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Deliveries.html');"
+                      class="nav-sub-link"
+                      >Driver App User</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Rider-tracking.html');"
+                      class="nav-sub-link"
+                      >Hub Ops User</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">Transport Master</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle.html');"
+                      class="nav-sub-link"
+                      >Vendors</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle-tracking.html');"
+                      class="nav-sub-link"
+                      >Vehicle Make</a
+                    >
+                  </li>
+
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Trips.html');"
+                      class="nav-sub-link"
+                      >Vehicle</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle-tracking.html');"
+                      class="nav-sub-link"
+                      >Routing Master</a
+                    >
+                  </li>
+
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Trips.html');"
+                      class="nav-sub-link"
+                      >Consignment Root Master</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle-tracking.html');"
+                      class="nav-sub-link"
+                      >Doc Master</a
+                    >
+                  </li>
+
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Trips.html');"
+                      class="nav-sub-link"
+                      >Gate Master</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Middle-mile/Trips.html');"
+                      class="nav-sub-link"
+                      >Exception Master</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">Booking Master</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Deliveries.html');"
+                      class="nav-sub-link"
+                      >Destination Master</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Rider-tracking.html');"
+                      class="nav-sub-link"
+                      >TAT Master</a
+                    >
+                  </li>
+
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Trips-manager.html');"
+                      class="nav-sub-link"
+                      >Servicebility Master</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Pod-tracking.html');"
+                      class="nav-sub-link"
+                      >Holiday Master</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-sub-item">
+                <a href="" class="nav-link with-sub">Rate Master</a>
+                <ul class="nav-sub">
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Deliveries.html');"
+                      class="nav-sub-link"
+                      >Customer Contracts</a
+                    >
+                  </li>
+                  <li class="nav-sub-item">
+                    <a
+                      href="javascript:loadMenu('../Hub-ops/Last-mile/Rider-tracking.html');"
+                      class="nav-sub-link"
+                      >Vendor Contract</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="az-content az-content-dashboard-two" id="divBody">
+      <!-- az-header -->
+
+      <!-- <div class="az-content-header d-block d-md-flex" >
+
+      </div>
+
+      <div class="az-content-body" ></div> -->
+
+      <div class="az-footer ht-40">
+        <div class="container-fluid pd-t-0-f ht-100p">
+          <span>&copy;OM logistics LTD</span>
+        </div>
+      </div>
+    </div>
+
+    <!--Common JS-->
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/select2/js/select2.min.js"></script>
+    <script src="../lib/jquery.maskedinput/jquery.maskedinput.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="../lib/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js"></script>
+    <script src="../js/azia.js?v=1.0.0.0"></script>
+    <!-- <script src="../lib/datatables.net/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="../lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script> -->
+    <!-- <script src="../lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script> -->
+    <!-- <script src="../lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script> -->
+    <!-- <script src="../lib/ionicons/ionicons.js"></script> -->
+
+    <!-- <script src="../lib/spectrum-colorpicker/spectrum.js"></script> -->
+    <!-- <script src="../lib/ion-rangeslider/js/ion.rangeSlider.min.js"></script> -->
+    <!-- <script src="../lib/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js"></script> -->
+    <!-- <script src="../lib/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script> -->
+    <!-- <script src="../lib/pickerjs/picker.min.js"></script> -->
+
+    <!--Template JS-->
+    <script>
+      $(function () {
+        "use strict";
+
+        $(".az-sidebar .with-sub").on("click", function (e) {
+          e.preventDefault();
+          $(this).parent().toggleClass("show");
+          $(this).parent().siblings().removeClass("show");
+        });
+
+        $(document).on("click touchstart", function (e) {
+          e.stopPropagation();
+
+          // closing of sidebar menu when clicking outside of it
+          if (!$(e.target).closest(".az-header-menu-icon").length) {
+            var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+            if (!sidebarTarg) {
+              $("body").removeClass("az-sidebar-show");
+            }
+          }
+        });
+
+        $("#azSidebarToggle").on("click", function (e) {
+          e.preventDefault();
+
+          if (window.matchMedia("(min-width: 992px)").matches) {
+            $("body").toggleClass("az-sidebar-hide");
+          } else {
+            $("body").toggleClass("az-sidebar-show");
+          }
+        });
+      });
+    </script>
+    <script>
+      function loadMenu(vPage) {
+        $("#divBody").load(vPage + "?v=" + generateUUID());
+      }
+
+      function generateUUID() {
+        var d = new Date().getTime();
+        var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+          /[xy]/g,
+          function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+          }
+        );
+        return uuid;
+      }
+    </script>
+  </body>
+</html>

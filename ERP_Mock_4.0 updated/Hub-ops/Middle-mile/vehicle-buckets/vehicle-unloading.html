@@ -1,0 +1,628 @@
+<style>
+    .test:after {
+      content: "\2807";
+      font-size: 15px;
+    }
+</style>
+
+<body>
+    <div class="az-header" style="margin-left: -20px; margin-right: -20px">
+        <!-- < class="az-header" style="background-color: #f4f4f4"> -->
+          <div class="container-fluid">
+            <div class="az-header-left">
+              <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+                ><span></span
+              ></a>
+            </div>
+            <div class="az-header-center">
+              <div
+                class="row row-sm"
+                style="justify-content: space-between; align-items: center"
+              >
+              <div class="col-6 ">
+                <b style="font-size: medium;padding-right: 2rem; ">Vehicle</b>
+    
+                <div class="btn-group" role="group" aria-label="Basic example" style="
+                margin-top: .3rem;">
+                  <select
+                    class="form-control select2"
+                    style="border-radius: 10px; height: 30px; font-size: x-small; padding-right: 1rem; margin-right: 1.5rem;"
+                  >
+                    <option label="Select Hub"></option>
+                    <option value="Binola">Binola</option>
+                    <option value="Delhi">Delhi</option>
+                  </select>
+                  <div>
+                    <p for="" style="text-wrap: nowrap;margin-top: .3rem; margin-right: .2rem;">Date range</p>
+                  </div>
+                  <div >
+                    <input type="date" style="border-radius: 10px; height: 30px; font-size: x-small;" class="form-control form-control-sm"/>
+        
+                  </div>
+                  <div >
+                    <input type="date" style="border-radius: 10px; height: 30px; font-size: x-small;" class="form-control form-control-sm"/>
+        
+                  </div>
+      
+                </div>
+              </div>
+    
+              <div class="col-4">
+              </div>
+              <div class="col-md-2">
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="Search CN"
+                  style="border-radius: 10px; height: 30px; font-size: x-small;"
+                  />
+                <button class="btn"></i></button>
+              </div>
+              </div>
+              </div>
+            </div>
+    
+            <div id="modaldemo1" class="modal">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content modal-content-demo">
+                  <div class="modal-header">
+                    <h6 class="modal-title">Single Order</h6>
+                    <button
+                      type="button"
+                      class="close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="form-validation.html" data-parsley-validate>
+                      <div class="wd-sm-450">
+                        <div class="d-md-flex mg-b-20">
+                          <div class="form-group mg-b-0">
+                            <label class="form-label"
+                              >Firstname: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                          <!-- form-group -->
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Lastname: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                          <!-- form-group -->
+                        </div>
+                        <!-- d-flex -->
+                      </div>
+                      <div class="wd-sm-450">
+                        <h6>Item Details</h6>
+                        <div style="display: flex; justify-content: space-around">
+                          <div id="cbWrapper" class="parsley-checkbox">
+                            <label class="ckbox mg-b-5">
+                              <input
+                                type="checkbox"
+                                id="show"
+                                name="browser[]"
+                                value="1"
+                                data-parsley-mincheck="2"
+                                data-parsley-class-handler="#cbWrapper"
+                                data-parsley-errors-container="#cbErrorContainer"
+                                required
+                              /><span>Document</span>
+                            </label>
+                          </div>
+                          <div id="cbWrapper" class="parsley-checkbox">
+                            <label class="ckbox mg-b-5">
+                              <input
+                                type="checkbox"
+                                id="show2"
+                                name="browser[]"
+                                value="2"
+                              /><span>Non-Document</span>
+                            </label>
+                          </div>
+                        </div>
+    
+                        <div class="d-md-flex mg-b-20">
+                          <div
+                            class="form-group mg-b-0"
+                            style="display: none"
+                            id="box"
+                          >
+                            <div style="display: flex">
+                              <div>
+                                <label class="form-label"
+                                  >Total Items:
+                                  <span class="tx-danger">*</span></label
+                                >
+                                <input
+                                  type="text"
+                                  name="firstname"
+                                  class="form-control wd-200"
+                                  required
+                                />
+                              </div>
+                              <div
+                                class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                              >
+                                <label class="form-label"
+                                  >Weight: <span class="tx-danger">*</span></label
+                                >
+                                <input
+                                  type="text"
+                                  name="lastname"
+                                  class="form-control wd-200"
+                                  required
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="d-md-flex mg-b-20">
+                          <div
+                            class="form-group mg-b-0"
+                            id="box2"
+                            style="display: none"
+                          >
+                            <div style="display: flex">
+                              <div>
+                                <label class="form-label"
+                                  >Content Type:
+                                  <span class="tx-danger">*</span></label
+                                >
+                                <input
+                                  type="text"
+                                  name="firstname"
+                                  class="form-control wd-200"
+                                  required
+                                />
+                              </div>
+    
+                              <div
+                                class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                              >
+                                <label class="form-label"
+                                  >Total Items:
+                                  <span class="tx-danger">*</span></label
+                                >
+                                <input
+                                  type="text"
+                                  name="lastname"
+                                  class="form-control wd-200"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <div style="display: flex">
+                              <div>
+                                <label class="form-label"
+                                  >Weight (in kg):
+                                  <span class="tx-danger">*</span></label
+                                >
+                                <input
+                                  type="text"
+                                  name="firstname"
+                                  class="form-control wd-200"
+                                  required
+                                />
+                              </div>
+    
+                              <div
+                                class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                              >
+                                <label class="form-label"
+                                  >LBH (in cm):
+                                  <span class="tx-danger">*</span></label
+                                >
+                                <input
+                                  type="text"
+                                  name="lastname"
+                                  class="form-control wd-200"
+                                  required
+                                />
+                              </div>
+                            </div>
+                            <div>
+                              <label class="form-label"
+                                >Declared value:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+                          <!-- form-group -->
+                          <!-- form-group -->
+                        </div>
+                        <!-- d-flex -->
+                      </div>
+    
+                      <div class="wd-sm-450">
+                        <h6>Add Pickup Address</h6>
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >First Name: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+    
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Last Name: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+    
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >Address line 1:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Address line 2:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >Pin code <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+    
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >City: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div style="display: flex">
+                        <div>
+                          <label class="form-label"
+                            >State: <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="firstname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+    
+                        <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                          <label class="form-label"
+                            >Country: <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="lastname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+                      </div>
+    
+                      <div>
+                        <label class="form-label"
+                          >Mobile No: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </form>
+                  </div>
+                  <!-- modal-body -->
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-az-primary pd-x-20">
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      data-bs-dismiss="modal"
+                      class="btn btn-outline-light"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- modal-dialog -->
+            </div>
+          </div>
+  
+    <!--Bucket-->
+  
+    <div class="az-dashboard-nav mt-2">
+      <nav class="nav">
+        <a
+          class="nav-link "
+          href="javascript:loadMenu('../Hub-ops/Middle-mile/Vehicle.html');"
+          >Expected</a
+        >
+        <a
+          class="nav-link"
+          href="javascript:loadMenu('../Hub-ops/Middle-mile/vehicle-buckets/vehicle-arrived.html');"
+          >Arrived</a
+        >
+        <a class="nav-link active"  href="javascript:loadMenu('../Hub-ops/Middle-mile/vehicle-buckets/vehicle-unloading.html');"><b>Unloading</b></a>
+        <a class="nav-link" href="javascript:loadMenu('../Hub-ops/Middle-mile/vehicle-buckets/vehicle-loading.html');">Loading</a>
+        <a class="nav-link"  href="javascript:loadMenu('../Hub-ops/Middle-mile/vehicle-buckets/vehicle-outbound.html');">Outbound</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#">Outbound</a>
+      </nav>
+    </div>
+  
+    <!--Table-->
+
+    <div class="mt-2">
+      <table class="table table-bordered mg-b-0">
+        <thead>
+          <tr>
+            <th class="wd-5p"><input type="checkbox" /></th>
+            <th class="wd-20p">Vehicle No.</th>
+            <th class="wd-25p">Trip No.</th>
+            <th class="wd-20p">Route Code</th>
+            <th class="wd-15p">Connection Time</th>
+            <th class="wd-20p">Origin</th>
+            <th class="wd-20p">Dock No.</th>
+            <th class="wd-20p">Gate No.</th>
+            <th class="wd-20p">Current Status</th>
+            <th class="wd-20p">#WayBills</th>
+            <th class="wd-20p">Last Updated Time</th>
+            <th class="wd-20p">FLM Trip No.</th>
+            <th class="wd-20p">Transfer Weight(in kg)</th>
+            <th class="wd-20p">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>6456dgf</td>
+            <td><a href="#">134234</a></td>
+            <td>Tokyo</td>
+            <td>63</td>
+            <td>$170,750</td>
+            <td>data</td>
+            <td>data</td>
+            <td>data</td>
+            <td>data</td>
+            <td>data</td>
+            <td>data</td>
+            <td>data</td>
+            <td>
+              
+              <div class="dropdown">
+                <!-- <p
+                  class="mx-3 dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                > -->
+                <a
+                href=""
+                class="btn btn-outline-light"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                data-bs-target="#modaldemo3"
+                ><div class="test"></div
+              ></a>
+                </p>
+                <div class="dropdown-menu tx-13">
+                    <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    
+                    >Unload</a
+                  >
+                    
+                </div>
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="modaldemo3" class="modal">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content modal-content-demo">
+          <div class="modal-header">
+            <h6 class="modal-title">Custom Trip Creation</h6>
+            <button
+              type="button"
+              class="close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row row-sm">
+              <div class="col-lg-4">
+                <label for="">Add Consignment</label>
+              </div>
+              <div class="col-lg-8">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Username"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+                <!-- input-group -->
+              </div>
+            </div>
+            <div class="row row-sm">
+              <div class="col-lg-4">
+                <label for="">Rider</label>
+              </div>
+              <div class="col-lg-8">
+                <select class="form-control select2">
+                  <option label="Choose one"></option>
+                  <option value="Firefox">Firefox</option>
+                  <option value="Chrome">Chrome</option>
+                  <option value="Safari">Safari</option>
+                  <option value="Opera">Opera</option>
+                  <option value="Internet Explorer">Internet Explorer</option>
+                </select>
+              </div>
+            </div>
+  
+            <div class="p-2">
+              <div class="table-responsive">
+                <table class="table table-bordered mg-b-0">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Salary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>$320,800</td>
+                      <td>
+                        <a
+                          href=""
+                          class="btn btn-outline-light"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo3"
+                          ><div class="test"></div
+                        ></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Garrett Winters</td>
+                      <td>Accountant</td>
+                      <td>$170,750</td>
+                      <td>
+                        <a
+                          href=""
+                          class="btn btn-outline-light"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modaldemo3"
+                          ><div class="test"></div
+                        ></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn btn-outline-light"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-indigo">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        "use strict";
+        // showing modal with effect
+        $(".modal-effect").on("click", function (e) {
+          e.preventDefault();
+          var effect = $(this).attr("data-effect");
+          $("#modaldemo8").addClass(effect);
+        });
+  
+        // hide modal with effect
+        $("#modaldemo8").on("hidden.bs.modal", function (e) {
+          $(this).removeClass(function (index, className) {
+            return (className.match(/(^|\s)effect-\S+/g) || []).join(" ");
+          });
+        });
+      });
+    </script>
+  </body>

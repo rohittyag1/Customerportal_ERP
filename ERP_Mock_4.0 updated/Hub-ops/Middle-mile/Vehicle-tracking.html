@@ -1,0 +1,1706 @@
+<style>
+  .test{
+      text-align: center;
+      cursor: pointer;
+    }
+  .test:after {
+    content: "\2807";
+    font-size: 15px;
+  }
+  div#divBody {
+    overflow-x: auto;
+  }
+  .popo:hover {
+      background-color: rgb(238, 239, 239);
+    }
+    .popoverContent {
+     
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    #popoverContent {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      /* margin-top: 1.6rem; */
+      padding: 1rem;
+      z-index: 1000000;
+    }
+
+    #popoverContent ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #popoverContent ul li {
+      margin-bottom: 5px;
+    }
+
+    #popoverContent ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    #popoverContent ul li a:hover {
+      color: rgb(62, 6, 135);
+    }
+
+    .pagination {
+      margin-top: 1%;
+      text-align: right;
+      display: block;
+    }
+    .vl {
+      /* margin-top: 2rem; */
+      border-left: 1px solid rgb(236, 235, 235);
+      height: 160px;
+      position: absolute;
+      left: 27%;
+      /* margin-left: -3px; */
+      top: 15%;
+      z-index: -9999;
+    }
+    .vl-2 {
+      /* margin-top: 2rem; */
+      border-left: 1px solid rgb(236, 235, 235);
+      height: 160px;
+      position: absolute;
+      left: 54%;
+      /* margin-left: -3px; */
+      top: 15%;
+      z-index: -9999;
+    }
+</style>
+<body>
+  <div class="az-header">
+    <div class="container-fluid">
+      <div class="az-header-left">
+        <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+          ><span></span
+        ></a>
+      </div>
+      <div class="az-header-center">
+        <div
+          class="row row-sm"
+          style="justify-content: space-between; align-items: center"
+        >
+          <div class="col-7">
+            <b style="font-size: medium; padding-right: 2rem"
+              >Vehicle Tracking</b
+            >
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <div
+                class="input-group-text"
+                style="font-size: small; height: 30px"
+              >
+                Select Hub
+              </div>
+
+              <select
+                id="select"
+                class="form-control select2"
+                style="
+                  height: 30px;
+                  font-size: small;
+                  padding-right: 1rem;
+                  width: 100px;
+                  margin-right: 1.5rem;
+                "
+              >
+                <option label="Mumbai"></option>
+                <option value="Binola">Binola</option>
+                <option value="Delhi">Delhi</option>
+              </select>
+
+              <div class="input-group">
+                <div class="">
+                  <div
+                    class="input-group-text"
+                    style="font-size: small; height: 30px"
+                  >
+                    Date Range:
+                  </div>
+                </div>
+                <input
+                  id="dateMask"
+                  class="form-control"
+                  type="text"
+                  name="daterange"
+                  placeholder="01/01/2018 - 01/15/2018"
+                  style="font-size: small; height: 30px"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col" style="text-align: end">
+            <button
+              id="popoverButton"
+              style="border: none; background-color: #bccdd100"
+            >
+              <img
+                class="popo"
+                src="../../img/dots-menu.png"
+                width="20px"
+                alt=""
+              />
+            </button>
+            <div class="popoverContent" id="popoverContent">
+              <div class="row" style="text-align: center; cursor: pointer;">
+                <div class="col">
+                  <ul style="text-align: justify;z-index: 10000;">
+                    <li><a ><b style="color: #5b47fb;">In Bound</b></a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in">Gate in</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign" style="text-wrap: nowrap;">Dock assign</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan">Dock in</a></li>
+                    <li><a  data-bs-toggle="modal"
+                      data-bs-target="#modaldemo-Trip-received">Trip receive</a></li>
+                    <li><a href="javascript:loadMenu('../Hub-ops/Middle-mile/create-trips/create-trip.html');">Unloading</a></li>
+                    <li><a  data-bs-toggle="modal" data-bs-target="#modaldemo-Trip-close">Trip Close</a></li>
+                  </ul>
+                </div>
+                <div class="vl"></div>
+                <div class="col">
+                  <ul style="text-align: justify; z-index: 10000;">
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in"><b style="color: #5b47fb;">Out Bound</b></a></li>
+                    <li><a href="javascript:loadMenu('../Hub-ops/Middle-mile/create-trips/create-trip.html');">Create trip</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out">Gate out</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan">Dock out</a></li>
+                    <li><a  data-bs-toggle="modal"
+                      data-bs-target="#modaldemo-Trip-depart">Trip Depart</a></li>
+                    <li><a href="javascript:loadMenu('../Hub-ops/Middle-mile/create-trips/create-trip.html');">Loading</a></li>
+                    
+                  </ul>
+                </div>
+                <div class="vl-2"></div>
+                <div class="col">
+                  <ul style="text-align: justify;z-index: 10000;"  >
+                    <li><a href="#"><b style="color: #5b47fb; text-wrap: nowrap;">Other</b></a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-apply-exception-code" style="text-wrap: nowrap;">Apply Exception code</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search for Vehicle "
+                style="height: 30px; font-size: small"
+              />
+              <span class="input-group-btn">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="padding: 0px 13px 7px 2px"
+                >
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-sm mg-b-20 mt-2"></div>
+  <div class="row m-2">
+    <div class="col-4">
+      <div class="mt-2">
+        <div class="table-responsive">
+          <table class="table table-bordered mg-b-0" style="text-wrap: nowrap">
+            <thead>
+              <tr>
+                <th class="wd-25p">Driver Name</th>
+                <th class="wd-20p">Trip No</th>
+              
+                <th class="wd-20p">Tracking</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Garrett Winters</td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                
+                <td>
+                  <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="modaldemo-hyper1" class="modal">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content modal-content-demo p-4">
+  
+          <div>
+            <h5>Detail view</h5>
+          </div>
+          <div class="card p-4 m-2" style="border-radius: .5rem; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+  
+            <div class="row">
+              <div class="col">
+                <p >Trip No</p>
+               <b>1001</b> 
+              </div>
+              <div class="col">
+                <p >Current status </p>
+               <b>Unloaded</b> 
+              </div>
+              <div class="col">
+                <p >Vehicle </p>
+               <b>HR4563</b> 
+              </div>
+              <div class="col">
+                <p >Route Code </p>
+                <b>BLR-BOM</b>
+              </div>
+              <div class="col">
+                <p >Driver name </p>
+                <b>Birju</b>
+              </div>
+              
+          </div>
+          <div class="row">
+            <div class="col">
+              <p style="margin-top: 1rem;">Driver mobile no</p>
+             <b>789456123</b> 
+            </div>
+            <div class="col">
+              <p style="margin-top: 1rem;">Driver Lic. No. </p>
+             <b>Not available</b> 
+            </div>
+            <div class="col">
+              <p style="margin-top: 1rem;">Payload Capacity </p>
+             <b>400 KG</b> 
+            </div>
+            <div class="col">
+              <p style="margin-top: 1rem;">No. of Consignment </p>
+              <b>2</b>
+            </div>
+            <div class="col">
+              <p style="margin-top: 1rem;">Origin </p>
+              <b>DEL</b>
+            </div>
+        </div>
+  
+        <div class="row">
+          <div class="col">
+            <p style="margin-top: 1rem;">Destination</p>
+           <b>BLR</b> 
+          </div>
+          <div class="col">
+            <p style="margin-top: 1rem;">Transportation Mode</p>
+           <b>OM LOGISTICS LTD.</b> 
+          </div>
+          <div class="col">
+            <p style="margin-top: 1rem;">Mode</p>
+           <b>Surface</b> 
+          </div>
+          <div class="col">
+            <p style="margin-top: 1rem;">EWB</p>
+            <b>Success</b>
+          </div>
+          <div class="col">
+            
+          </div>
+      </div>
+  
+        </div>
+        <div class="card m-2 ">
+          <div class="card-header bg-gray-200 bd-b-0-f pd-b-0">
+            <nav class="nav nav-tabs">
+              <a class="nav-link active" data-bs-toggle="tab" href="#tabCont12">Consignment List</a>
+              <a class="nav-link" data-bs-toggle="tab" href="#tabCont13">Trip Tracking</a>
+              <a class="nav-link" data-bs-toggle="tab" href="#tabCont14">Vehicle Tracking</a>
+            </nav>
+          </div><!-- card-header -->
+          <div class="card-body bd bd-t-0 tab-content">
+            <div id="tabCont12" class="tab-pane active show">
+              <div style="overflow-y: scroll; height: 450px">
+                <table
+                  class="table table-hover table-bordered table-responsive"
+                  style="margin-bottom: 0"
+                >
+                <thead>
+                  <tr>
+                    <th>Event Time</th>
+                    <th>Location</th>
+                    <th>Updated By</th>
+                    <th>Event Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Inprogress</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Trip received against seal</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Inprogress</td>
+                  </tr>
+                  <tr>
+                    <th>12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Inprogress</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Trip received against seal</td>
+                  </tr>
+                  <tr>
+                    <th>12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Inprogress</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Trip received against seal</td>
+                  </tr>
+                </tbody>
+                </table>
+              </div>
+            </div><!-- tab-pane -->
+            <div id="tabCont13" class="tab-pane">
+              <div style="overflow-y: scroll; height: 450px">
+                <table
+                  class="table table-hover table-bordered table-responsive"
+                  style="margin-bottom: 0"
+                >
+                  <thead>
+                    <tr>
+                      <th>Event Time</th>
+                      <th>Location</th>
+                      <th>Updated By</th>
+                      <th>Event Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>12:05:55 PM</th>
+                      <td>DEL</td>
+                      <td>Amar</td>
+                      <td>Uploading Completed</td>
+                    </tr>
+                    <tr>
+                      <th >12:05:55 PM</th>
+                      <td>DEL</td>
+                      <td>Amar</td>
+                      <td>Uploading Inprogress</td>
+                    </tr>
+                    <tr>
+                      <th >12:05:55 PM</th>
+                      <td>DEL</td>
+                      <td>Amar</td>
+                      <td>Trip received against seal</td>
+                    </tr>
+                    <tr>
+                      <th >12:05:55 PM</th>
+                      <td>DEL</td>
+                      <td>Amar</td>
+                      <td>Uploading Completed</td>
+                    </tr>
+                    <tr>
+                      <th >12:05:55 PM</th>
+                      <td>DEL</td>
+                      <td>Amar</td>
+                      <td>Uploading Completed</td>
+                    </tr>
+                    <tr>
+                      <th >12:05:55 PM</th>
+                      <td>DEL</td>
+                      <td>Amar</td>
+                      <td>Uploading Inprogress</td>
+                    </tr>
+                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div id="tabCont14" class="tab-pane">
+              <div style="overflow-y: scroll; height: 450px">
+                <table
+                  class="table table-hover table-bordered table-responsive"
+                  style="margin-bottom: 0"
+                >
+                <thead>
+                  <tr>
+                    <th>Event Time</th>
+                    <th>Location</th>
+                    <th>Updated By</th>
+                    <th>Event Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Inprogress</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Trip received against seal</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Inprogress</td>
+                  </tr>
+                  <tr>
+                    <th>12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Inprogress</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Trip received against seal</td>
+                  </tr>
+                  <tr>
+                    <th>12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Completed</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Uploading Inprogress</td>
+                  </tr>
+                  <tr>
+                    <th >12:05:55 PM</th>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Trip received against seal</td>
+                  </tr>
+                </tbody>
+                </table>
+              </div>
+            </div>
+          </div><!-- card-body -->
+        </div>
+  
+  <!-- 
+          <div class="card">
+            
+          </div> -->
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="col-8">
+      <div id="mapShiftWorker" class="ht-500"></div>
+    </div>
+  </div>
+
+  <div id="modaldemo-dock-assign" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Assign Dock</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Dock No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Dock No"></option>
+                <option value="Firefox">Dock 1</option>
+                <option value="Chrome">Dock 2</option>
+                <option value="Firefox">Dock 3</option>
+                <option value="Chrome">Dock 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Add comments "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-dock-inscan" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Dock Inscan</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Dock No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Dock No"></option>
+                <option value="Firefox">Gate 1</option>
+                <option value="Chrome">Gate 2</option>
+                <option value="Firefox">Gate 3</option>
+                <option value="Chrome">Gate 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Comment"></option>
+                <option value="Firefox">Comment 1</option>
+                <option value="Chrome">Comment 2</option>
+                <option value="Firefox">Comment 3</option>
+                <option value="Chrome">Comment 4</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-dock-outscan" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Dock Outscan</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Dock No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Dock No"></option>
+                <option value="Firefox">Gate 1</option>
+                <option value="Chrome">Gate 2</option>
+                <option value="Firefox">Gate 3</option>
+                <option value="Chrome">Gate 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Number of Cargo Net.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Vehicle No. "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Add Comments "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-gate-in" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Gate In</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-8" id="marketVehicleContainer">
+              <h6 id="addMarketVehicle" style="color: #5b47fb;">+ Add Market Vehicle</h6>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Gate No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Gate No"></option>
+                <option value="Firefox">Gate 1</option>
+                <option value="Chrome">Gate 2</option>
+                <option value="Firefox">Gate 3</option>
+                <option value="Chrome">Gate 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Comment"></option>
+                <option value="Firefox">Comment 1</option>
+                <option value="Chrome">Comment 2</option>
+                <option value="Firefox">Comment 3</option>
+                <option value="Chrome">Comment 4</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-gate-out" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Gate Out</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Gate No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Gate No"></option>
+                <option value="Firefox">Gate 1</option>
+                <option value="Chrome">Gate 2</option>
+                <option value="Firefox">Gate 3</option>
+                <option value="Chrome">Gate 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Add Comment "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-add-charges" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Add Charges</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Trip No.: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Trip No. "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Panalties: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Type Penalty"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Amount"
+                  
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for=""> </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                type="text"
+                id="name-input"
+                class="form-control"
+                placeholder="Type Penalty"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+              <input
+                type="text"
+                id="name-input"
+                class="form-control"
+                placeholder="Amount"
+                
+              />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for=""> </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                    <span style="color: #5b47fb;">+ Add more</span>
+                  
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+       
+      
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-Trip-depart" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Trip Depart</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Km Reading: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Km Reading "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Seal No.: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Seal No."
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Comments "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+       
+      
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-Trip-received" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Trip Received</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Km Reading: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Km Reading "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Seal No.: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Seal No."
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Comments "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+       
+      
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-Trip-close" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Trip Close</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">End Km Reading: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="End Km Reading "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Comments"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+         
+          
+        </div>
+
+       
+      
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+  <div id="modaldemo-apply-exception-code" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Apply Exception Code</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="card bd-0">
+            <div class="card-header bg-gray-400 bd-b-0-f pd-b-0">
+              <nav class="nav nav-tabs">
+                <a class="nav-link active" data-bs-toggle="tab" href="#tabCont15">Consignment</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#tabCont16">Vehicle</a>
+              </nav>
+            </div><!-- card-header -->
+            <div class="card-body bd bd-t-0 tab-content">
+              <div id="tabCont15" class="tab-pane active show">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Consignment #: </label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                       
+                      </div>
+                      <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="CN Referance No. "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Exception Code:</label>
+                  </div>
+                  <div class="col-lg-8 mb-3">
+                    <select class="form-control select2">
+                      <option label="Choose one"></option>
+                      <option value="Chrome">Misrouted</option>
+                      <option value="Chrome">Lost</option>
+                      <option value="Chrome">Excess</option>
+                    </select>
+                  </div>
+                </div>
+              </div><!-- tab-pane -->
+              <div id="tabCont16" class="tab-pane">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Vehicle #: </label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                       
+                      </div>
+                      <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Vehicle No. "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Exception Code:</label>
+                  </div>
+                  <div class="col-lg-8 mb-3">
+                    <select class="form-control select2">
+                      <option value="1">Wrong Destination</option>
+                      <option value="2">Vehicle Damage</option>
+                      <option value="3">Misroute</option>
+                      <option value="4">Lost</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyAq8o5-8Y5pudbJMJtDFzb8aHiWJufa5fg"></script>
+  <script src="../lib/gmaps/gmaps.min.js"></script>
+
+  <script src="../js/azia.js?v=1.0.0.0"></script>
+  <script src="../js/map.shiftworker.js"></script>
+  <script src="../js/map.bluewater.js"></script>
+  <script src="../js/map.apple.js"></script>
+  <script src="../js/map.mapbox.js"></script>
+  <script>
+    $(function () {
+      $('input[name="daterange"]').daterangepicker(
+        {
+          opens: "center",
+        },
+        function (start, end, label) {
+          console.log(
+            "A new date selection was made: " +
+              start.format("YYYY-MM-DD") +
+              " to " +
+              end.format("YYYY-MM-DD")
+          );
+        }
+      );
+    });
+  </script>
+  
+  <script>
+    $(function () {
+      "use strict";
+
+      $('[data-toggle="popover"]').popover();
+
+      $('[data-popover-color="head-primary"]').popover({
+        template:
+          '<div class="popover popover-head-primary" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+      });
+
+      $('[data-popover-color="head-secondary"]').popover({
+        template:
+          '<div class="popover popover-head-secondary" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+      });
+
+      $('[data-popover-color="primary"]').popover({
+        template:
+          '<div class="popover popover-primary" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+      });
+
+      $('[data-popover-color="secondary"]').popover({
+        template:
+          '<div class="popover popover-secondary" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+      });
+
+      // By default, Bootstrap doesn't auto close popover after appearing in the page
+      // resulting other popover overlap each other. Doing this will auto dismiss a popover
+      // when clicking anywhere outside of it
+      $(document).on("click", function (e) {
+        $('[data-toggle="popover"],[data-original-title]').each(function () {
+          //the 'is' for buttons that trigger popups
+          //the 'has' for icons within a button that triggers a popup
+          if (
+            !$(this).is(e.target) &&
+            $(this).has(e.target).length === 0 &&
+            $(".popover").has(e.target).length === 0
+          ) {
+            (
+              ($(this).popover("hide").data("bs.popover") || {}).inState || {}
+            ).click = false; // fix for BS 3.3.6
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+
+      new GMaps({
+        el: "#map1",
+        lat: -12.043333,
+        lng: -77.028333,
+      });
+
+      var mapMarker = new GMaps({
+        el: "#map2",
+        lat: 37.7810822,
+        lng: -122.3871956,
+        zoom: 13.91,
+      });
+
+      mapMarker.addMarker({
+        lat: 37.7810822,
+        lng: -122.3871956,
+        title: "BootstrapDash",
+        click: function (e) {
+          alert("You clicked in this marker");
+        },
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+
+      $(".az-sidebar .with-sub").on("click", function (e) {
+        e.preventDefault();
+        $(this).parent().toggleClass("show");
+        $(this).parent().siblings().removeClass("show");
+      });
+
+      $(document).on("click touchstart", function (e) {
+        e.stopPropagation();
+
+        // closing of sidebar menu when clicking outside of it
+        if (!$(e.target).closest(".az-header-menu-icon").length) {
+          var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+          if (!sidebarTarg) {
+            $("body").removeClass("az-sidebar-show");
+          }
+        }
+      });
+
+      $("#azSidebarToggle").on("click", function (e) {
+        e.preventDefault();
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+          $("body").toggleClass("az-sidebar-hide");
+        } else {
+          $("body").toggleClass("az-sidebar-show");
+        }
+      });
+    });
+  </script>
+  <script>
+    var popover = document.getElementById("popoverContent");
+    var button = document.getElementById("popoverButton");
+
+    button.addEventListener("click", function (event) {
+      event.stopPropagation(); // Prevents the event from reaching the window
+      if (popover.style.display === "block") {
+        popover.style.display = "none";
+      } else {
+        popover.style.display = "block";
+      }
+    });
+
+    window.addEventListener("click", function (event) {
+      var isClickInsideButton = button.contains(event.target);
+      var isClickInsidePopover = popover.contains(event.target);
+
+      if (!isClickInsideButton && !isClickInsidePopover) {
+        popover.style.display = "none";
+      }
+    });
+  </script>
+</body>

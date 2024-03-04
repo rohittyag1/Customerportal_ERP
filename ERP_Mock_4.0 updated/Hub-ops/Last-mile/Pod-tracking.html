@@ -1,0 +1,140 @@
+<style>
+div#divBody {
+      overflow-x: auto;
+    }
+</style>
+<body>
+    <div class="az-header" >
+        <div class="container-fluid">
+          <div class="az-header-left">
+            <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+              ><span></span
+            ></a>
+          </div>
+          <div class="az-header-center">
+            <div
+              class="row row-sm"
+              style="justify-content: space-between; align-items: center"
+            >
+              <div class="col-7">
+                <b style="font-size: medium; padding-right: 2rem">POD Tracking</b>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <div
+                    class="input-group-text"
+                    style="font-size: small; height: 30px"
+                  >
+                    Select Hub
+                  </div>
+    
+                  <select
+                    id="select"
+                    class="form-control select2"
+                    style="
+                      height: 30px;
+                      font-size: small;
+                      padding-right: 1rem;
+                      width: 100px;
+                      margin-right: 1.5rem;
+                    "
+                  >
+                    <option label="Mumbai"></option>
+                    <option value="Binola">Binola</option>
+                    <option value="Delhi">Delhi</option>
+                  </select>
+    
+                  <div class="input-group">
+                    <div class="">
+                      <div
+                        class="input-group-text"
+                        style="font-size: small; height: 30px"
+                      >
+                        Date Range:
+                      </div>
+                    </div>
+                    <input
+                      id="dateMask"
+                      class="form-control"
+                      type="text"
+                      name="daterange"
+                      placeholder="01/01/2018 - 01/15/2018"
+                      style="font-size: small; height: 30px"
+                    />
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-md-2">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search for POD"
+                    style="height: 30px; font-size: small"
+                  />
+                  <span class="input-group-btn">
+                    <button
+                      class="btn btn-primary"
+                      type="button"
+                      style="padding: 0px 13px 7px 2px"
+                    >
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        $(function () {
+          $('input[name="daterange"]').daterangepicker(
+            {
+              opens: "center",
+            },
+            function (start, end, label) {
+              console.log(
+                "A new date selection was made: " +
+                  start.format("YYYY-MM-DD") +
+                  " to " +
+                  end.format("YYYY-MM-DD")
+              );
+            }
+          );
+        });
+      </script>
+      <script>
+        $(function () {
+          "use strict";
+    
+          $(".az-sidebar .with-sub").on("click", function (e) {
+            e.preventDefault();
+            $(this).parent().toggleClass("show");
+            $(this).parent().siblings().removeClass("show");
+          });
+    
+          $(document).on("click touchstart", function (e) {
+            e.stopPropagation();
+    
+            // closing of sidebar menu when clicking outside of it
+            if (!$(e.target).closest(".az-header-menu-icon").length) {
+              var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+              if (!sidebarTarg) {
+                $("body").removeClass("az-sidebar-show");
+              }
+            }
+          });
+    
+          $("#azSidebarToggle").on("click", function (e) {
+            e.preventDefault();
+    
+            if (window.matchMedia("(min-width: 992px)").matches) {
+              $("body").toggleClass("az-sidebar-hide");
+            } else {
+              $("body").toggleClass("az-sidebar-show");
+            }
+          });
+        });
+      </script>
+</body>

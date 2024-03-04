@@ -1,0 +1,217 @@
+<style>
+  .test{
+      text-align: center;
+      cursor: pointer;
+    }
+  .test:after {
+    content: "\2807";
+    font-size: 15px;
+  }
+</style>
+<body>
+  <div class="az-header">
+    <div class="container-fluid">
+      <div class="az-header-left">
+        <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+          ><span></span
+        ></a>
+      </div>
+      <div class="az-header-center">
+        <div
+          class="row row-sm"
+          style="justify-content: space-between; align-items: center"
+        >
+          <div class="col-7">
+            <b style="font-size: medium; padding-right: 2rem"
+              >Driver Tracking</b
+            >
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <div
+                class="input-group-text"
+                style="font-size: small; height: 30px"
+              >
+                Select Hub
+              </div>
+
+              <select
+                id="select"
+                class="form-control select2"
+                style="
+                  height: 30px;
+                  font-size: small;
+                  padding-right: 1rem;
+                  width: 100px;
+                  margin-right: 1.5rem;
+                "
+              >
+                <option label="Mumbai"></option>
+                <option value="Binola">Binola</option>
+                <option value="Delhi">Delhi</option>
+              </select>
+
+              <div class="input-group">
+                <div class="">
+                  <div
+                    class="input-group-text"
+                    style="font-size: small; height: 30px"
+                  >
+                    Date Range:
+                  </div>
+                </div>
+                <input
+                  id="dateMask"
+                  class="form-control"
+                  type="text"
+                  name="daterange"
+                  placeholder="01/01/2018 - 01/15/2018"
+                  style="font-size: small; height: 30px"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search for Driver"
+                style="height: 30px; font-size: small"
+              />
+              <span class="input-group-btn">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="padding: 0px 13px 7px 2px"
+                >
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-2">
+    <div class="col-4">
+      <div class="mt-2">
+        <div class="table-responsive">
+          <table class="table table-bordered mg-b-0" style="text-wrap: nowrap">
+            <thead>
+              <tr>
+                <th class="wd-25p">Driver Name</th>
+                <th class="wd-20p">PRS id</th>
+
+                <th class="wd-20p">Tracking</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!-- <td><input type="checkbox" /></td> -->
+                <td>Garrett Winters</td>
+                <td><a href="">8529</a></td>
+
+                <td>
+                  <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <div id="mapShiftWorker" class="ht-500"></div>
+    </div>
+  </div>
+
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyAq8o5-8Y5pudbJMJtDFzb8aHiWJufa5fg"></script>
+  <script src="../lib/gmaps/gmaps.min.js"></script>
+  <script src="../js/map.shiftworker.js"></script>
+  <script src="../js/map.bluewater.js"></script>
+  <script src="../js/map.apple.js"></script>
+  <script src="../js/map.mapbox.js"></script>
+  <script>
+    $(function () {
+      $('input[name="daterange"]').daterangepicker(
+        {
+          opens: "center",
+        },
+        function (start, end, label) {
+          console.log(
+            "A new date selection was made: " +
+              start.format("YYYY-MM-DD") +
+              " to " +
+              end.format("YYYY-MM-DD")
+          );
+        }
+      );
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+
+      new GMaps({
+        el: "#map1",
+        lat: -12.043333,
+        lng: -77.028333,
+      });
+
+      var mapMarker = new GMaps({
+        el: "#map2",
+        lat: 37.7810822,
+        lng: -122.3871956,
+        zoom: 13.91,
+      });
+
+      mapMarker.addMarker({
+        lat: 37.7810822,
+        lng: -122.3871956,
+        title: "BootstrapDash",
+        click: function (e) {
+          alert("You clicked in this marker");
+        },
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+
+      $(".az-sidebar .with-sub").on("click", function (e) {
+        e.preventDefault();
+        $(this).parent().toggleClass("show");
+        $(this).parent().siblings().removeClass("show");
+      });
+
+      $(document).on("click touchstart", function (e) {
+        e.stopPropagation();
+
+        // closing of sidebar menu when clicking outside of it
+        if (!$(e.target).closest(".az-header-menu-icon").length) {
+          var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+          if (!sidebarTarg) {
+            $("body").removeClass("az-sidebar-show");
+          }
+        }
+      });
+
+      $("#azSidebarToggle").on("click", function (e) {
+        e.preventDefault();
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+          $("body").toggleClass("az-sidebar-hide");
+        } else {
+          $("body").toggleClass("az-sidebar-show");
+        }
+      });
+    });
+  </script>
+</body>

@@ -1,0 +1,2027 @@
+<head>
+  <style>
+    .popover {
+      width: fit-content;
+    }
+
+    .test:after {
+      content: "\2807";
+      font-size: 15px;
+    }
+
+    .test {
+      border: none;
+    }
+
+    .pagination {
+      margin-top: 1%;
+      text-align: right;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="az-header">
+    <!-- < class="az-header" style="background-color: #f4f4f4"> -->
+    <div class="container-fluid">
+      <div class="az-header-left">
+        <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+          ><span></span
+        ></a>
+      </div>
+      <div class="az-header-center">
+        <div
+          class="row row-sm"
+          style="justify-content: space-between; align-items: center"
+        >
+          <div class="col-6">
+            <b style="font-size: medium; padding-right: 2rem">Address Book</b>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <div class="input-group">
+                <div class="">
+                  <div
+                    class="input-group-text"
+                    style="font-size: small; height: 30px"
+                  >
+                    Date Range:
+                  </div>
+                </div>
+                <input
+                  id="dateMask"
+                  class="form-control"
+                  type="text"
+                  name="daterange"
+                  placeholder="01/01/2018 - 01/15/2018"
+                  style="font-size: small; height: 30px"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="btn-group">
+              <div style="text-align: end">
+                <div class="dropdown">
+                  <button
+                    class="button-13 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style="margin-left: 4rem; margin-right: 5px"
+                  >
+                    Pickup
+                  </button>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo1"
+                      >Pickup</a
+                    >
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo2"
+                      >Consignment</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div style="text-align: end">
+                <div class="dropdown">
+                  <button
+                    class="button-13 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style="padding-left: 5px"
+                  >
+                    Consignment
+                  </button>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                      >Pickup</a
+                    >
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo2"
+                      >Consignment</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="input-group">
+              <div class="dropdown">
+                <button
+                  class="input-group-text dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style="font-size: small; height: 31px"
+                >
+                  Search Type
+                </button>
+                <div class="dropdown-menu tx-13">
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target=""
+                  >Invoice</a>
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target=""
+                  >Pickup ID</a>
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target=""
+                  >CN</a>
+                </div>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search"
+                style="height: 31px; font-size: small"
+              />
+              <span class="input-group-btn">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="padding: 0px 13px 7px 2px"
+                >
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- /////pick  -->
+
+  <div id="modaldemo1" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Single Order</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="form-validation.html" data-parsley-validate>
+            <div class="">
+              <div class="row">
+                <div class="col form-group">
+                  <b class="form-label"
+                    >Pickup date slot: <span class="tx-danger">*</span></b
+                  >
+                  <input
+                    type="date"
+                    name="firstname"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <!-- form-group -->
+                <div class="col form-group">
+                  <b class="form-label"
+                    >Pickup time slot: <span class="tx-danger">*</span></b
+                  >
+                  <input
+                    type="time"
+                    name="lastname"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <!-- form-group -->
+              </div>
+              <!-- d-flex -->
+            </div>
+
+            <div class="mt-4">
+              <h6>Item Details</h6>
+              <div class="row" style="display: flex">
+                <div id="cbWrapper" class="col parsley-checkbox">
+                  <label class="ckbox mg-b-5">
+                    <input
+                      type="checkbox"
+                      id="show"
+                      name="browser[]"
+                      value="1"
+                      data-parsley-mincheck="2"
+                      data-parsley-class-handler="#cbWrapper"
+                      data-parsley-errors-container="#cbErrorContainer"
+                      required
+                    /><span>Document</span>
+                  </label>
+                </div>
+                <div id="cbWrapper" class="col parsley-checkbox">
+                  <label class="ckbox mg-b-5">
+                    <input
+                      type="checkbox"
+                      id="show2"
+                      name="browser[]"
+                      value="2"
+                    /><span>Non-Document</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="">
+              <div class="d-md-flex mg-b-20">
+                <div class="form-group mg-b-0" style="display: none" id="box">
+                  <div style="display: flex">
+                    <div>
+                      <label class="form-label"
+                        >Total Items: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                    <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                      <label class="form-label"
+                        >Weight: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="lastname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <div class="">
+              <div class="d-md-flex mg-b-20">
+                <div class="form-group mg-b-0" id="box2" style="display: none">
+                  <div style="display: flex">
+                    <div>
+                      <label class="form-label"
+                        >Content Type: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                      <label class="form-label"
+                        >Total Items: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="lastname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div style="display: flex">
+                    <div>
+                      <label class="form-label"
+                        >Weight (in kg): <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                      <label class="form-label"
+                        >LBH (in cm): <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="lastname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="form-label"
+                      >Declared value: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="firstname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="">
+              <h6>Address</h6>
+              <div class="row" style="display: flex">
+                <div id="cbWrapper" class="col parsley-checkbox">
+                  <label class="ckbox mg-b-5">
+                    <input
+                      type="checkbox"
+                      id="show9"
+                      name="browser[]"
+                      value="1"
+                      data-parsley-mincheck="2"
+                      data-parsley-class-handler="#cbWrapper"
+                      data-parsley-errors-container="#cbErrorContainer"
+                      required
+                    /><span>Saved Pickup Address</span>
+                  </label>
+                </div>
+                <div id="cbWrapper" class="col parsley-checkbox">
+                  <label class="ckbox mg-b-5">
+                    <input
+                      type="checkbox"
+                      id="show10"
+                      name="browser[]"
+                      value="2"
+                    /><span>Add New Address</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <div
+                  class="form-group mg-b-0"
+                  style="display: none"
+                  id="box9"
+                >
+                  <div class="bd pd-10">
+                    <div class="az-header-center mg-x-1 mg-b-10">
+                      <input
+                        id="searchInput"
+                        type="search"
+                        class="form-control"
+                        placeholder="Search Address"
+                      />
+                      <button class="btn">
+                        <i class="fas fa-search"></i>
+                      </button>
+                      <div class="">
+                        <li id="results" class="hidden"></li>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <div class="form-group mg-b-0" id="box10" style="display: none">
+                  <div class="">
+                    <div class="wd-sm-450 mg-t-20 mg-b-10">
+                      <div id="myDIV">
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >First Name:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Last Name:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >Address line 1:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Address line 2:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >Pin code <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >City: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >State: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Country: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label class="form-label"
+                            >Mobile No: <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="firstname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- d-flex -->
+            </div>
+
+            <!-- <div class="col-md-4" style="display: flex; align-items: center;">
+              <div style="display: flex; align-items: center; margin-bottom: 5;">
+                  <div>
+                      Add New Address
+                  </div>
+                  <button style="border: solid 1px; display: inline-flex; margin-left: 5px;" onclick="myFunction()">+</button>
+              </div>
+          </div>
+          
+          <div class="col">
+            <input type="text" id="searchInput" placeholder="Search..." style="width: 80%; padding: .3rem;">
+            <ul id="results" class="hidden"></ul>
+        </div> -->
+            <!-- modal-body -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-az-primary pd-x-20">
+                Save
+              </button>
+              <button
+                type="button"
+                data-bs-dismiss="modal"
+                class="btn btn-outline-light"
+              >
+                Close
+              </button>
+            </div>
+
+            <!-- modal-dialog -->
+
+            <!-- modal -->
+          </form>
+        </div>
+
+        <!-- Bulk Order Modal -->
+
+        <!-- modal -->
+
+        <!-- modal -->
+      </div>
+    </div>
+  </div>
+
+  <div id="modaldemo2" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Bulk Order</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label class="form-label"
+              >Upload Excel File <span class="tx-danger">*</span></label
+            >
+            <input
+              type="file"
+              name="firstname"
+              class="form-control wd-200"
+              required
+            />
+          </div>
+          <br />
+          <div><button class="btn btn-dark">Download Sample</button></div>
+        </div>
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark">Save changes</button>
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo3" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Single Order</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div action="form-validation.html" data-parsley-validate>
+            <div class="">
+              <div class="d-md-flex mg-b-20">
+                <div class="form-group mg-b-0">
+                  <label class="form-label"
+                    >Customer Name: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="firstname"
+                    class="form-control wd-200"
+                    required
+                  />
+                </div>
+                <!-- form-group -->
+                <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                  <label class="form-label"
+                    >Cutomer Code: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="lastname"
+                    class="form-control wd-200"
+                    required
+                  />
+                </div>
+                <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                  <label class="form-label"
+                    >Consignment Number: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="lastname"
+                    class="form-control wd-200"
+                    required
+                  />
+                </div>
+
+                <!-- form-group -->
+              </div>
+              <!-- d-flex -->
+              <div class="">
+                <div class="d-md-flex mg-b-20">
+                  <div class="form-group mg-b-0">
+                    <label class="form-label"
+                      >Customer Reference Number:
+                      <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="firstname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+                  <!-- form-group -->
+                  <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                    <label class="form-label"
+                      >Invoice Number: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="lastname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+                  <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                    <label class="form-label"
+                      >EWB Number: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="lastname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+
+                  <!-- form-group -->
+                </div>
+              </div>
+
+              <div class="">
+                <h6>Item Details</h6>
+                <div class="row" style="display: flex">
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show3"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>Document</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show4"
+                        name="browser[]"
+                        value="2"
+                      /><span>Non-Document</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="d-md-flex mg-b-20">
+                  <div
+                    class="form-group mg-b-0"
+                    style="display: none"
+                    id="box3"
+                  >
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Total Items: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Weight: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Description: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- d-flex -->
+
+                <div class="d-md-flex mg-b-20">
+                  <div
+                    class="form-group mg-b-0"
+                    id="box4"
+                    style="display: none"
+                  >
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Content Type: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Total Items: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Weight (in kg):
+                          <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >LBH (in cm): <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Declared value:
+                          <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Risk Charge: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="">
+                <h6>Select Consignor Address</h6>
+                <div class="row" style="display: flex">
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show11"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>Saved Pickup Address</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show12"
+                        name="browser[]"
+                        value="2"
+                      /><span>Add New Address</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div
+                    class="form-group mg-b-0"
+                    style="display: none;"
+                    id="box11"
+                  >
+                    <div class="bd pd-10">
+                      <div class="az-header-center mg-x-1 mg-b-10">
+                        <input
+                          id="searchInput"
+                          type="search"
+                          class="form-control"
+                          placeholder="Search Address"
+                        />
+                        <button class="btn">
+                          <i class="fas fa-search"></i>
+                        </button>
+                        <div class="">
+                          <li id="results" class="hidden"></li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div
+                    class="form-group mg-b-0"
+                    id="box12"
+                    style="display: none"
+                  >
+                    <div class="">
+                      <div class="wd-sm-450 mg-t-20 mg-b-10">
+                        <div id="myDIV">
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >First Name:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Last Name:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >Address line 1:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Address line 2:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >Pin code
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >City: <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >State: <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Country:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label class="form-label"
+                              >Mobile No:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="">
+                <h6>Select Consignee Address</h6>
+                <div class="row" style="display: flex">
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show13"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>Saved Pickup Address</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show14"
+                        name="browser[]"
+                        value="2"
+                      /><span>Add New Address</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div
+                    class="form-group mg-b-0"
+                    style="display: none; "
+                    id="box13"
+                  >
+                    <div class="bd pd-10">
+                      <div class="az-header-center mg-x-1 mg-b-10">
+                        <input
+                          id="searchInput"
+                          type="search"
+                          class="form-control"
+                          placeholder="Search Address"
+                        />
+                        <button class="btn">
+                          <i class="fas fa-search"></i>
+                        </button>
+                        <div class="">
+                          <li id="results" class="hidden"></li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div
+                    class="form-group mg-b-0"
+                    id="box14"
+                    style="display: none"
+                  >
+                    <div class="">
+                      <div class="wd-sm-450 mg-t-20 mg-b-10">
+                        <div id="myDIV">
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >First Name:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Last Name:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >Address line 1:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Address line 2:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >Pin code
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >City: <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >State: <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Country:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label class="form-label"
+                              >Mobile No:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-sm-450 mg-t-20">
+                <h6>Service</h6>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                  "
+                >
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>RAIL</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input type="checkbox" name="browser[]" value="2" /><span
+                        >AIR</span
+                      >
+                    </label>
+                  </div>
+
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input type="checkbox" name="browser[]" value="2" /><span
+                        >SURFACE</span
+                      >
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-sm-450 mg-t-20">
+                <h6>Pickup Schedule</h6>
+                <div style="display: flex; margin-top: 5px">
+                  <div>
+                    <label class="form-label"
+                      >Pickup Date: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      id="dateMask"
+                      type="date"
+                      class="form-control wd-200"
+                      placeholder="MM/DD/YYYY"
+                    />
+                  </div>
+
+                  <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                    <label class="form-label"
+                      >Pickup Slot: <span class="tx-danger">*</span></label
+                    >
+                    <select class="form-control select2-no-search wd-200">
+                      <option label="Choose one"></option>
+                      <option value="Firefox">Morning</option>
+                      <option value="Chrome">Evening</option>
+                      <option value="Safari">Any time</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-sm-450 mg-t-20 mg-b-10">
+                <h6>Payment Details</h6>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                  "
+                >
+                  Pay Via COD
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show5"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>Yes</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show6"
+                        name="browser[]"
+                        value="2"
+                      /><span>No</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="d-md-flex mg-b-20">
+                  <div
+                    class="form-group mg-b-0"
+                    style="display: none"
+                    id="box5"
+                  >
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Amount: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Mode: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >In favor of: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- form-group -->
+                  <!-- form-group -->
+                </div>
+              </div>
+            </div>
+            <!-- modal-body -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-az-primary pd-x-20">
+                Save
+              </button>
+              <button
+                type="button"
+                data-bs-dismiss="modal"
+                class="btn btn-outline-light"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive" style="padding-left: 1rem; padding-right: 1rem">
+    <div style="text-align: end; margin-top: 10px">
+      <button
+        class="btn btn-dark mg-b-20"
+        data-bs-toggle="modal"
+        data-bs-target="#modaldemo-address"
+      >
+        + Add New Address
+      </button>
+    </div>
+    <div class="col-lg-4 mg-t-20 mg-lg-t-0"></div>
+    <table class="table table-bordered mg-b-0" id="Table1">
+      <thead style="background-color: aliceblue; text-wrap: nowrap">
+        <tr>
+          <th>S.no</th>
+          <th>Name</th>
+          <th>Pincode</th>
+          <th>MOBILE NO.</th>
+          <th style="text-align: center">Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Country</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Vikas Sinha</td>
+          <td>211001</td>
+          <td>9670350105</td>
+          <th>
+            A-148 Arvind Enclave Nangloi noida electronic city b- clock noida
+            sector 62
+          </th>
+          <td>Noida</td>
+          <td>Uttar pradesh</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Charu Dutta</td>
+          <td>400005</td>
+          <td>9670350105</td>
+          <th scope="row">A-148 Arvind Enclave Nangloi</th>
+          <td>Mumbai</td>
+          <td>Maharashtra</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Nitish</td>
+          <td>11001</td>
+          <td>989320800</td>
+          <th scope="row">A-148 Rajdhani park Enclave Nangloi</th>
+          <td>Delhi</td>
+          <td>Delhi</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>Charu Dutta</td>
+          <td>400005</td>
+          <td>9670350105</td>
+          <th scope="row">A-148 Arvind Enclave Nangloi</th>
+          <td>Mumbai</td>
+          <td>Maharashtra</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>Nitish</td>
+          <td>11001</td>
+          <td>989320800</td>
+          <th scope="row">A-148 Rajdhani park Enclave Nangloi</th>
+          <td>Delhi</td>
+          <td>Delhi</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>Vikas Sinha</td>
+          <td>211001</td>
+          <td>9670350105</td>
+          <th>
+            A-148 Arvind Enclave Nangloi noida electronic city b- clock noida
+            sector 62
+          </th>
+          <td>Noida</td>
+          <td>Uttar pradesh</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>Charu Dutta</td>
+          <td>400005</td>
+          <td>9670350105</td>
+          <th scope="row">A-148 Arvind Enclave Nangloi</th>
+          <td>Mumbai</td>
+          <td>Maharashtra</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>Nitish</td>
+          <td>11001</td>
+          <td>989320800</td>
+          <th scope="row">A-148 Rajdhani park Enclave Nangloi</th>
+          <td>Delhi</td>
+          <td>Delhi</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td>Charu Dutta</td>
+          <td>400005</td>
+          <td>9670350105</td>
+          <th scope="row">A-148 Arvind Enclave Nangloi</th>
+          <td>Mumbai</td>
+          <td>Maharashtra</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td>Nitish</td>
+          <td>11001</td>
+          <td>989320800</td>
+          <th scope="row">A-148 Rajdhani park Enclave Nangloi</th>
+          <td>Delhi</td>
+          <td>Delhi</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">11</th>
+          <td>Vikas Sinha</td>
+          <td>211001</td>
+          <td>9670350105</td>
+          <th>
+            A-148 Arvind Enclave Nangloi noida electronic city b- clock noida
+            sector 62
+          </th>
+          <td>Noida</td>
+          <td>Uttar pradesh</td>
+          <th scope="row">India</th>
+          <td>
+            <i class="fa fa-edit" style="margin-right: 10px"></i
+            ><i class="fa fa-trash"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="col mt-4">
+      <div class="d-flex align-items-center">
+        <p class="m-0">Items Per Page:</p>
+        <select id="itemsPerPage" style="width: 50px" class="ml-2">
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+    </div>
+    <div class="col mt-4">
+      <div class="text-center">
+        <span id="currentPage">1</span>
+      </div>
+    </div>
+    <div class="col mt-2">
+      <div class="pagination">
+        <button id="prevPage" class="btn btn-block">
+          <span class="icon">&lt;</span> Previous
+        </button>
+        <button id="nextPage" class="btn btn-block">
+          Next <span class="icon">&gt;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <div id="modaldemo-address" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Add New Address</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="form-validation.html" data-parsley-validate>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label class="form-label"
+                    >Name: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="firstname"
+                    class="form-control"
+                    required
+                    placeholder="Enter name.."
+                  />
+                </div>
+                <br />
+                <div class="form-group">
+                  <label class="form-label"
+                    >Mobile Number: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="lastname"
+                    class="form-control"
+                    required
+                    placeholder="Enter mobile number"
+                  />
+                </div>
+                <br />
+                <div class="form-group">
+                  <label class="form-label"
+                    >State: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="state"
+                    class="form-control"
+                    required
+                    placeholder="Enter state.."
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label class="form-label"
+                    >Address: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="address"
+                    class="form-control"
+                    required
+                    placeholder="Enter address"
+                  />
+                </div>
+                <br />
+
+                <div class="form-group">
+                  <label class="form-label"
+                    >Pincode: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="pincode"
+                    class="form-control"
+                    required
+                    placeholder="Enter pincode.."
+                  />
+                </div>
+
+                <br />
+                <div class="form-group">
+                  <label class="form-label"
+                    >Country: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="country"
+                    class="form-control"
+                    required
+                    placeholder="Enter country.."
+                  />
+                </div>
+                <br />
+                <br />
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-az-primary pd-x-20">
+                Save
+              </button>
+              <button
+                type="button"
+                data-bs-dismiss="modal"
+                class="btn btn-outline-light"
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <script>
+    (function () {
+      let itemsPerPage;
+      let currentPage = 1;
+      let rows; // Store rows globally
+
+      function displayPage() {
+        console.log("i am updating");
+        const table = document.getElementById("Table1");
+        console.log(
+          table.getElementsByTagName("tbody")[0].getElementsByTagName("tr")
+        );
+        rows = table
+          .getElementsByTagName("tbody")[0]
+          .getElementsByTagName("tr");
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        for (let i = 0; i < rows.length; i++) {
+          if (i >= startIndex && i < endIndex) {
+            rows[i].style.display = "table-row";
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+
+        document.getElementById("currentPage").textContent = currentPage;
+        updatePagination();
+      }
+
+      // Function to update the pagination buttons
+      function updatePagination() {
+        const totalPages = Math.ceil(rows.length / itemsPerPage);
+
+        const prevPageButton = document.getElementById("prevPage");
+        const nextPageButton = document.getElementById("nextPage");
+
+        if (currentPage === 1) {
+          prevPageButton.disabled = true;
+        } else {
+          prevPageButton.disabled = false;
+        }
+
+        if (currentPage === totalPages) {
+          nextPageButton.disabled = true;
+        } else {
+          nextPageButton.disabled = false;
+        }
+      }
+
+      // Function to update itemsPerPage and redisplay the current page
+      function updateItemsPerPage() {
+        const selectElement = document.getElementById("itemsPerPage");
+        itemsPerPage = parseInt(selectElement.value);
+        currentPage = 1; // Reset to the first page
+        displayPage();
+      }
+
+      // Add an event listener to the select element to update itemsPerPage
+      document
+        .getElementById("itemsPerPage")
+        .addEventListener("change", updateItemsPerPage);
+
+      document
+        .getElementById("prevPage")
+        .addEventListener("click", function () {
+          if (currentPage > 1) {
+            currentPage--;
+            displayPage();
+          }
+        });
+
+      document
+        .getElementById("nextPage")
+        .addEventListener("click", function () {
+          const totalPages = Math.ceil(rows.length / itemsPerPage);
+
+          if (currentPage < totalPages) {
+            currentPage++;
+            displayPage();
+          }
+        });
+
+      // Check if itemsPerPage has not been initialized, then set a default value
+      if (typeof itemsPerPage === "undefined") {
+        itemsPerPage = 10; // Set a default value
+      }
+
+      displayPage(); // Initial display
+    })();
+  </script>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myDIV");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction2() {
+      var x = document.getElementById("div2");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction3() {
+      var x = document.getElementById("div3");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction4() {
+      var x = document.getElementById("div4");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  </script>
+  <script>
+    $(function () {
+      $('input[name="daterange"]').daterangepicker(
+        {
+          opens: "left",
+        },
+        function (start, end, label) {
+          console.log(
+            "A new date selection was made: " +
+              start.format("YYYY-MM-DD") +
+              " to " +
+              end.format("YYYY-MM-DD")
+          );
+        }
+      );
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      // Listen for changes in the select box
+      $("#select").on("change", function () {
+        // Get the selected option's text and set it as the input value
+        var selectedOption = $(this).find("option:selected").text();
+        $("#myInput").val(selectedOption);
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+      $(function () {
+        $("#select-all").click(function (event) {
+          var selected = this.checked;
+          // Iterate each checkbox
+          $(":checkbox").each(function () {
+            this.checked = selected;
+          });
+        });
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+      $(".az-sidebar .with-sub").on("click", function (e) {
+        e.preventDefault();
+        $(this).parent().toggleClass("show");
+        $(this).parent().siblings().removeClass("show");
+      });
+
+      $(document).on("click touchstart", function (e) {
+        e.stopPropagation();
+
+        // closing of sidebar menu when clicking outside of it
+        if (!$(e.target).closest(".az-header-menu-icon").length) {
+          var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+          if (!sidebarTarg) {
+            $("body").removeClass("az-sidebar-show");
+          }
+        }
+      });
+
+      $("#azSidebarToggle").on("click", function (e) {
+        e.preventDefault();
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+          $("body").toggleClass("az-sidebar-hide");
+        } else {
+          $("body").toggleClass("az-sidebar-show");
+        }
+      });
+
+      // select and display data on search ---------------------------------------------------------
+      $(document).ready(function () {
+        // Listen for changes in the dropdown selection
+        $(".dropdown-item").on("click", function () {
+          // Get the text of the selected option and update the input field's placeholder
+          var selectedText = $(this).text();
+          $(".form-control").attr("placeholder", "Search " + selectedText);
+        });
+      });
+    });
+  </script>
+</body>

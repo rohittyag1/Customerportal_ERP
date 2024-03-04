@@ -1,0 +1,571 @@
+<head>
+  <style>
+    body {
+      font-size: 12px;
+    }
+    .test:after {
+      content: "\2807";
+      font-size: 15px;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="az-header" style="margin-left: -20px; margin-right: -20px">
+    <!-- < class="az-header" style="background-color: #f4f4f4"> -->
+      <div class="container-fluid">
+        <div class="az-header-left">
+          <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+            ><span></span
+          ></a>
+        </div>
+        <div class="az-header-center">
+          <div
+            class="row row-sm"
+            style="justify-content: space-between; align-items: center"
+          >
+          <div class="col-8 ">
+            <b style="font-size: medium;padding-right: 2rem; ">Consignment Dashboard</b>
+
+            <div class="btn-group" role="group" aria-label="Basic example" style="
+            margin-top: .3rem;">
+              <select
+                class="form-control select2"
+                style="border-radius: 10px; height: 30px; font-size: x-small; padding-right: 1rem; margin-right: 1.5rem;"
+              >
+                <option label="Select Hub"></option>
+                <option value="Binola">Binola</option>
+                <option value="Delhi">Delhi</option>
+              </select>
+              <div>
+                <p for="" style="text-wrap: nowrap;margin-top: .3rem; margin-right: .2rem;">Date range</p>
+              </div>
+              <div >
+                <input type="date" style="border-radius: 10px; height: 30px; font-size: x-small;" class="form-control form-control-sm"/>
+    
+              </div>
+              <div >
+                <input type="date" style="border-radius: 10px; height: 30px; font-size: x-small;" class="form-control form-control-sm"/>
+    
+              </div>
+  
+            </div>
+          </div>
+
+          <div class="col-2">
+          </div>
+          <div class="col-md-2">
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Search CN"
+              style="border-radius: 10px; height: 30px; font-size: x-small;"
+              />
+            <button class="btn"></i></button>
+          </div>
+          </div>
+        </div>
+
+        
+      </div>
+  </div>
+
+  <div class="row row-sm mg-b-20 mt-2">
+  <div class="az-dashboard-nav">
+    <nav class="nav">
+      <a
+        class="nav-link"
+        href="javascript:loadMenu('../Hub-ops/consignment-dashboard.html');"
+        >All</a
+      >
+      <a
+        class="nav-link active"
+        href="javascript:loadMenu('../Hub-ops/consignment-sub-buckets/unplanned.html');"
+        ><b>Unplanned</b></a
+      >
+      <a class="nav-link" data-bs-toggle="tab" href="#">Planned</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#">In Transit</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#">Success</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#">Failed</a>
+      <a
+        class="nav-link"
+        href="javascript:loadMenu('../Hub-ops/consignment-sub-buckets/inscan.html');"
+        >Inscan at Hub</a
+      >
+      <a class="nav-link" data-bs-toggle="tab" href="#">Loaded</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#">Expected</a>
+      <a class="nav-link" data-bs-toggle="tab" href="#">RTO</a>
+      <a
+        class="nav-link"
+        href="javascript:loadMenu('../Hub-ops/consignment-sub-buckets/exception.html');"
+        >Exception</a
+      >
+      <a class="nav-link" data-bs-toggle="tab" href="#">RTO</a>
+    </nav>
+  </div>
+  <div class="">
+    <div class="row row-sm">
+      <div class="col-lg-4">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="dropdown">
+            <p
+              class="mx-3 dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Service Type
+            </p>
+            <div class="dropdown-menu tx-13">
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                >Service 1</a
+              >
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                >Service 2</a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <p
+              class="mx-3 dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Status
+            </p>
+            <div class="dropdown-menu tx-13">
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                ></a
+              >
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                ></a
+              >
+            </div>
+          </div>
+          <div class="dropdown">
+            <p
+              class="mx-3 dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Customer Code
+            </p>
+            <div class="dropdown-menu tx-13">
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                ></a
+              >
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                ></a
+              >
+            </div>
+          </div>
+          <!-- <div class="dropdown">
+            <p
+              class="mx-3 dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              MovementType
+            </p>
+            <div class="dropdown-menu tx-13">
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                ></a
+              >
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                >Bulk</a
+              >
+            </div>
+          </div> -->
+          <div class="dropdown">
+            <p
+              class="mx-3 dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Destination Hub
+            </p>
+            <div class="dropdown-menu tx-13">
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                ></a
+              >
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                ></a
+              >
+            </div>
+          </div>
+          <div class="dropdown">
+            <p
+              class="mx-3 dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              More Filter
+            </p>
+            <div class="dropdown-menu tx-13">
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                ></a
+              >
+              <a
+                href=""
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#modaldemo3"
+                ></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-icon-list">
+    <button class="btn btn-outline-light">CN Verification</button>
+    <button class="btn btn-outline-light">Download</button>
+    <button class="btn btn-outline-light">Custom Trip</button>
+    <button class="btn btn-outline-light">Arrival</button>
+    <button class="btn btn-outline-light">Outscan </button>
+    <button class="btn btn-outline-light">Print Label</button>
+    <button class="btn btn-outline-light">Mark Delivered</button>
+    <div class="dropdown" style="align-items: center">
+      <p
+        class="mx-2 dropdown-toggle"
+        style="margin: 0"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        More Actions
+      </p>
+      <div class="dropdown-menu tx-13">
+        <a
+          href=""
+          class="dropdown-item"
+          data-bs-toggle="modal"
+          data-bs-target="#modaldemo3"
+          ></a
+        >
+        <a
+          href=""
+          class="dropdown-item"
+          data-bs-toggle="modal"
+          data-bs-target="#modaldemo3"
+          ></a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 1rem">
+    <table class="table table-bordered mg-b-0">
+      <thead>
+        <tr>
+          <th class=""><input type="checkbox" /></th>
+          <th class="">CN</th>
+          <th class="">CPR Number</th>
+          <th class="">Creation Time</th>
+          <th class="">Status</th>
+          <th class="">Consignment Type</th>
+          <th class="">No. of Pieces</th>
+          <th class="">Customer Name</th>
+          <th class="">Destination Address</th>
+          <th class="">Destination Pincode</th>
+          <th class="">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>Tiger Nixon</td>
+          <td>System Architect</td>
+          <td>Edinburgh</td>
+          <td>61</td>
+          <td>$320,800</td>
+          <td>data</td>
+          <td>data</td>
+          <td>data</td>
+          <td>data</td>
+          <td>
+            <a
+              href=""
+              class="btn btn-outline-light"
+              data-bs-toggle="modal"
+              data-bs-target="#modaldemo3"
+              ><div class="test"></div
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="modaldemo3" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Custom Trip Creation</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Add Consignment</label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+              <!-- input-group -->
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Rider</label>
+            </div>
+            <div class="col-lg-8">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">Firefox</option>
+                <option value="Chrome">Chrome</option>
+                <option value="Safari">Safari</option>
+                <option value="Opera">Opera</option>
+                <option value="Internet Explorer">Internet Explorer</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="p-2">
+            <div class="table-responsive">
+              <table class="table table-bordered mg-b-0">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>$320,800</td>
+                    <td>
+                      <a
+                        href=""
+                        class="btn btn-outline-light"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modaldemo3"
+                        ><div class="test"></div
+                      ></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>$170,750</td>
+                    <td>
+                      <a
+                        href=""
+                        class="btn btn-outline-light"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modaldemo3"
+                        ><div class="test"></div
+                      ></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      "use strict";
+      // showing modal with effect
+      $(".modal-effect").on("click", function (e) {
+        e.preventDefault();
+        var effect = $(this).attr("data-effect");
+        $("#modaldemo8").addClass(effect);
+      });
+
+      // hide modal with effect
+      $("#modaldemo8").on("hidden.bs.modal", function (e) {
+        $(this).removeClass(function (index, className) {
+          return (className.match(/(^|\s)effect-\S+/g) || []).join(" ");
+        });
+      });
+    });
+  </script>
+  <script>
+    // Additional code for adding placeholder in search box of select2
+    (function ($) {
+      var Defaults = $.fn.select2.amd.require("select2/defaults");
+
+      $.extend(Defaults.defaults, {
+        searchInputPlaceholder: "",
+      });
+
+      var SearchDropdown = $.fn.select2.amd.require("select2/dropdown/search");
+
+      var _renderSearchDropdown = SearchDropdown.prototype.render;
+
+      SearchDropdown.prototype.render = function (decorated) {
+        // invoke parent method
+        var $rendered = _renderSearchDropdown.apply(
+          this,
+          Array.prototype.slice.apply(arguments)
+        );
+
+        this.$search.attr(
+          "placeholder",
+          this.options.get("searchInputPlaceholder")
+        );
+
+        return $rendered;
+      };
+    })(window.jQuery);
+  </script>
+  <!-- <script>
+    $(function () {
+      "use strict";
+
+      // Toggle Switches
+      $(".az-toggle").on("click", function () {
+        $(this).toggleClass("on");
+      });
+
+      $(document).ready(function () {
+        $(".select2").select2({
+          placeholder: "Select Hub",
+          searchInputPlaceholder: "Search",
+        });
+      });
+    });
+  </script> -->
+  <script>
+    $(function () {
+      "use strict";
+
+      $(".az-sidebar .with-sub").on("click", function (e) {
+        e.preventDefault();
+        $(this).parent().toggleClass("show");
+        $(this).parent().siblings().removeClass("show");
+      });
+
+      $(document).on("click touchstart", function (e) {
+        e.stopPropagation();
+
+        // closing of sidebar menu when clicking outside of it
+        if (!$(e.target).closest(".az-header-menu-icon").length) {
+          var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+          if (!sidebarTarg) {
+            $("body").removeClass("az-sidebar-show");
+          }
+        }
+      });
+
+      $("#azSidebarToggle").on("click", function (e) {
+        e.preventDefault();
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+          $("body").toggleClass("az-sidebar-hide");
+        } else {
+          $("body").toggleClass("az-sidebar-show");
+        }
+      });
+    });
+    // Select2
+    $(".dataTables_length select").select2({
+        minimumResultsForSearch: Infinity,
+      });
+  </script>
+</body>

@@ -1,0 +1,4116 @@
+<head>
+  <style>
+    .modal-content {
+      width: 86%;
+    }
+    
+    div#divBody {
+      overflow-x: auto;
+    }
+
+    .view {
+      /* margin: auto; */
+      width: 100%;
+    }
+
+    .theader {
+      background-color: azure;
+      position: sticky;
+      top: 0;
+    }
+
+    .wrapper {
+      table-layout: auto;
+      position: relative;
+      width: auto;
+      height: 6% auto;
+      overflow-x: auto;
+      overflow-y: auto;
+      /* border: 1px solid black; */
+      white-space: nowrap;
+    }
+
+    .sticky-col {
+      background-color: azure;
+      position: -webkit-sticky;
+      position: sticky;
+      /* background-color: white !important; */
+    }
+
+    .first-col {
+      /* width: 100px;
+      min-width: 100px;
+      max-width: 100px; */
+      right: 0px;
+    }
+    .last-col {
+      left: 0px;
+    }
+    .last-col1 {
+      left: 43px;
+    }
+
+    .pagination {
+      margin-top: 1%;
+      text-align: right;
+      display: block;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .icon {
+      font-size: 20px;
+      margin-right: 5px;
+    }
+    .centered-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="az-header">
+    <div class="container-fluid">
+      <div class="az-header-left">
+        <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+          ><span></span
+        ></a>
+      </div>
+      <div class="az-header-center">
+        <div
+          class="row row-sm"
+          style="justify-content: space-between; align-items: center"
+        >
+          <div class="col-6">
+            <b style="font-size: medium; padding-right: 2rem">Pickup</b>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <div class="input-group">
+                <div class="">
+                  <div
+                    class="input-group-text"
+                    style="font-size: small; height: 30px"
+                  >
+                    Date Range:
+                  </div>
+                </div>
+                <input
+                  id="dateMask"
+                  class="form-control"
+                  type="text"
+                  name="daterange"
+                  placeholder="01/01/2018 - 01/15/2018"
+                  style="font-size: small; height: 30px"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="btn-group">
+              <div style="text-align: end">
+                <div class="dropdown">
+                  <button
+                    class="button-13 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style="margin-left: 4rem; margin-right: 5px"
+                  >
+                    Pickup
+                  </button>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo1"
+                      >Single Order</a
+                    >
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo2"
+                      >Bulk Order</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div style="text-align: end">
+                <div class="dropdown">
+                  <button
+                    class="button-13 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style="padding-left: 5px"
+                  >
+                    Consignment
+                  </button>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                      >Single Order</a
+                    >
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo2"
+                      >Bulk Order</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="input-group">
+              <div class="dropdown">
+                <button
+                  class="input-group-text dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style="font-size: small; height: 31px"
+                >
+                  Search Type
+                </button>
+                <div class="dropdown-menu tx-13">
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target=""
+                    >Pickup #</a
+                  >
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target=""
+                    >CN #</a
+                  >
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target=""
+                    >Invoice #</a
+                  >
+                </div>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search"
+                style="height: 31px; font-size: small"
+              />
+              <span class="input-group-btn">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="padding: 0px 13px 7px 2px"
+                >
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="modaldemo7" class="modal">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+              <h6 class="modal-title">Single Order</h6>
+              <button
+                type="button"
+                class="close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="form-validation.html" data-parsley-validate>
+                <div class="wd-sm-450">
+                  <div class="d-md-flex mg-b-20">
+                    <div class="form-group mg-b-0">
+                      <label class="form-label"
+                        >Firstname: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                    <!-- form-group -->
+                    <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                      <label class="form-label"
+                        >Lastname: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="lastname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                    <!-- form-group -->
+                  </div>
+                  <!-- d-flex -->
+                </div>
+
+                <div class="wd-sm-450">
+                  <h6>Item Details</h6>
+                  <div style="display: flex; justify-content: space-around">
+                    <div id="cbWrapper" class="parsley-checkbox">
+                      <label class="ckbox mg-b-5">
+                        <input
+                          type="checkbox"
+                          id="show7"
+                          name="browser[]"
+                          value="1"
+                          data-parsley-mincheck="2"
+                          data-parsley-class-handler="#cbWrapper"
+                          data-parsley-errors-container="#cbErrorContainer"
+                          required
+                        /><span>Document</span>
+                      </label>
+                    </div>
+                    <div id="cbWrapper" class="parsley-checkbox">
+                      <label class="ckbox mg-b-5">
+                        <input
+                          type="checkbox"
+                          id="show8"
+                          name="browser[]"
+                          value="2"
+                        /><span>Non-Document</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="d-md-flex mg-b-20">
+                    <div
+                      class="form-group mg-b-0"
+                      style="display: none"
+                      id="box7"
+                    >
+                      <div style="display: flex">
+                        <div>
+                          <label class="form-label"
+                            >Total Items:
+                            <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="firstname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+                        <div
+                          class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                        >
+                          <label class="form-label"
+                            >Weight: <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="lastname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-md-flex mg-b-20">
+                    <div
+                      class="form-group mg-b-0"
+                      id="box8"
+                      style="display: none"
+                    >
+                      <div style="display: flex">
+                        <div>
+                          <label class="form-label"
+                            >Content Type:
+                            <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="firstname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+
+                        <div
+                          class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                        >
+                          <label class="form-label"
+                            >Total Items:
+                            <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="lastname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div style="display: flex">
+                        <div>
+                          <label class="form-label"
+                            >Weight (in kg):
+                            <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="firstname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+
+                        <div
+                          class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                        >
+                          <label class="form-label"
+                            >LBH (in cm):
+                            <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="lastname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label class="form-label"
+                          >Declared value:
+                          <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <!-- form-group -->
+                    <!-- form-group -->
+                  </div>
+                  <!-- d-flex -->
+                </div>
+
+                <div class="wd-sm-450">
+                  <h6>Add Pickup Address</h6>
+                  <div style="display: flex">
+                    <div>
+                      <label class="form-label"
+                        >First Name: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                      <label class="form-label"
+                        >Last Name: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="lastname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div style="display: flex">
+                    <div>
+                      <label class="form-label"
+                        >Address line 1: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                    <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                      <label class="form-label"
+                        >Address line 2: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="lastname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div style="display: flex">
+                    <div>
+                      <label class="form-label"
+                        >Pin code <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                      <label class="form-label"
+                        >City: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="lastname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div style="display: flex">
+                  <div>
+                    <label class="form-label"
+                      >State: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="firstname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                    <label class="form-label"
+                      >Country: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="lastname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="form-label"
+                    >Mobile No: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="firstname"
+                    class="form-control wd-200"
+                    required
+                  />
+                </div>
+              </form>
+            </div>
+            <!-- modal-body -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-az-primary pd-x-20">
+                Save
+              </button>
+              <button
+                type="button"
+                data-bs-dismiss="modal"
+                class="btn btn-outline-light"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- modal-dialog -->
+      </div>
+    </div>
+  </div>
+
+  <div class="card bd-0">
+    <div class="card-header bg-gray-400 bd-b-0-f pd-b-0">
+      <nav class="nav nav-tabs">
+        <a class="nav-link active" data-bs-toggle="tab" href="#tabCont1"
+          >All
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 100%;
+              background-color: #5b47fb3b;
+              color: #5b47fb;
+            "
+            >20</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont2"
+          >Created
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont3"
+          >Attemped
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #5b47fb3b;
+              color: #5b47fb;
+            "
+            >3</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont4"
+          >Success
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont5"
+          >Cancelled
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #5b47fb3b;
+              color: #5b47fb;
+            "
+            >5</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont6"
+          >Unresolved
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+      </nav>
+    </div>
+    <!-- card-header -->
+    <div class="card-body bd bd-t-0 tab-content" style="border: none">
+      <div id="tabCont1" class="tab-pane active show">
+        <div class="">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="dropdown">
+                  <p
+                    class="dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Status
+                  </p>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    >Created</a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    >Accepted</a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    >Attemped</a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    >Success</a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    >Failed</a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    >Cancelled</a>
+                  </div>
+                </div>
+
+             
+                <div class="dropdown">
+                  <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style="color: #5b47fb;"
+                  >
+                    <i class="fa fa-filter"></i> More Filter
+                  </p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-icon-list">
+          <button
+            class="btn btn-outline-secondary btn-rounded btn-block"
+            data-bs-toggle="modal"
+            data-bs-target="#modaldemo-reschedule"
+          >
+            Reschedule
+          </button>
+          <button
+            class="btn btn-outline-secondary btn-rounded btn-block"
+            data-bs-toggle="modal"
+            data-bs-target="#modaldemo-cancel"
+          >
+            Cancel
+          </button>
+
+          <div class="dropdown">
+            <p
+              class="mx-2 dropdown-toggle"
+              style="margin: 0;color:#5b47fb;"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              More Actions
+            </p>
+            
+          </div>
+        </div>
+
+        <div class="view">
+          <div class="wrapper">
+            <div class="table-responsive">
+              <table
+                class="table table-bordered mt-2"
+                id="Table1"
+                style="text-wrap: nowrap"
+              >
+                <thead class="theader">
+                  <tr>
+                    <th
+                      class="last-col sticky-col theader"
+                      style="background-color: aliceblue"
+                    >
+                      <input
+                        type="checkbox"
+                        name="select-all"
+                        id="select-all"
+                      />
+                    </th>
+                    <th
+                      class="last-col1 sticky-col theader"
+                      style="background-color: aliceblue"
+                    >
+                      Pickup ID
+                    </th>
+                    <th>Date & Time</th>
+                    <th>Status</th>
+                    <th>Pickup Address</th>
+                    <th>Pickup Pincode</th>
+                    <th>Pickup City</th>
+                    <th>Pickup Phone No.</th>
+                    <th>Pickup Date & Time Slot</th>
+                    <th>Pickup Completed Date & Time</th>
+
+                    <th>Weight(in kg)</th>
+
+                    <th
+                      class="sticky-col first-col theader"
+                      style="background-color: aliceblue"
+                    >
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody style="text-wrap: nowrap">
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">12345</td>
+                    <td>06-11-2023 12.14.23 PM</td>
+                    <td>Undelivered</td>
+                    <td>Delhi</td>
+                    <td>20800</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>80 KG</td>
+
+                    <td class="sticky-col first-col">
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                    <!-- <td><button className="btn btn-primary btn-rounded btn-block" href='#alert'>Action</button></td> -->
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                    <!-- <td><button className="btn btn-primary btn-rounded btn-block" href='#alert'>Action</button></td> -->
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                    <!-- <td><button className="btn btn-primary btn-rounded btn-block" href='#alert'>Action</button></td> -->
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mt-4">
+            <div class="d-flex align-items-center">
+              <p class="m-0">Items Per Page:</p>
+              <select id="itemsPerPage" style="width: 50px" class="ml-2">
+                <option value="6">6</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+            </div>
+          </div>
+          <div class="col mt-4">
+            <div class="text-center">
+              <span id="currentPage">1</span>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <div class="pagination">
+              <button id="prevPage" class="btn btn-block">
+                <span class="icon">&lt;</span> Previous
+              </button>
+              <button id="nextPage" class="btn btn-block">
+                Next <span class="icon">&gt;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- tab-pane -->
+      <div id="tabCont2" class="tab-pane">
+        <div class="">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="dropdown">
+                  <p
+                    class="dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Status
+                  </p>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo3"
+                  >Created</a>
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo3"
+                  >In Progress</a>
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo3"
+                  >Completed</a>
+                  </div>
+                </div>
+
+                <!-- <div class="dropdown">
+                  <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Customer Code
+                  </p>
+                  <div class="dropdown-menu tx-13">
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                    <a
+                      href=""
+                      class="dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modaldemo3"
+                    ></a>
+                  </div>
+                </div> -->
+                <div class="dropdown">
+                  <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style="color: #5b47fb;"
+                  >
+                    <i class="fa fa-filter"></i> More Filter
+                  </p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-icon-list">
+          <button
+            class="btn btn-outline-secondary btn-rounded btn-block"
+            data-bs-toggle="modal"
+            data-bs-target="#modaldemo-reschedule"
+          >
+            Reschedule
+          </button>
+          <button
+            class="btn btn-outline-secondary btn-rounded btn-block"
+            data-bs-toggle="modal"
+            data-bs-target="#modaldemo-cancel"
+          >
+            Cancel
+          </button>
+
+          <div class="dropdown">
+            <p
+              class="mx-2 dropdown-toggle"
+              style="margin: 0; color: #5b47fb;"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              More Actions
+            </p>
+            
+          </div>
+        </div>
+
+        <div class="view">
+          <div class="wrapper">
+            <div class="table-responsive">
+              <table
+                class="table table-bordered mt-2"
+                id="Table1"
+                style="text-wrap: nowrap"
+              >
+                <thead class="theader">
+                  <tr>
+                    <th
+                      class="last-col sticky-col theader"
+                      style="background-color: aliceblue"
+                    >
+                      <input
+                        type="checkbox"
+                        name="select-all"
+                        id="select-all"
+                      />
+                    </th>
+                    <th
+                      class="last-col1 sticky-col theader"
+                      style="background-color: aliceblue"
+                    >
+                      Pickup ID
+                    </th>
+                    <th>Date & Time</th>
+                    <th>Status</th>
+                    <th>Pickup Address</th>
+                    <th>Pickup Pincode</th>
+                    <th>Pickup City</th>
+                    <th>Pickup Phone No.</th>
+                    <th>Pickup Date & Time Slot</th>
+                    <th>Pickup Completed Date & Time</th>
+
+                    <th>Weight(in kg)</th>
+
+                    <th
+                      class="sticky-col first-col theader"
+                      style="background-color: aliceblue"
+                    >
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody style="text-wrap: nowrap">
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">12345</td>
+                    <td>06-11-2023 12.14.23 PM</td>
+                    <td>Undelivered</td>
+                    <td>Delhi</td>
+                    <td>20800</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>80 KG</td>
+
+                    <td class="sticky-col first-col">
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                    <!-- <td><button className="btn btn-primary btn-rounded btn-block" href='#alert'>Action</button></td> -->
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                    <!-- <td><button className="btn btn-primary btn-rounded btn-block" href='#alert'>Action</button></td> -->
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                    <!-- <td><button className="btn btn-primary btn-rounded btn-block" href='#alert'>Action</button></td> -->
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="last-col sticky-col">
+                      <input type="checkbox" />
+                    </td>
+                    <td class="last-col1 sticky-col">35173</td>
+                    <td>01-11-2023 01:55:54 PM</td>
+                    <td>Reached At Hub</td>
+                    <td>Gurgoan</td>
+                    <td>300364</td>
+                    <td>Delhi</td>
+                    <td>9782936473</td>
+                    <td>03-11-2023 11:14AM</td>
+                    <td>03-11-2023 11:14AM</td>
+
+                    <td>20 KG</td>
+
+                    <td
+                      class="sticky-col first-col"
+                      class="sticky-col first-col"
+                    >
+                      <div class="dropdown">
+                        <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+                        <div class="dropdown-menu tx-13">
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-cancel-single"
+                            >Cancel Pickup</a
+                          >
+                          <a
+                            href=""
+                            class="dropdown-item"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modaldemo-reschedule-single"
+                            >Rescheduled</a
+                          >
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col mt-4">
+            <div class="d-flex align-items-center">
+              <p class="m-0">Items Per Page:</p>
+              <select id="itemsPerPage" style="width: 50px" class="ml-2">
+                <option value="6">6</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+            </div>
+          </div>
+          <div class="col mt-4">
+            <div class="text-center">
+              <span id="currentPage">1</span>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <div class="pagination">
+              <button id="prevPage" class="btn btn-block">
+                <span class="icon">&lt;</span> Previous
+              </button>
+              <button id="nextPage" class="btn btn-block">
+                Next <span class="icon">&gt;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tabCont3" class="tab-pane">This is tab content 3...</div>
+      <div id="tabCont4" class="tab-pane">This is tab content 3...</div>
+
+      <div id="tabCont5" class="tab-pane">This is tab content 3...</div>
+
+      <div id="tabCont6" class="tab-pane">This is tab content 3...</div>
+    </div>
+  </div>
+
+  <div id="tabCont3" class="tab-pane mt-2">
+    <!-- Single Order Modal -->
+  </div>
+
+  <!-- pickup SigleOrder -->
+
+  <div id="modaldemo1" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Single Order</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="form-validation.html" data-parsley-validate>
+            <div class="">
+              <div class="row">
+                <div class="col form-group">
+                  <b class="form-label"
+                    >Pickup date slot: <span class="tx-danger">*</span></b
+                  >
+                  <input
+                    type="date"
+                    name="firstname"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <!-- form-group -->
+                <div class="col form-group">
+                  <b class="form-label"
+                    >Pickup time slot: <span class="tx-danger">*</span></b
+                  >
+                  <input
+                    type="time"
+                    name="lastname"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <!-- form-group -->
+              </div>
+              <!-- d-flex -->
+            </div>
+
+            <div class="mt-4">
+              <h6>Item Details</h6>
+              <div class="row" style="display: flex">
+                <div id="cbWrapper" class="col parsley-checkbox">
+                  <label class="ckbox mg-b-5">
+                    <input
+                      type="checkbox"
+                      id="show"
+                      name="browser[]"
+                      value="1"
+                      data-parsley-mincheck="2"
+                      data-parsley-class-handler="#cbWrapper"
+                      data-parsley-errors-container="#cbErrorContainer"
+                      required
+                    /><span>Document</span>
+                  </label>
+                </div>
+                <div id="cbWrapper" class="col parsley-checkbox">
+                  <label class="ckbox mg-b-5">
+                    <input
+                      type="checkbox"
+                      id="show2"
+                      name="browser[]"
+                      value="2"
+                    /><span>Non-Document</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="">
+                <div class="d-md-flex mg-b-20">
+                  <div class="form-group mg-b-0" style="display: none" id="box">
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Total Items: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Weight: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="">
+                <div class="d-md-flex mg-b-20">
+                  <div
+                    class="form-group mg-b-0"
+                    id="box2"
+                    style="display: none;border: 1px solid black; padding: 1rem;"
+                  >
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Content Type: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Total Items: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Weight (in kg):
+                          <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >LBH (in cm): <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label class="form-label"
+                        >Declared value: <span class="tx-danger">*</span></label
+                      >
+                      <input
+                        type="text"
+                        name="firstname"
+                        class="form-control wd-200"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="">
+              <h6>Address</h6>
+              <div class="row" style="display: flex">
+                <div id="cbWrapper" class="col parsley-checkbox">
+                  <label class="ckbox mg-b-5">
+                    <input
+                      type="checkbox"
+                      id="show9"
+                      name="browser[]"
+                      value="1"
+                      data-parsley-mincheck="2"
+                      data-parsley-class-handler="#cbWrapper"
+                      data-parsley-errors-container="#cbErrorContainer"
+                      required
+                    /><span>Saved Pickup Address</span>
+                  </label>
+                </div>
+                <div id="cbWrapper" class="col parsley-checkbox">
+                  <label class="ckbox mg-b-5">
+                    <input
+                      type="checkbox"
+                      id="show10"
+                      name="browser[]"
+                      value="2"
+                    /><span>Add New Address</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <div class="form-group mg-b-0" style="display: none" id="box9">
+                  <div class="bd pd-10">
+                    <div class="az-header-center mg-x-1 mg-b-10">
+                      <input
+                        id="searchInput"
+                        type="search"
+                        class="form-control"
+                        placeholder="Search Address"
+                      />
+                      <button class="btn">
+                        <i class="fas fa-search"></i>
+                      </button>
+                      <div class="">
+                        <li id="results" class="hidden"></li>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <div class="form-group mg-b-0" id="box10" style="display: none">
+                  <div class="">
+                    <div class="wd-sm-450 mg-t-20 mg-b-10">
+                      <div id="myDIV" style="border: 1px solid black; padding: 1rem;">
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >First Name:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Last Name:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >Address line 1:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Address line 2:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >Pin code <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >City: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div style="display: flex">
+                          <div>
+                            <label class="form-label"
+                              >State: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+
+                          <div
+                            class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                          >
+                            <label class="form-label"
+                              >Country: <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="lastname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label class="form-label"
+                            >Mobile No: <span class="tx-danger">*</span></label
+                          >
+                          <input
+                            type="text"
+                            name="firstname"
+                            class="form-control wd-200"
+                            required
+                          />
+                        </div>
+                        <div class="text-center" style="padding: 1rem;">
+                          <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+            </div>
+
+            <div class="modal-footer">
+              
+              <button
+                type="button"
+                data-bs-dismiss="modal"
+                class="btn btn-outline-light"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-az-primary pd-x-20">
+                Submit
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="modaldemo2" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Bulk Order</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label class="form-label"
+              >Upload Excel File <span class="tx-danger">*</span></label
+            >
+            <input
+              type="file"
+              name="firstname"
+              class="form-control wd-200"
+              required
+            />
+          </div>
+          <br />
+          <div><button class="btn btn-dark">Download Sample</button></div>
+        </div>
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark">Save changes</button>
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo3" class="modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Single Order</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div action="form-validation.html" data-parsley-validate>
+            <div class="">
+              <div class="d-md-flex mg-b-20">
+                <div class="form-group mg-b-0">
+                  <label class="form-label"
+                    >Customer Name: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="firstname"
+                    class="form-control wd-200"
+                    required
+                  />
+                </div>
+                <!-- form-group -->
+                <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                  <label class="form-label"
+                    >Cutomer Code: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="lastname"
+                    class="form-control wd-200"
+                    required
+                  />
+                </div>
+                <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                  <label class="form-label"
+                    >Consignment Number: <span class="tx-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    name="lastname"
+                    class="form-control wd-200"
+                    required
+                  />
+                </div>
+
+                <!-- form-group -->
+              </div>
+              <!-- d-flex -->
+              <div class="">
+                <div class="d-md-flex mg-b-20">
+                  <div class="form-group mg-b-0">
+                    <label class="form-label"
+                      >Customer Reference Number:
+                      <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="firstname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+                  <!-- form-group -->
+                  <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                    <label class="form-label"
+                      >Invoice Number: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="lastname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+                  <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                    <label class="form-label"
+                      >EWB Number: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      name="lastname"
+                      class="form-control wd-200"
+                      required
+                    />
+                  </div>
+
+                  <!-- form-group -->
+                </div>
+              </div>
+
+              <div class="">
+                <h6>Item Details</h6>
+                <div class="row" style="display: flex">
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show3"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>Document</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show4"
+                        name="browser[]"
+                        value="2"
+                      /><span>Non-Document</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="d-md-flex mg-b-20">
+                  <div
+                    class="form-group mg-b-0"
+                    style="display: none"
+                    id="box3"
+                  >
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Total Items: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Weight: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Description: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- d-flex -->
+
+                <div class="d-md-flex mg-b-20">
+                  <div
+                    class="form-group mg-b-0"
+                    id="box4"
+                    style="display: none;border: 1px solid black; padding: 1rem;"
+                  >
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Content Type: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Total Items: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Weight (in kg):
+                          <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >LBH (in cm): <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Declared value:
+                          <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Risk Charge: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="">
+                <h6>Select Consignor Address</h6>
+                <div class="row" style="display: flex">
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show11"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>Saved Pickup Address</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show12"
+                        name="browser[]"
+                        value="2"
+                      /><span>Add New Address</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div
+                    class="form-group mg-b-0"
+                    style="display: none"
+                    id="box11"
+                  >
+                    <div class="bd pd-10">
+                      <div class="az-header-center mg-x-1 mg-b-10">
+                        <input
+                          id="searchInput"
+                          type="search"
+                          class="form-control"
+                          placeholder="Search Address"
+                        />
+                        <button class="btn">
+                          <i class="fas fa-search"></i>
+                        </button>
+                        <div class="">
+                          <li id="results" class="hidden"></li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div
+                    class="form-group mg-b-0"
+                    id="box12"
+                    style="display: none"
+                  >
+                    <div class="">
+                      <div class="wd-sm-450 mg-t-20 mg-b-10">
+                        <div id="myDIV" style="border: 1px solid black; padding: 1rem;" >
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >First Name:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Last Name:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >Address line 1:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Address line 2:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >Pin code
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >City: <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >State: <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Country:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label class="form-label"
+                              >Mobile No:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                          <div class="text-center" style="padding: 1rem;">
+                          <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="">
+                <h6>Select Consignee Address</h6>
+                <div class="row" style="display: flex">
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show13"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>Saved Pickup Address</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="col parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show14"
+                        name="browser[]"
+                        value="2"
+                      /><span>Add New Address</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div
+                    class="form-group mg-b-0"
+                    style="display: none"
+                    id="box13"
+                  >
+                    <div class="bd pd-10">
+                      <div class="az-header-center mg-x-1 mg-b-10">
+                        <input
+                          id="searchInput"
+                          type="search"
+                          class="form-control"
+                          placeholder="Search Address"
+                        />
+                        <button class="btn">
+                          <i class="fas fa-search"></i>
+                        </button>
+                        <div class="">
+                          <li id="results" class="hidden"></li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div
+                    class="form-group mg-b-0"
+                    id="box14"
+                    style="display: none"
+                  >
+                    <div class="">
+                      <div class="wd-sm-450 mg-t-20 mg-b-10">
+                        <div id="myDIV" style="border: 1px solid black; padding: 1rem;">
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >First Name:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Last Name:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >Address line 1:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Address line 2:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >Pin code
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >City: <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div style="display: flex">
+                            <div>
+                              <label class="form-label"
+                                >State: <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="firstname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+
+                            <div
+                              class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                            >
+                              <label class="form-label"
+                                >Country:
+                                <span class="tx-danger">*</span></label
+                              >
+                              <input
+                                type="text"
+                                name="lastname"
+                                class="form-control wd-200"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label class="form-label"
+                              >Mobile No:
+                              <span class="tx-danger">*</span></label
+                            >
+                            <input
+                              type="text"
+                              name="firstname"
+                              class="form-control wd-200"
+                              required
+                            />
+                          </div>
+                          <div class="text-center" style="padding: 1rem;">
+                          <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-sm-450 mg-t-20">
+                <h6>Service</h6>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                  "
+                >
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>RAIL</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input type="checkbox" name="browser[]" value="2" /><span
+                        >AIR</span
+                      >
+                    </label>
+                  </div>
+
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input type="checkbox" name="browser[]" value="2" /><span
+                        >SURFACE</span
+                      >
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-sm-450 mg-t-20">
+                <h6>Pickup Schedule</h6>
+                <div style="display: flex; margin-top: 5px">
+                  <div>
+                    <label class="form-label"
+                      >Pickup Date: <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      id="dateMask"
+                      type="date"
+                      class="form-control wd-200"
+                      placeholder="MM/DD/YYYY"
+                    />
+                  </div>
+
+                  <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                    <label class="form-label"
+                      >Pickup Slot: <span class="tx-danger">*</span></label
+                    >
+                    <select class="form-control select2-no-search wd-200">
+                      <option label="Choose one"></option>
+                      <option value="Firefox">Morning</option>
+                      <option value="Chrome">Evening</option>
+                      <option value="Safari">Any time</option>
+                    </select>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="wd-sm-450 mg-t-20">
+                <h6>Delivery Schedule</h6>
+                <div style="display: flex; margin-top: 5px">
+                  <div>
+                    <label class="form-label"
+                      >Delivery Appointment Date:
+                      <span class="tx-danger">*</span></label
+                    >
+                    <input
+                      id="dateMask"
+                      type="date"
+                      class="form-control wd-200"
+                      placeholder="MM/DD/YYYY"
+                    />
+                  </div>
+
+                  <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+                    <label class="form-label"
+                      >Delivery Appointment Slot:
+                      <span class="tx-danger">*</span></label
+                    >
+                    <select class="form-control select2-no-search wd-200">
+                      <option label="Choose one"></option>
+                      <option value="Firefox">Morning</option>
+                      <option value="Chrome">Evening</option>
+                      <option value="Safari">Any time</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wd-sm-450 mg-t-20 mg-b-10">
+                <h6>Payment Details</h6>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                  "
+                >
+                  Pay Via COD
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show5"
+                        name="browser[]"
+                        value="1"
+                        data-parsley-mincheck="2"
+                        data-parsley-class-handler="#cbWrapper"
+                        data-parsley-errors-container="#cbErrorContainer"
+                        required
+                      /><span>Yes</span>
+                    </label>
+                  </div>
+                  <div id="cbWrapper" class="parsley-checkbox">
+                    <label class="ckbox mg-b-5">
+                      <input
+                        type="checkbox"
+                        id="show6"
+                        name="browser[]"
+                        value="2"
+                      /><span>No</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="d-md-flex mg-b-20">
+                  <div
+                    class="form-group mg-b-0"
+                    style="display: none"
+                    id="box5"
+                  >
+                    <div style="display: flex">
+                      <div>
+                        <label class="form-label"
+                          >Amount: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="firstname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >Mode: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0"
+                      >
+                        <label class="form-label"
+                          >In favor of: <span class="tx-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="lastname"
+                          class="form-control wd-200"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <!-- form-group -->
+                  <!-- form-group -->
+                </div>
+              </div>
+            </div>
+            <!-- modal-body -->
+            <div class="modal-footer">
+              
+              <button
+                type="button"
+                data-bs-dismiss="modal"
+                class="btn btn-outline-light"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-az-primary pd-x-20">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      "use strict";
+
+      $(".az-sidebar .with-sub").on("click", function (e) {
+        e.preventDefault();
+        $(this).parent().toggleClass("show");
+        $(this).parent().siblings().removeClass("show");
+      });
+
+      $(document).on("click touchstart", function (e) {
+        e.stopPropagation();
+
+        // closing of sidebar menu when clicking outside of it
+        if (!$(e.target).closest(".az-header-menu-icon").length) {
+          var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+          if (!sidebarTarg) {
+            $("body").removeClass("az-sidebar-show");
+          }
+        }
+      });
+
+      $("#azSidebarToggle").on("click", function (e) {
+        e.preventDefault();
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+          $("body").toggleClass("az-sidebar-hide");
+        } else {
+          $("body").toggleClass("az-sidebar-show");
+        }
+      });
+
+      // select and display data on search ---------------------------------------------------------
+      $(document).ready(function () {
+        // Listen for changes in the dropdown selection
+        $(".dropdown-item").on("click", function () {
+          // Get the text of the selected option and update the input field's placeholder
+          var selectedText = $(this).text();
+          $(".form-control").attr("placeholder", "Search " + selectedText);
+        });
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      $('input[name="daterange"]').daterangepicker(
+        {
+          opens: "center",
+        },
+        function (start, end, label) {
+          console.log(
+            "A new date selection was made: " +
+              start.format("YYYY-MM-DD") +
+              " to " +
+              end.format("YYYY-MM-DD")
+          );
+        }
+      );
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+
+      // showing modal with effect
+      $(".modal-effect").on("click", function (e) {
+        e.preventDefault();
+        var effect = $(this).attr("data-effect");
+        $("#modaldemo8").addClass(effect);
+      });
+
+      // hide modal with effect
+      $("#modaldemo8").on("hidden.bs.modal", function (e) {
+        $(this).removeClass(function (index, className) {
+          return (className.match(/(^|\s)effect-\S+/g) || []).join(" ");
+        });
+      });
+    }),
+      $("#datetimepicker").datetimepicker({
+        format: "yyyy-mm-dd hh:ii",
+        autoclose: true,
+      });
+  </script>
+
+  <script>
+    (function () {
+      const checkbox1 = document.getElementById("show");
+      const box = document.getElementById("box");
+      const checkbox2 = document.getElementById("show2");
+      const box2 = document.getElementById("box2");
+      const checkbox3 = document.getElementById("show3");
+      const box3 = document.getElementById("box3");
+      const checkbox4 = document.getElementById("show4");
+      const box4 = document.getElementById("box4");
+      const checkbox5 = document.getElementById("show5");
+      const box5 = document.getElementById("box5");
+      const checkbox6 = document.getElementById("show6");
+      const box6 = document.getElementById("box6");
+      const checkbox7 = document.getElementById("show7");
+      const box7 = document.getElementById("box7");
+      const checkbox8 = document.getElementById("show8");
+      const box8 = document.getElementById("box8");
+      const checkbox9 = document.getElementById("show9");
+      const box9 = document.getElementById("box9");
+      const checkbox10 = document.getElementById("show10");
+      const box10 = document.getElementById("box10");
+      const checkbox11 = document.getElementById("show11");
+      const box11 = document.getElementById("box11");
+      const checkbox12 = document.getElementById("show12");
+      const box12 = document.getElementById("box12");
+      const checkbox13 = document.getElementById("show13");
+      const box13 = document.getElementById("box13");
+      const checkbox14 = document.getElementById("show14");
+      const box14 = document.getElementById("box14");
+
+      checkbox1.addEventListener("click", function handleClick() {
+        if (checkbox1.checked) {
+          box.style.display = "block";
+        } else {
+          box.style.display = "none";
+        }
+      });
+      checkbox2.addEventListener("click", function handleClick() {
+        if (checkbox2.checked) {
+          box2.style.display = "block";
+        } else {
+          box2.style.display = "none";
+        }
+      });
+      checkbox3.addEventListener("click", function handleClick() {
+        if (checkbox3.checked) {
+          box3.style.display = "block";
+        } else {
+          box3.style.display = "none";
+        }
+      });
+
+      checkbox4.addEventListener("click", function handleClick() {
+        if (checkbox4.checked) {
+          box4.style.display = "block";
+        } else {
+          box4.style.display = "none";
+        }
+      });
+      checkbox5.addEventListener("click", function handleClick() {
+        if (checkbox5.checked) {
+          box5.style.display = "block";
+        } else {
+          box5.style.display = "none";
+        }
+      });
+      checkbox6.addEventListener("click", function handleClick() {
+        if (checkbox6.checked) {
+          box6.style.display = "block";
+        } else {
+          box6.style.display = "none";
+        }
+      });
+      checkbox7.addEventListener("click", function handleClick() {
+        if (checkbox7.checked) {
+          box7.style.display = "block";
+        } else {
+          box7.style.display = "none";
+        }
+      });
+      checkbox8.addEventListener("click", function handleClick() {
+        if (checkbox8.checked) {
+          box8.style.display = "block";
+        } else {
+          box8.style.display = "none";
+        }
+      });
+      checkbox9.addEventListener("click", function handleClick() {
+        if (checkbox9.checked) {
+          box9.style.display = "block";
+        } else {
+          box9.style.display = "none";
+        }
+      });
+      checkbox10.addEventListener("click", function handleClick() {
+        if (checkbox10.checked) {
+          box10.style.display = "block";
+        } else {
+          box10.style.display = "none";
+        }
+      });
+      checkbox11.addEventListener("click", function handleClick() {
+        if (checkbox11.checked) {
+          box11.style.display = "block";
+        } else {
+          box11.style.display = "none";
+        }
+      });
+      checkbox12.addEventListener("click", function handleClick() {
+        if (checkbox12.checked) {
+          box12.style.display = "block";
+        } else {
+          box12.style.display = "none";
+        }
+      });
+
+      checkbox13.addEventListener("click", function handleClick() {
+        if (checkbox13.checked) {
+          box13.style.display = "block";
+        } else {
+          box13.style.display = "none";
+        }
+      });
+      checkbox14.addEventListener("click", function handleClick() {
+        if (checkbox14.checked) {
+          box14.style.display = "block";
+        } else {
+          box14.style.display = "none";
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    $(function () {
+      "use strict";
+      $(function () {
+        $("#select-all").click(function (event) {
+          var selected = this.checked;
+          // Iterate each checkbox
+          $(":checkbox").each(function () {
+            this.checked = selected;
+          });
+        });
+      });
+    });
+  </script>
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myDIV");
+
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  </script>
+
+  <script>
+    function myFunction2() {
+      var y = document.getElementById("myDIV2");
+
+      if (y.style.display === "none") {
+        y.style.display = "block";
+      } else {
+        y.style.display = "none";
+      }
+    }
+  </script>
+  <script>
+    function myFunction3() {
+      var z = document.getElementById("myDIV3");
+
+      if (z.style.display === "none") {
+        z.style.display = "block";
+      } else {
+        z.style.display = "none";
+      }
+    }
+  </script>
+
+  <div id="modaldemo-selected" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo" id="popup-content">
+        <div class="modal-header">
+          <h6 class="modal-title">Add Pickup</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Add Pickup</label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><img src="../img/barcode-scanner.png" alt="" width="20px"
+                  /></span>
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Pickups"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                /><button
+                  type="button"
+                  id="add-row-button"
+                  class="btn btn-primary btn-sm"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Driver</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">Driver1</option>
+                <option value="Chrome">Driver2</option>
+                <option value="Safari">Driver3</option>
+                <option value="Opera">Driver4</option>
+                <option value="Internet Explorer">Driver5</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <div class="table-responsive">
+              <table class="table table-bordered mg-b-0" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Pickup No.</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">12345</th>
+                    <td>Status</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">6789</th>
+                    <td>Status</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modaldemo-reassign" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Reassign</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Add Pickup ID</label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><img src="../img/barcode-scanner.png" alt="" width="20px"
+                  /></span>
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Pickups"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                /><button
+                  type="button"
+                  id="add-row-button"
+                  class="btn btn-primary btn-sm"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Reassign Hub</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Hub1">Binola</option>
+                <option value="Hub2">Mumbai</option>
+                <option value="Hub3">Delhi</option>
+                <option value="Hub4">banglore</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <div class="table-responsive">
+              <table class="table table-bordered mg-b-0" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Pickup No.</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">101</th>
+                    <td>Status</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">35173</th>
+                    <td>Status</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">Save</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-cancel" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Pickup Cancel</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Reason for Cancel</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">Customer asked to cancel</option>
+                <option value="Chrome">Order not Ready</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <div class="table-responsive">
+              <table class="table table-bordered mg-b-0" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Pickup No.</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">12345</th>
+                    <td>Status</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">35173</th>
+                    <td>Status</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <h5>Are you sure you want to cancel ?</h5>
+        </div>
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+  <div id="modaldemo-cancel-single" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Pickup Cancel</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Reason for Cancel</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">Customer asked to cancel</option>
+                <option value="Chrome">Order not Ready</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="table-responsive">
+              <table class="table table-bordered mg-b-0" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Pickup No.</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">12345</th>
+                    <td>Active</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <h5>Are you sure you want to cancel ?</h5>
+        </div>
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-reschedule" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Reschedule</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Add Pickup</label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><img src="../img/barcode-scanner.png" alt="" width="20px"
+                  /></span>
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Pickups"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                /><button
+                  type="button"
+                  id="add-row-button"
+                  class="btn btn-primary btn-sm"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Reschedule Date</label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend"></div>
+                <input
+                  type="date"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Reschedule Date"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  style="text-transform: uppercase"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="" style="text-wrap: nowrap"
+                >Reason for reschedule</label
+              >
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Hub1">Customer want to reschedule</option>
+                <option value="Hub2">Customer not available</option>
+                <option value="Hub3">Customer asked for delay pickup</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="table-responsive">
+              <table class="table table-bordered mg-b-0" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Pickup No.</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">12345</th>
+                    <td>Status</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">35173</th>
+                    <td>Status</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <h5>Are you sure you want to reschedule ?</h5>
+        </div>
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">Save</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-reschedule-single" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Reschedule</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Reschedule Date</label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend"></div>
+                <input
+                  type="date"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Reschedule Date"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  style="text-transform: uppercase"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="" style="text-wrap: nowrap"
+                >Reason for reschedule</label
+              >
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Hub1">Customer want to reschedule</option>
+                <option value="Hub2">Customer not available</option>
+                <option value="Hub3">Customer asked for delay pickup</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <div class="table-responsive">
+              <table class="table table-bordered mg-b-0" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Pickup No.</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">101</th>
+                    <td>Active</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button btn btn-danger btn-sm"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                  <!-- <tr>
+                          <th scope="row">35173</th>
+                          <td>Active</td>
+                          <td><button type='button' class='delete-button btn btn-danger btn-sm'>X</button></td>
+                        </tr> -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <h5>Are you sure you want to reschedule ?</h5>
+        </div>
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">Save</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+  <div class="d-md-flex mg-b-20">
+    <div class="form-group mg-b-0" style="display: none" id="box3">
+      <div style="display: flex">
+        <div>
+          <label class="form-label"
+            >Total Items: <span class="tx-danger">*</span></label
+          >
+          <input
+            type="text"
+            name="firstname"
+            class="form-control wd-200"
+            required
+          />
+        </div>
+        <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+          <label class="form-label"
+            >Weight: <span class="tx-danger">*</span></label
+          >
+          <input
+            type="text"
+            name="lastname"
+            class="form-control wd-200"
+            required
+          />
+        </div>
+        <div class="form-group mg-b-0 mg-md-l-20 mg-t-20 mg-md-t-0">
+          <label class="form-label"
+            >Description: <span class="tx-danger">*</span></label
+          >
+          <input
+            type="text"
+            name="lastname"
+            class="form-control wd-200"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <!-- form-group -->
+    <!-- form-group -->
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $("#add-row-button").click(function () {
+        // Get data from user input
+        var name = $("#name-input").val();
+        var age = $("#age-input").val();
+
+        // Create a new row with the provided data
+        var newRow = $("<tr>");
+        var nameCell = $("<th>" + name + "</th>");
+        var ageCell = $("<td> Status </td>");
+        var actionCell = $(
+          "<td><button type='button' class='delete-button btn btn-danger btn-sm'>X</button></td>"
+        );
+
+        newRow.append(nameCell, ageCell, actionCell);
+
+        // Append the new row to the table
+        $("#myTable tbody").append(newRow);
+
+        // Clear input fields
+        $("#name-input").val("");
+        $("#age-input").val("");
+      });
+
+      // Event handler for deleting a row
+      $("#myTable").on("click", ".delete-button", function () {
+        $(this).closest("tr").remove();
+      });
+    });
+  </script>
+
+  <script>
+    (function () {
+      // Declare itemsPerPage without initializing it
+      let itemsPerPage;
+      let currentPage = 1;
+      let rows; // Store rows globally
+
+      // Function to update the display of rows based on the current page and itemsPerPage
+      function displayPage() {
+        const table = document.getElementById("Table1");
+        console.log(
+          table.getElementsByTagName("tbody")[0].getElementsByTagName("tr")
+        );
+        rows = table
+          .getElementsByTagName("tbody")[0]
+          .getElementsByTagName("tr");
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        for (let i = 0; i < rows.length; i++) {
+          if (i >= startIndex && i < endIndex) {
+            rows[i].style.display = "table-row";
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+
+        document.getElementById("currentPage").textContent = currentPage;
+        updatePagination();
+      }
+
+      // Function to update the pagination buttons
+      function updatePagination() {
+        const totalPages = Math.ceil(rows.length / itemsPerPage);
+
+        const prevPageButton = document.getElementById("prevPage");
+        const nextPageButton = document.getElementById("nextPage");
+
+        if (currentPage === 1) {
+          prevPageButton.disabled = true;
+        } else {
+          prevPageButton.disabled = false;
+        }
+
+        if (currentPage === totalPages) {
+          nextPageButton.disabled = true;
+        } else {
+          nextPageButton.disabled = false;
+        }
+      }
+
+      // Function to update itemsPerPage and redisplay the current page
+      function updateItemsPerPage() {
+        const selectElement = document.getElementById("itemsPerPage");
+        itemsPerPage = parseInt(selectElement.value);
+        currentPage = 1; // Reset to the first page
+        displayPage();
+      }
+
+      // Add an event listener to the select element to update itemsPerPage
+      document
+        .getElementById("itemsPerPage")
+        .addEventListener("change", updateItemsPerPage);
+
+      document
+        .getElementById("prevPage")
+        .addEventListener("click", function () {
+          if (currentPage > 1) {
+            currentPage--;
+            displayPage();
+          }
+        });
+
+      document
+        .getElementById("nextPage")
+        .addEventListener("click", function () {
+          const totalPages = Math.ceil(rows.length / itemsPerPage);
+
+          if (currentPage < totalPages) {
+            currentPage++;
+            displayPage();
+          }
+        });
+
+      // Check if itemsPerPage has not been initialized, then set a default value
+      if (typeof itemsPerPage === "undefined") {
+        itemsPerPage = 6; // Set a default value
+      }
+
+      displayPage(); // Initial display
+    })();
+  </script>
+
+  <script>
+    (function () {
+      // Simulated dynamic data (you would fetch this data from a server)
+      const dynamicData = [
+        "Noida sector 62 Electronic city floor 3 uttar pradesh 110025",
+        "Noida sector 62 Electronic city floor 3 uttar pradesh 110025.",
+        "14/13/1E lukerganj Allahabad",
+        "Noida sector 63 Electronic city floor 3 uttar pradesh 110025.",
+        "Noida sector 63 Electronic city floor 3 uttar pradesh 110025.",
+        "Noida sector 64 Electronic city floor 3 uttar pradesh 110025.",
+        "Mango",
+        "Noida sector 64 Electronic city floor 3 uttar pradesh 110025.",
+        "C-42 shivaji park punjabi bagh west",
+        "Noida sector 27 ",
+        "Noida sector 65 Electronic city floor 3 uttar pradesh 110025.",
+        "C-56 luncknow 110067",
+        "Noida sector 65 Electronic city floor 3 uttar pradesh 110025.",
+      ];
+
+      const searchInput = document.getElementById("searchInput");
+      const resultsList = document.getElementById("results");
+
+      function searchDynamicData() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredData = dynamicData.filter((item) =>
+          item.toLowerCase().includes(searchTerm)
+        );
+
+        // Show or hide the results list based on the search term
+        if (searchTerm === "") {
+          resultsList.classList.add("hidden");
+        } else {
+          resultsList.classList.remove("hidden");
+        }
+
+        displayResults(filteredData);
+      }
+
+      function displayResults(results) {
+        resultsList.innerHTML = "";
+
+        if (results.length === 0) {
+          resultsList.innerHTML = "<li>No results found.</li>";
+        } else {
+          results.forEach((result, index) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = result;
+            listItem.addEventListener("click", () => {
+              // Set the selected result in the search input box
+              searchInput.value = result;
+              // Clear the results list
+              resultsList.innerHTML = "";
+              // Hide the results list again
+              resultsList.classList.add("hidden");
+            });
+            resultsList.appendChild(listItem);
+          });
+        }
+      }
+
+      // Add an event listener for the input field
+      searchInput.addEventListener("input", searchDynamicData);
+
+      // Initial display of data
+      displayResults([]);
+    })();
+  </script>
+</body>

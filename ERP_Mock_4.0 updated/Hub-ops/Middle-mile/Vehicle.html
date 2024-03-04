@@ -1,0 +1,3653 @@
+<head>
+  <style>
+    .test{
+      text-align: center;
+      cursor: pointer;
+    }
+    .test:after {
+      content: "\2807";
+      font-size: 15px;
+    }
+    div#divBody {
+      overflow-x: auto;
+    }
+    .view {
+      /* margin: auto; */
+      width: 100%;
+    }
+
+    .theader {
+      text-wrap: nowrap;
+      background-color: azure;
+      position: sticky;
+      top: 0;
+    }
+
+    .wrapper {
+      table-layout: auto;
+      position: relative;
+      width: auto;
+      height: 6% auto;
+      overflow-x: auto;
+      overflow-y: auto;
+      /* border: 1px solid black; */
+      white-space: nowrap;
+    }
+
+    .sticky-col {
+      background-color: azure;
+      position: -webkit-sticky;
+      position: sticky;
+      /* background-color: white !important; */
+    }
+
+    .first-col {
+      /* width: 100px;
+      min-width: 100px;
+      max-width: 100px; */
+      right: 0px;
+    }
+    .last-col {
+      left: 0px;
+    }
+    .last-col1 {
+      left: 43px;
+    }
+
+    .popo:hover {
+      background-color: rgb(238, 239, 239);
+    }
+    .popoverContent {
+     
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    #popoverContent {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      /* margin-top: 1.6rem; */
+      padding: 1rem;
+      z-index: 1000000;
+    }
+
+    #popoverContent ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #popoverContent ul li {
+      margin-bottom: 5px;
+    }
+
+    #popoverContent ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    #popoverContent ul li a:hover {
+      color: rgb(62, 6, 135);
+    }
+
+    .pagination {
+      margin-top: 1%;
+      text-align: right;
+      display: block;
+    }
+    .vl {
+      /* margin-top: 2rem; */
+      border-left: 1px solid rgb(236, 235, 235);
+      height: 160px;
+      position: absolute;
+      left: 27%;
+      /* margin-left: -3px; */
+      top: 15%;
+      z-index: -9999;
+    }
+    .vl-2 {
+      /* margin-top: 2rem; */
+      border-left: 1px solid rgb(236, 235, 235);
+      height: 160px;
+      position: absolute;
+      left: 54%;
+      /* margin-left: -3px; */
+      top: 15%;
+      z-index: -9999;
+    }
+  </style>
+</head>
+<body>
+  <div class="az-header">
+    <div class="container-fluid">
+      <div class="az-header-left">
+        <a href="" id="azSidebarToggle" class="az-header-menu-icon"
+          ><span></span
+        ></a>
+      </div>
+      <div class="az-header-center">
+        <div
+          class="row row-sm"
+          style="justify-content: space-between; align-items: center"
+        >
+          <div class="col-7">
+            <b style="font-size: medium; padding-right: 2rem">Vehicle</b>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <div
+                class="input-group-text"
+                style="font-size: small; height: 30px"
+              >
+                Select Hub
+              </div>
+
+              <select
+                id="select"
+                class="form-control select2"
+                style="
+                  height: 30px;
+                  font-size: small;
+                  padding-right: 1rem;
+                  width: 100px;
+                  margin-right: 1.5rem;
+                "
+              >
+                <option label="Mumbai"></option>
+                <option value="Binola">Binola</option>
+                <option value="Delhi">Delhi</option>
+              </select>
+
+              <div class="input-group">
+                <div class="">
+                  <div
+                    class="input-group-text"
+                    style="font-size: small; height: 30px"
+                  >
+                    Date Range:
+                  </div>
+                </div>
+                <input
+                  id="dateMask"
+                  class="form-control"
+                  type="text"
+                  name="daterange"
+                  placeholder="01/01/2018 - 01/15/2018"
+                  style="font-size: small; height: 30px"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col" style="text-align: end">
+            <button
+              id="popoverButton"
+              style="border: none; background-color: #bccdd100"
+            >
+              <img
+                class="popo"
+                src="../../img/dots-menu.png"
+                width="20px"
+                alt=""
+              />
+            </button>
+            <div class="popoverContent" id="popoverContent">
+              <div class="row" style="text-align: center; cursor: pointer;">
+                <div class="col">
+                  <ul style="text-align: justify;z-index: 10000;">
+                    <li><a ><b style="color: #5b47fb;">In Bound</b></a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in">Gate in</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign" style="text-wrap: nowrap;">Dock assign</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan">Dock in</a></li>
+                    <li><a  data-bs-toggle="modal"
+                      data-bs-target="#modaldemo-Trip-received">Trip receive</a></li>
+                    <li><a href="javascript:loadMenu('../Hub-ops/Middle-mile/create-trips/create-trip.html');">Unloading</a></li>
+                    <li><a  data-bs-toggle="modal" data-bs-target="#modaldemo-Trip-close">Trip Close</a></li>
+                  </ul>
+                </div>
+                <div class="vl"></div>
+                <div class="col">
+                  <ul style="text-align: justify; z-index: 10000;">
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in"><b style="color: #5b47fb;">Out Bound</b></a></li>
+                    <li><a href="javascript:loadMenu('../Hub-ops/Middle-mile/create-trips/create-trip.html');">Create trip</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out">Gate out</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan">Dock out</a></li>
+                    <li><a  data-bs-toggle="modal"
+                      data-bs-target="#modaldemo-Trip-depart">Trip Depart</a></li>
+                    <li><a href="javascript:loadMenu('../Hub-ops/Middle-mile/create-trips/create-trip.html');">Loading</a></li>
+                    
+                  </ul>
+                </div>
+                <div class="vl-2"></div>
+                <div class="col">
+                  <ul style="text-align: justify;z-index: 10000;"  >
+                    <li><a href="#"><b style="color: #5b47fb; text-wrap: nowrap;">Other</b></a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#modaldemo-apply-exception-code" style="text-wrap: nowrap;">Apply Exception code</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <button type="button" class="" data-container="body" data-toggle="popover" data-popover-color="default" data-placement="bottom" title="Popover bottom" data-content="Popover bottom"><img src="../../img/dots-menu.png" width="20px " alt=""></button> -->
+
+          <div class="col-md-3">
+            <div class="input-group">
+              <div class="dropdown">
+                <button
+                  class="input-group-text dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style="font-size: small; height: 31px"
+                >
+                  Search Type
+                </button>
+                <div class="dropdown-menu tx-13">
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target=""
+                    >Vehicle #</a
+                  >
+                  <a
+                    href=""
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target=""
+                    >Trips #</a
+                  >
+                </div>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search"
+                style="height: 31px; font-size: small"
+              />
+              <span class="input-group-btn">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="padding: 0px 13px 7px 2px"
+                >
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Bucket-->
+
+  <div class="card bd-0">
+    <div class="card-header bg-gray-400 bd-b-0-f pd-b-0">
+      <nav class="nav nav-tabs">
+        <a class="nav-link active" data-bs-toggle="tab" href="#tabCont1"
+          >Expected
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 100%;
+              background-color: #5b47fb3b;
+              color: #5b47fb;
+            "
+            >20</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont2"
+          >Arrived
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont3"
+          >Unloading
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont4"
+          >Loading
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+        <a class="nav-link" data-bs-toggle="tab" href="#tabCont5"
+          >Outbound
+          <span
+            style="
+              padding: 3px 3px 3px 3px;
+              border-radius: 39%;
+              background-color: #bccdd1;
+              color: #000000;
+            "
+            >0</span
+          ></a
+        >
+      </nav>
+    </div>
+    <!-- card-header -->
+    <div class="card-body bd bd-t-0 tab-content" style="border: none">
+      <div id="tabCont1" class="tab-pane active show">
+        <div class="table-responsive mt-2">
+          <table class="table table-bordered mg-b-0" id="Table1">
+            <thead class="theader">
+              <tr>
+                <th
+                  class="last-col sticky-col theader"
+                  style="background-color: aliceblue"
+                >
+                  <input type="checkbox" name="select-all" id="select-all" />
+                </th>
+                <th
+                  class="last-col1 sticky-col theader"
+                  style="background-color: aliceblue"
+                >
+                  Vehicle No.
+                </th>
+                <th>Trip No.</th>
+                <th>Route Code</th>
+                <th>Connection Time</th>
+                <th>Origin</th>
+                <th>Dock No.</th>
+                <th>Gate No.</th>
+                <th>Current Status</th>
+                <th>Consignment</th>
+                <th>Last Updated Time</th>
+                <th>PRS Trip No.</th>
+                <th>Transfer Weight(in kg)</th>
+                <th
+                  class="sticky-col first-col theader"
+                  style="background-color: aliceblue"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                       <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                       <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                       <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                       <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                       <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                       <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                       <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                       <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >HR2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >1234</a
+                  >
+                </td>
+                <td>NHZ001</td>
+                <td>11:42:85 AM</td>
+                <td>Delhi</td>
+                <td>22</td>
+                <td>02</td>
+                <td>In Transit</td>
+                <td>1223456</td>
+                <td>01:55:55 PM</td>
+                <td>247</td>
+                <td>300</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                       <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-in-single"
+                        >Gate in</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-gate-out-single"
+                        >Gate out</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Dock assign</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock inscan</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-outscan-single"
+                        >Dock outscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col mt-4">
+            <div class="d-flex align-items-center">
+              <p class="m-0">Items Per Page:</p>
+              <select id="itemsPerPage" style="width: 50px" class="ml-2">
+                <option value="6">6</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+            </div>
+          </div>
+          <div class="col mt-4">
+            <div class="text-center">
+              <span id="currentPage">1</span>
+            </div>
+          </div>
+          <div class="col mt-2">
+            <div class="pagination">
+              <button id="prevPage" class="btn btn-block">
+                <span class="icon">&lt;</span> Previous
+              </button>
+              <button id="nextPage" class="btn btn-block">
+                Next <span class="icon">&gt;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="modaldemo3" class="modal">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-content-demo">
+              <div class="modal-header">
+                <h6 class="modal-title">Custom Trip Creation</h6>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Consignment</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Username"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Rider</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <select class="form-control select2">
+                      <option label="Choose one"></option>
+                      <option value="Firefox">Firefox</option>
+                      <option value="Chrome">Chrome</option>
+                      <option value="Safari">Safari</option>
+                      <option value="Opera">Opera</option>
+                      <option value="Internet Explorer">
+                        Internet Explorer
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="p-2">
+                  <div class="table-responsive">
+                    <table class="table table-bordered mg-b-0">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Salary</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>$320,800</td>
+                          <td>
+                            <a
+                              href=""
+                              class="btn btn-outline-light"
+                              data-bs-toggle="modal"
+                              data-bs-target="#modaldemo3"
+                              ><div class="test"></div
+                            ></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Garrett Winters</td>
+                          <td>Accountant</td>
+                          <td>Delhi</td>
+                          <td>
+                            <a
+                              href=""
+                              class="btn btn-outline-light"
+                              data-bs-toggle="modal"
+                              data-bs-target="#modaldemo3"
+                              ><div class="test"></div
+                            ></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-outline-light"
+                >
+                  Cancel
+                </button>
+                <button type="button" class="btn btn-indigo">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- tab-pane 2 -->
+      <div id="tabCont2" class="tab-pane">
+        <div class="table-responsive mt-2">
+          <table class="table table-bordered mg-b-0">
+            <thead class="theader">
+              <tr>
+                <th
+                  class="last-col sticky-col theader"
+                  style="background-color: aliceblue"
+                >
+                  <input type="checkbox" name="select-all" id="select-all" />
+                </th>
+                <th
+                  class="last-col1 sticky-col theader"
+                  style="background-color: aliceblue"
+                >
+                  Vehicle No.
+                </th>
+                <th>Trip No.</th>
+                <th>Route Code</th>
+                <th>Connection Time</th>
+                <th>Origin</th>
+                <th>Dock No.</th>
+                <th>Gate No.</th>
+                <th>Current Status</th>
+                <th>Consignment</th>
+                <th>Last Updated Time</th>
+                <th>PRS Trip No.</th>
+                <th>Transfer Weight(in kg)</th>
+                <th
+                  class="sticky-col first-col theader"
+                  style="background-color: aliceblue"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >GF2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >123412</a
+                  >
+                </td>
+                <td>NH55</td>
+                <td>11:45:55 AM</td>
+                <td>Delhi</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Assign Dock</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock Inscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >GF2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >123412</a
+                  >
+                </td>
+                <td>NH55</td>
+                <td>11:45:55 AM</td>
+                <td>Delhi</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Assign Dock</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock Inscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >GF2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >123412</a
+                  >
+                </td>
+                <td>NH55</td>
+                <td>11:45:55 AM</td>
+                <td>Delhi</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Assign Dock</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock Inscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >GF2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >123412</a
+                  >
+                </td>
+                <td>NH55</td>
+                <td>11:45:55 AM</td>
+                <td>Delhi</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Assign Dock</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock Inscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >GF2426</a
+                  >
+                </td>
+                <td>
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >123412</a
+                  >
+                </td>
+                <td>NH55</td>
+                <td>11:45:55 AM</td>
+                <td>Delhi</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-assign-single"
+                        >Assign Dock</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldemo-dock-inscan-single"
+                        >Dock Inscan</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="modaldemo3" class="modal">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-content-demo">
+              <div class="modal-header">
+                <h6 class="modal-title">Custom Trip Creation</h6>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Add Consignment</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"
+                          >@</span
+                        >
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Username"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <!-- input-group -->
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Rider</label>
+                  </div>
+                  <div class="col-lg-8">
+                    <select class="form-control select2">
+                      <option label="Choose one"></option>
+                      <option value="Firefox">Firefox</option>
+                      <option value="Chrome">Chrome</option>
+                      <option value="Safari">Safari</option>
+                      <option value="Opera">Opera</option>
+                      <option value="Internet Explorer">
+                        Internet Explorer
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="p-2">
+                  <div class="table-responsive">
+                    <table class="table table-bordered mg-b-0">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Salary</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>$320,800</td>
+                          <td>
+                            <a
+                              href=""
+                              class="btn btn-outline-light"
+                              data-bs-toggle="modal"
+                              data-bs-target="#modaldemo3"
+                              ><div class="test"></div
+                            ></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Garrett Winters</td>
+                          <td>Accountant</td>
+                          <td>Delhi</td>
+                          <td>
+                            <a
+                              href=""
+                              class="btn btn-outline-light"
+                              data-bs-toggle="modal"
+                              data-bs-target="#modaldemo3"
+                              ><div class="test"></div
+                            ></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-outline-light"
+                >
+                  Cancel
+                </button>
+                <button type="button" class="btn btn-indigo">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="tabCont3" class="tab-pane">
+        <div class="table-responsive mt-2">
+          <table class="table table-bordered mg-b-0">
+            <thead class="theader">
+              <tr>
+                <th
+                  class="last-col sticky-col theader"
+                  style="background-color: aliceblue"
+                >
+                  <input type="checkbox" name="select-all" id="select-all" />
+                </th>
+                <th
+                  class="last-col1 sticky-col theader"
+                  style="background-color: aliceblue"
+                >
+                  Vehicle No.
+                </th>
+                <th>Trip No.</th>
+                <th>Route Code</th>
+                <th>Connection Time</th>
+                <th>Origin</th>
+                <th>Dock No.</th>
+                <th>Gate No.</th>
+                <th>Current Status</th>
+                <th>Consignment</th>
+                <th>Last Updated Time</th>
+                <th>PRS Trip No.</th>
+                <th>Transfer Weight(in kg)</th>
+                <th
+                  class="sticky-col first-col theader"
+                  style="background-color: aliceblue"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="last-col sticky-col"><input type="checkbox" /></td>
+                <td class="last-col1 sticky-col">
+                  <a
+                    href=""
+                    data-bs-toggle="modal"
+                    data-bs-target="#modaldemo-hyper1"
+                    >GF2426</a
+                  >
+                </td>
+                <td>134234</td>
+                <td>NH55</td>
+                <td>11:45:55 AM</td>
+                <td>Delhi</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td class="sticky-col first-col">
+                  <div class="dropdown">
+                    <!-- <p
+                    class="mx-3 dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  > -->
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                      <a href="" class="dropdown-item" data-bs-toggle="modal"
+                        >Unload</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="tabCont4" class="tab-pane">
+        <div class="table-responsive mt-2">
+          <table class="table table-bordered mg-b-0">
+            <thead class="theader">
+              <tr>
+                <th><input type="checkbox" /></th>
+                <th>Vehicle No.</th>
+                <th>Trip No.</th>
+                <th>Route Code</th>
+                <th>Connection Time</th>
+                <th>Origin</th>
+                <th>Dock No.</th>
+                <th>Gate No.</th>
+                <th>Current Status</th>
+                <th>Consignment</th>
+                <th>Last Updated Time</th>
+                <th>PRS Trip No.</th>
+                <th>Transfer Weight(in kg)</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>gg234y</td>
+                <td><a href="#">13344</a></td>
+                <td>NH55</td>
+                <td>11:45:55 AM</td>
+                <td>Delhi</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>data</td>
+                <td>
+                  <div class="dropdown">
+                    <!-- <p
+                      class="mx-3 dropdown-toggle"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    > -->
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                      <a href="" class="dropdown-item" data-bs-toggle="modal"
+                        >Load</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal"
+                        >Freeze Trip</a
+                      >
+                      <a href="" class="dropdown-item" data-bs-toggle="modal"
+                        >Print Manifest</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="tabCont5" class="tab-pane">
+        <div class="table-responsive mt-2">
+          <table class="table table-bordered mg-b-0">
+            <thead class="theader">
+              <tr>
+                <th><input type="checkbox" /></th>
+                <th>Vehicle No.</th>
+                <th>Trip No.</th>
+                <th>Route Code</th>
+                <th>Connection Time</th>
+                <th>Origin</th>
+                <th>Dock No.</th>
+                <th>Gate No.</th>
+                <th>Current Status</th>
+                <th>Consignment</th>
+                <th>Capacity Utilized (%)</th>
+                <th>Last Updated Time</th>
+                <th>EwayBill Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>243hu35</td>
+                <td><a href="#">134234</a></td>
+                <td>NH55</td>
+                <td>11:45:55 AM</td>
+                <td>Delhi</td>
+                <td>data</td>
+                <td>data</td>
+                <td>Loaded</td>
+                <td>2</td>
+                <td>0.00</td>
+                <td>data</td>
+                <td style="text-wrap: nowrap">
+                  <i
+                    class="fa fa-check-circle"
+                    style="color: green; text-wrap: nowrap"
+                  ></i
+                  >Success
+                </td>
+                <td>
+                  <div class="dropdown">
+                   
+                    <div class="test" data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        data-bs-target="#modaldemo3">
+                      </div>
+
+                    <div class="dropdown-menu tx-13">
+                      <a href="" class="dropdown-item" data-bs-toggle="modal"
+                        >Dock Out</a
+                      >
+
+                      <a href="" class="dropdown-item" data-bs-toggle="modal"
+                        >Gate Out</a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Single -->
+<div id="modaldemo-dock-assign-single" class="modal">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content modal-content-demo">
+      <div class="modal-header">
+        <h6 class="modal-title">Assign Dock</h6>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Dock No.:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <select class="form-control select2">
+              <option label="Dock No"></option>
+              <option value="Firefox">Dock 1</option>
+              <option value="Chrome">Dock 2</option>
+              <option value="Firefox">Dock 3</option>
+              <option value="Chrome">Dock 4</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Comments:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <input
+                      type="text"
+                      id="name-input"
+                      class="form-control"
+                      placeholder="Add comments "
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal-footer">
+        <button
+          type="button"
+          data-bs-dismiss="modal"
+          class="btn btn-outline-light"
+        >
+          Cancel
+        </button>
+        <button type="button" class="btn btn-indigo">OK</button>
+      </div>
+    </div>
+  </div>
+  <!-- modal-dialog -->
+</div>
+
+<div id="modaldemo-dock-inscan-single" class="modal">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content modal-content-demo">
+      <div class="modal-header">
+        <h6 class="modal-title">Dock Inscan</h6>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Dock No.:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <select class="form-control select2">
+              <option label="Dock No"></option>
+              <option value="Firefox">Gate 1</option>
+              <option value="Chrome">Gate 2</option>
+              <option value="Firefox">Gate 3</option>
+              <option value="Chrome">Gate 4</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Comments:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <select class="form-control select2">
+              <option label="Select Comment"></option>
+              <option value="Firefox">Comment 1</option>
+              <option value="Chrome">Comment 2</option>
+              <option value="Firefox">Comment 3</option>
+              <option value="Chrome">Comment 4</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal-footer">
+        <button
+          type="button"
+          data-bs-dismiss="modal"
+          class="btn btn-outline-light"
+        >
+          Cancel
+        </button>
+        <button type="button" class="btn btn-indigo">OK</button>
+      </div>
+    </div>
+  </div>
+  <!-- modal-dialog -->
+</div>
+
+<div id="modaldemo-dock-outscan-single" class="modal">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content modal-content-demo">
+      <div class="modal-header">
+        <h6 class="modal-title">Dock Outscan</h6>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Dock No.:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <select class="form-control select2">
+              <option label="Dock No"></option>
+              <option value="Firefox">Gate 1</option>
+              <option value="Chrome">Gate 2</option>
+              <option value="Firefox">Gate 3</option>
+              <option value="Chrome">Gate 4</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Number of Cargo Net.:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <input
+                      type="text"
+                      id="name-input"
+                      class="form-control"
+                      placeholder="Vehicle No. "
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+          </div>
+        </div>
+
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Comments:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <input
+                      type="text"
+                      id="name-input"
+                      class="form-control"
+                      placeholder="Add Comments "
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal-footer">
+        <button
+          type="button"
+          data-bs-dismiss="modal"
+          class="btn btn-outline-light"
+        >
+          Cancel
+        </button>
+        <button type="button" class="btn btn-indigo">OK</button>
+      </div>
+    </div>
+  </div>
+  <!-- modal-dialog -->
+</div>
+
+<div id="modaldemo-gate-in-single" class="modal">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content modal-content-demo">
+      <div class="modal-header">
+        <h6 class="modal-title">Gate In</h6>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+        
+
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Gate No.:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <select class="form-control select2">
+              <option label="Gate No"></option>
+              <option value="Firefox">Gate 1</option>
+              <option value="Chrome">Gate 2</option>
+              <option value="Firefox">Gate 3</option>
+              <option value="Chrome">Gate 4</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Comments:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <select class="form-control select2">
+              <option label="Select Comment"></option>
+              <option value="Firefox">Comment 1</option>
+              <option value="Chrome">Comment 2</option>
+              <option value="Firefox">Comment 3</option>
+              <option value="Chrome">Comment 4</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal-footer">
+        <button
+          type="button"
+          data-bs-dismiss="modal"
+          class="btn btn-outline-light"
+        >
+          Cancel
+        </button>
+        <button type="button" class="btn btn-indigo">OK</button>
+      </div>
+    </div>
+  </div>
+  <!-- modal-dialog -->
+</div>
+
+<div id="modaldemo-gate-out-single" class="modal">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content modal-content-demo">
+      <div class="modal-header">
+        <h6 class="modal-title">Gate Out</h6>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        
+
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Gate No.:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <select class="form-control select2">
+              <option label="Gate No"></option>
+              <option value="Firefox">Gate 1</option>
+              <option value="Chrome">Gate 2</option>
+              <option value="Firefox">Gate 3</option>
+              <option value="Chrome">Gate 4</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="row row-sm">
+          <div class="col-lg-4">
+            <label for="">Comments:</label>
+          </div>
+          <div class="col-lg-8 mb-3">
+            <input
+                      type="text"
+                      id="name-input"
+                      class="form-control"
+                      placeholder="Add Comment "
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+          </div>
+        </div>
+      </div>
+    
+      <div class="modal-footer">
+        <button
+          type="button"
+          data-bs-dismiss="modal"
+          class="btn btn-outline-light"
+        >
+          Cancel
+        </button>
+        <button type="button" class="btn btn-indigo">OK</button>
+      </div>
+    </div>
+  </div>
+  <!-- modal-dialog -->
+</div>
+<!-- end single -->
+
+  <div id="modaldemo-dock-assign" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Assign Dock</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Dock No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Dock No"></option>
+                <option value="Firefox">Dock 1</option>
+                <option value="Chrome">Dock 2</option>
+                <option value="Firefox">Dock 3</option>
+                <option value="Chrome">Dock 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Add comments "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-dock-inscan" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Dock Inscan</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Dock No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Dock No"></option>
+                <option value="Firefox">Gate 1</option>
+                <option value="Chrome">Gate 2</option>
+                <option value="Firefox">Gate 3</option>
+                <option value="Chrome">Gate 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Comment"></option>
+                <option value="Firefox">Comment 1</option>
+                <option value="Chrome">Comment 2</option>
+                <option value="Firefox">Comment 3</option>
+                <option value="Chrome">Comment 4</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-dock-outscan" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Dock Outscan</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Dock No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Dock No"></option>
+                <option value="Firefox">Gate 1</option>
+                <option value="Chrome">Gate 2</option>
+                <option value="Firefox">Gate 3</option>
+                <option value="Chrome">Gate 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Number of Cargo Net.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Vehicle No. "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Add Comments "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-gate-in" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Gate In</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+          
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Gate No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Gate No"></option>
+                <option value="Firefox">Gate 1</option>
+                <option value="Chrome">Gate 2</option>
+                <option value="Firefox">Gate 3</option>
+                <option value="Chrome">Gate 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Comment"></option>
+                <option value="Firefox">Comment 1</option>
+                <option value="Chrome">Comment 2</option>
+                <option value="Firefox">Comment 3</option>
+                <option value="Chrome">Comment 4</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-gate-out" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Gate Out</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Select Vehicle"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Gate No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Gate No"></option>
+                <option value="Firefox">Gate 1</option>
+                <option value="Chrome">Gate 2</option>
+                <option value="Firefox">Gate 3</option>
+                <option value="Chrome">Gate 4</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Add Comment "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+            </div>
+          </div>
+        </div>
+      
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-add-charges" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Add Charges</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Trip No.: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Trip No. "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Panalties: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Type Penalty"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Amount"
+                  
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for=""> </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                type="text"
+                id="name-input"
+                class="form-control"
+                placeholder="Type Penalty"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+              <input
+                type="text"
+                id="name-input"
+                class="form-control"
+                placeholder="Amount"
+                
+              />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for=""> </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                    <span style="color: #5b47fb;">+ Add more</span>
+                  
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+       
+      
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-Trip-depart" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Trip Depart</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Km Reading: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Km Reading "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Seal No.: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Seal No."
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Comments "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+       
+      
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-Trip-received" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Trip Received</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Km Reading: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Km Reading "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Seal No.: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Seal No."
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Comments "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+       
+      
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-Trip-close" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Trip Close</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Vehicle No.:</label>
+            </div>
+            <div class="col-lg-8 mb-3">
+              <select class="form-control select2">
+                <option label="Choose one"></option>
+                <option value="Firefox">AS01234</option>
+                <option value="Chrome">DL7895</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">End Km Reading: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="End Km Reading "
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-sm">
+            <div class="col-lg-4">
+              <label for="">Comments: </label>
+            </div>
+            <div class="col-lg-8">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                 
+                </div>
+                <input
+                  type="text"
+                  id="name-input"
+                  class="form-control"
+                  placeholder="Add Comments"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+         
+          
+        </div>
+
+       
+      
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-apply-exception-code" class="modal">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+          <h6 class="modal-title">Apply Exception Code</h6>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="card bd-0">
+            <div class="card-header bg-gray-400 bd-b-0-f pd-b-0">
+              <nav class="nav nav-tabs">
+                <a class="nav-link active" data-bs-toggle="tab" href="#tabCont15">Consignment</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#tabCont16">Vehicle</a>
+              </nav>
+            </div><!-- card-header -->
+            <div class="card-body bd bd-t-0 tab-content">
+              <div id="tabCont15" class="tab-pane active show">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Consignment #: </label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                       
+                      </div>
+                      <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="CN Referance No. "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Exception Code:</label>
+                  </div>
+                  <div class="col-lg-8 mb-3">
+                    <select class="form-control select2">
+                      <option label="Choose one"></option>
+                      <option value="Chrome">Misrouted</option>
+                      <option value="Chrome">Lost</option>
+                      <option value="Chrome">Excess</option>
+                    </select>
+                  </div>
+                </div>
+              </div><!-- tab-pane -->
+              <div id="tabCont16" class="tab-pane">
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Vehicle #: </label>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                       
+                      </div>
+                      <input
+                        type="text"
+                        id="name-input"
+                        class="form-control"
+                        placeholder="Vehicle No. "
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row row-sm">
+                  <div class="col-lg-4">
+                    <label for="">Exception Code:</label>
+                  </div>
+                  <div class="col-lg-8 mb-3">
+                    <select class="form-control select2">
+                      <option label="Choose one"></option>
+                      <option value="1">Wrong Destination</option>
+                      <option value="2">Vehicle Damage</option>
+                      <option value="3">Misroute</option>
+                      <option value="4">Lost</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modal-body -->
+        <div class="modal-footer">
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            class="btn btn-outline-light"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-indigo">OK</button>
+        </div>
+      </div>
+    </div>
+    <!-- modal-dialog -->
+  </div>
+
+  <div id="modaldemo-hyper1" class="modal">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content modal-content-demo p-4">
+
+        <div>
+          <h5>Detail view</h5>
+        </div>
+        <div class="card p-4 m-2" style="border-radius: .5rem; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+
+          <div class="row">
+            <div class="col">
+              <p >Trip No</p>
+             <b>1001</b> 
+            </div>
+            <div class="col">
+              <p >Current status </p>
+             <b>Unloaded</b> 
+            </div>
+            <div class="col">
+              <p >Vehicle </p>
+             <b>HR4563</b> 
+            </div>
+            <div class="col">
+              <p >Route Code </p>
+              <b>DEL-BOM-BLR</b>
+            </div>
+            <div class="col">
+              <p >Driver name </p>
+              <b>Birju</b>
+            </div>
+            
+        </div>
+        <div class="row">
+          <div class="col">
+            <p style="margin-top: 1rem;">Driver mobile no</p>
+           <b>789456123</b> 
+          </div>
+          <div class="col">
+            <p style="margin-top: 1rem;">Driver Lic. No. </p>
+           <b>Not available</b> 
+          </div>
+          <div class="col">
+            <p style="margin-top: 1rem;">Payload Capacity </p>
+           <b>400 KG</b> 
+          </div>
+          <div class="col">
+            <p style="margin-top: 1rem;">No. of Consignment </p>
+            <b>9</b>
+          </div>
+          <div class="col">
+            <p style="margin-top: 1rem;">Origin </p>
+            <b>DEL</b>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p style="margin-top: 1rem;">Destination</p>
+         <b>BLR</b> 
+        </div>
+        <div class="col">
+          <p style="margin-top: 1rem;">Transportation Mode</p>
+         <b>Surface</b> 
+        </div>
+        <div class="col">
+          <p style="margin-top: 1rem;">Transporter</p>
+         <b>OM LOGISTICS LTD.</b> 
+        </div>
+        
+        <div class="col">
+          <p style="margin-top: 1rem;">EWB</p>
+          <b>Success</b>
+        </div>
+        <div class="col">
+          
+        </div>
+    </div>
+
+      </div>
+      <div class="card m-2 ">
+        <div class="card-header bg-gray-200 bd-b-0-f pd-b-0">
+          <nav class="nav nav-tabs">
+            <a class="nav-link active" data-bs-toggle="tab" href="#tabCont12">Consignment List</a>
+            <a class="nav-link" data-bs-toggle="tab" href="#tabCont13">Trip Tracking</a>
+            <a class="nav-link" data-bs-toggle="tab" href="#tabCont14">Vehicle Tracking</a>
+          </nav>
+        </div><!-- card-header -->
+        <div class="card-body bd bd-t-0 tab-content">
+          <div id="tabCont12" class="tab-pane active show">
+            <div style="overflow-y: scroll; height: 450px">
+              <table
+                class="table table-hover table-bordered table-responsive"
+                style="margin-bottom: 0"
+              >
+              <thead style="position: sticky; top: 0; background-color: aliceblue;">
+                <tr>
+                  <th>Consignment No</th>
+                  <th>Weight(KG)</th>
+                  <th>Destination</th>
+                  <th>Status</th>
+                  <th>Last Updated Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>1001</th>
+                  <td>1000</td>
+                  <td>Bimola</td>
+                  <td>Completed</td>
+                  <td>22-11-2023,14:30</td>
+                </tr>
+                <tr>
+                  <th>1002</th>
+                  <td>1000</td>
+                  <td>Bimola</td>
+                  <td>Completed</td>
+                  <td>22-11-2023,14:30</td>
+                </tr>
+                <tr>
+                  <th>1003</th>
+                  <td>1000</td>
+                  <td>Bimola</td>
+                  <td>Completed</td>
+                  <td>22-11-2023,14:30</td>
+                </tr>
+                <tr>
+                  <th>1004</th>
+                  <td>1000</td>
+                  <td>Bimola</td>
+                  <td>Completed</td>
+                  <td>22-11-2023,14:30</td>
+                </tr>
+                <tr>
+                  <th>1005</th>
+                  <td>1000</td>
+                  <td>Bimola</td>
+                  <td>Completed</td>
+                  <td>22-11-2023,14:30</td>
+                </tr>
+                <tr>
+                  <th>1006</th>
+                  <td>1000</td>
+                  <td>Bimola</td>
+                  <td>Completed</td>
+                  <td>22-11-2023,14:30</td>
+                </tr>
+                <tr>
+                  <th>1007</th>
+                  <td>1000</td>
+                  <td>Bimola</td>
+                  <td>Completed</td>
+                  <td>22-11-2023,14:30</td>
+                </tr>
+                <tr>
+                  <th>1008</th>
+                  <td>1000</td>
+                  <td>Bimola</td>
+                  <td>Completed</td>
+                  <td>22-11-2023,14:30</td>
+                </tr>
+                <tr>
+                  <th>1009</th>
+                  <td>1000</td>
+                  <td>Bimola</td>
+                  <td>Completed</td>
+                  <td>22-11-2023,14:30</td>
+                </tr>
+                
+              </table>
+            </div>
+          </div><!-- tab-pane -->
+          <div id="tabCont13" class="tab-pane">
+            <div style="overflow-y: scroll; height: 450px">
+              <table
+                class="table table-hover table-bordered table-responsive"
+                style="margin-bottom: 0"
+              >
+                <thead style="position: sticky; top: 0; background-color: aliceblue;"> 
+                  <tr>
+                    <th>Event Time</th>
+                    <th>Location</th>
+                    <th>Updated By</th>
+                    <th>Event Name</th>
+                  </tr>
+                 
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>12:05:55 PM	</td>
+                    <td>BLR</td>
+                    <td>Pooja</td>
+                    <td>Trip Completed</td>
+                  </tr>
+                  <tr>
+                    <td>12:05:55 PM	</td>
+                    <td>BLR</td>
+                    <td>Pooja</td>
+                    <td>Unloading completed</td>
+                  </tr>
+                  <tr>
+                    <td>12:05:55 PM	</td>
+                    <td>BLR</td>
+                    <td>Pooja</td>
+                    <td>Unloading in progress</td>
+                  </tr>
+                  <tr>
+                    <td>12:05:55 PM	</td>
+                    <td>BLR</td>
+                    <td>Pooja</td>
+                    <td>Trip received against seal number 456 ; KM reading 300 ; Vehicle number : HR1234</td>
+                  </tr>
+                  <tr>
+                    <td>12:05:55 PM	</td>
+                    <td>BOM</td>
+                    <td>Pooja</td>
+                    <td>Trip departed against seal number 456 ; KM reading 200 ; Vehicle number : HR1234</td>
+                  </tr>
+                  <tr>
+                    <td>12:05:55 PM	</td>
+                    <td>BOM</td>
+                    <td>Pooja</td>
+                    <td>Loading completed</td>
+                  </tr>
+                  <tr>
+                    <td>12:05:55 PM	</td>
+                    <td>BOM</td>
+                    <td>Pooja</td>
+                    <td>Loading in progress</td>
+                  </tr>
+                  <tr>
+                    <td>12:05:55 PM	</td>
+                    <td>BOM</td>
+                    <td>Pooja</td>
+                    <td>Unloading Completed</td>
+                  </tr>
+                  <tr>
+                    <td >12:05:55 PM</td>
+                    <td>BOM</td>
+                    <td>Amar</td>
+                    <td>Unloading in progress</td>
+                  </tr>
+                  <tr>
+                    <td >12:05:55 PM</td>
+                    <td>BOM</td>
+                    <td>Amar</td>
+                    <td>Trip received against seal number 123 ; KM reading 200 ; Vehicle number : HR1234</td>
+                  </tr>
+                  <tr>
+                    <td >12:05:55 PM</td>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Trip departed against seal number 123 ; KM reading 100 ; Vehicle number : HR1234</td>
+                  </tr>
+                  <tr>
+                    <td >12:05:55 PM</td>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Loading Completed</td>
+                  </tr>
+                  <tr>
+                    <td >12:05:55 PM</td>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Loading in progress</td>
+                  </tr>
+                  <tr>
+                    <td >12:05:55 PM</td>
+                    <td>DEL</td>
+                    <td>Amar</td>
+                    <td>Trip created</td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="tabCont14" class="tab-pane">
+            <div style="overflow-y: scroll; height: 450px">
+              <table
+                class="table table-hover table-bordered table-responsive"
+                style="margin-bottom: 0"
+              >
+              <thead style="position: sticky; top: 0; background-color: aliceblue;">
+                <tr>
+                  <th>Event Time</th>
+                  <th>Location</th>
+                  <th>Updated By</th>
+                  <th>Event Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>12:05:55 PM</th>
+                  <td>BLR</td>
+                  <td>Amar</td>
+                  <td>Vehicle dock out; dock 7</td>
+                </tr>
+                <tr>
+                  <th>12:05:55 PM</th>
+                  <td>BLR</td>
+                  <td>Amar</td>
+                  <td>Unloading completed</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>BLR</td>
+                  <td>Amar</td>
+                  <td>Unloading in progress</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>BLR</td>
+                  <td>Amar</td>
+                  <td>Vehicle opened ; Middle mile trip - DEL 123490</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>BLR</td>
+                  <td>Amar</td>
+                  <td>Vehicle Dock inscan ; dock 7</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>BLR</td>
+                  <td>Amar</td>
+                  <td>Vehicle Dock assign ; assigned dock 7</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>BLR</td>
+                  <td>Amar</td>
+                  <td>Vehicle Gate in ; gate 3</td>
+                </tr>
+                <tr>
+                  <th>12:05:55 PM</th>
+                  <td>DEL</td>
+                  <td>Amar</td>
+                  <td>Vehicle gated out ; gate 2</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>DEL</td>
+                  <td>Amar</td>
+                  <td>Vehicle dock out ; dock 5</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>DEL</td>
+                  <td>Amar</td>
+                  <td>Vehicle departed ; Middle mile trip - DEL123490</td>
+                </tr>
+                <tr>
+                  <th>12:05:55 PM</th>
+                  <td>DEL</td>
+                  <td>Amar</td>
+                  <td>Loading completed</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>DEL</td>
+                  <td>Amar</td>
+                  <td>Loading in progress</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>DEL</td>
+                  <td>Amar</td>
+                  <td>Middle mile trip assigned - DEL123490</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>DEL</td>
+                  <td>Amar</td>
+                  <td>Vehicle Dock inscan ; dock 5</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>DEL</td>
+                  <td>Amar</td>
+                  <td>Vehicle Dock assign ; assigned dock 5</td>
+                </tr>
+                <tr>
+                  <th >12:05:55 PM</th>
+                  <td>DEL</td>
+                  <td>Amar</td>
+                  <td>Vehicle Gate in ; gate 1</td>
+                </tr>
+                
+              </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+  <!--Table-->
+  
+
+  <script>
+    $(function () {
+      $('input[name="daterange"]').daterangepicker(
+        {
+          opens: "center",
+        },
+        function (start, end, label) {
+          console.log(
+            "A new date selection was made: " +
+              start.format("YYYY-MM-DD") +
+              " to " +
+              end.format("YYYY-MM-DD")
+          );
+        }
+      );
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+      // showing modal with effect
+      $(".modal-effect").on("click", function (e) {
+        e.preventDefault();
+        var effect = $(this).attr("data-effect");
+        $("#modaldemo8").addClass(effect);
+      });
+
+      // hide modal with effect
+      $("#modaldemo8").on("hidden.bs.modal", function (e) {
+        $(this).removeClass(function (index, className) {
+          return (className.match(/(^|\s)effect-\S+/g) || []).join(" ");
+        });
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+
+      $(".az-sidebar .with-sub").on("click", function (e) {
+        e.preventDefault();
+        $(this).parent().toggleClass("show");
+        $(this).parent().siblings().removeClass("show");
+      });
+
+      $(document).on("click touchstart", function (e) {
+        e.stopPropagation();
+
+        // closing of sidebar menu when clicking outside of it
+        if (!$(e.target).closest(".az-header-menu-icon").length) {
+          var sidebarTarg = $(e.target).closest(".az-sidebar").length;
+          if (!sidebarTarg) {
+            $("body").removeClass("az-sidebar-show");
+          }
+        }
+      });
+
+      $("#azSidebarToggle").on("click", function (e) {
+        e.preventDefault();
+
+        if (window.matchMedia("(min-width: 992px)").matches) {
+          $("body").toggleClass("az-sidebar-hide");
+        } else {
+          $("body").toggleClass("az-sidebar-show");
+        }
+      });
+
+      // select and display data on search ---------------------------------------------------------
+      $(document).ready(function () {
+        // Listen for changes in the dropdown selection
+        $(".dropdown-item").on("click", function () {
+          // Get the text of the selected option and update the input field's placeholder
+          var selectedText = $(this).text();
+          $(".form-control").attr("placeholder", "Search " + selectedText);
+        });
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      "use strict";
+
+      $('[data-toggle="popover"]').popover();
+
+      $('[data-popover-color="head-primary"]').popover({
+        template:
+          '<div class="popover popover-head-primary" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+      });
+
+      $('[data-popover-color="head-secondary"]').popover({
+        template:
+          '<div class="popover popover-head-secondary" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+      });
+
+      $('[data-popover-color="primary"]').popover({
+        template:
+          '<div class="popover popover-primary" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+      });
+
+      $('[data-popover-color="secondary"]').popover({
+        template:
+          '<div class="popover popover-secondary" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+      });
+
+      // By default, Bootstrap doesn't auto close popover after appearing in the page
+      // resulting other popover overlap each other. Doing this will auto dismiss a popover
+      // when clicking anywhere outside of it
+      $(document).on("click", function (e) {
+        $('[data-toggle="popover"],[data-original-title]').each(function () {
+          //the 'is' for buttons that trigger popups
+          //the 'has' for icons within a button that triggers a popup
+          if (
+            !$(this).is(e.target) &&
+            $(this).has(e.target).length === 0 &&
+            $(".popover").has(e.target).length === 0
+          ) {
+            (
+              ($(this).popover("hide").data("bs.popover") || {}).inState || {}
+            ).click = false; // fix for BS 3.3.6
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    (function () {
+      // Declare itemsPerPage without initializing it
+      let itemsPerPage;
+      let currentPage = 1;
+      let rows; // Store rows globally
+
+      // Function to update the display of rows based on the current page and itemsPerPage
+      function displayPage() {
+        const table = document.getElementById("Table1");
+        console.log(
+          table.getElementsByTagName("tbody")[0].getElementsByTagName("tr")
+        );
+        rows = table
+          .getElementsByTagName("tbody")[0]
+          .getElementsByTagName("tr");
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        for (let i = 0; i < rows.length; i++) {
+          if (i >= startIndex && i < endIndex) {
+            rows[i].style.display = "table-row";
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+
+        document.getElementById("currentPage").textContent = currentPage;
+        updatePagination();
+      }
+
+      // Function to update the pagination buttons
+      function updatePagination() {
+        const totalPages = Math.ceil(rows.length / itemsPerPage);
+
+        const prevPageButton = document.getElementById("prevPage");
+        const nextPageButton = document.getElementById("nextPage");
+
+        if (currentPage === 1) {
+          prevPageButton.disabled = true;
+        } else {
+          prevPageButton.disabled = false;
+        }
+
+        if (currentPage === totalPages) {
+          nextPageButton.disabled = true;
+        } else {
+          nextPageButton.disabled = false;
+        }
+      }
+
+      // Function to update itemsPerPage and redisplay the current page
+      function updateItemsPerPage() {
+        const selectElement = document.getElementById("itemsPerPage");
+        itemsPerPage = parseInt(selectElement.value);
+        currentPage = 1; // Reset to the first page
+        displayPage();
+      }
+
+      // Add an event listener to the select element to update itemsPerPage
+      document
+        .getElementById("itemsPerPage")
+        .addEventListener("change", updateItemsPerPage);
+
+      document
+        .getElementById("prevPage")
+        .addEventListener("click", function () {
+          if (currentPage > 1) {
+            currentPage--;
+            displayPage();
+          }
+        });
+
+      document
+        .getElementById("nextPage")
+        .addEventListener("click", function () {
+          const totalPages = Math.ceil(rows.length / itemsPerPage);
+
+          if (currentPage < totalPages) {
+            currentPage++;
+            displayPage();
+          }
+        });
+
+      // Check if itemsPerPage has not been initialized, then set a default value
+      if (typeof itemsPerPage === "undefined") {
+        itemsPerPage = 6; // Set a default value
+      }
+
+      displayPage(); // Initial display
+    })();
+  </script>
+  <script>
+    var popover = document.getElementById("popoverContent");
+    var button = document.getElementById("popoverButton");
+
+    button.addEventListener("click", function (event) {
+      event.stopPropagation(); // Prevents the event from reaching the window
+      if (popover.style.display === "block") {
+        popover.style.display = "none";
+      } else {
+        popover.style.display = "block";
+      }
+    });
+
+    window.addEventListener("click", function (event) {
+      var isClickInsideButton = button.contains(event.target);
+      var isClickInsidePopover = popover.contains(event.target);
+
+      if (!isClickInsideButton && !isClickInsidePopover) {
+        popover.style.display = "none";
+      }
+    });
+  </script>
+</body>
